@@ -15,7 +15,7 @@
                     <li>
                         <a href="#">系统</a>
                     </li>
-                    <li class="active">分类管理</li>
+                    <li class="active">商品管理</li>
                 </ul>
             </div>
             <!-- /Page Breadcrumb -->
@@ -23,7 +23,7 @@
             <!-- Page Body -->
             <div class="page-body">
 
-                <button type="button" tooltip="添加分类" class="btn btn-sm btn-azure btn-addon"
+                <button type="button" tooltip="添加商品" class="btn btn-sm btn-azure btn-addon"
                         onClick="javascript:window.location.href = '{:url(\'Cate/add\')}'"><i class="fa fa-plus"></i>
                     Add
                 </button>
@@ -36,29 +36,48 @@
                                         <thead class="">
                                         <tr>
                                             <th class="text-center">ID</th>
-                                            <th class="text-center">分类名称</th>
-                                            <th class="text-center">pid</th>
-                                            <th class="text-center">path</th>
-                                            <th class="text-center">level</th>
+                                            <th class="text-center">商品名称</th>
+                                            <th class="text-center">商品封面</th>
+                                            <th class="text-center">销售价格</th>
+                                            <th class="text-center">商品库存</th>
+                                            <th class="text-center">所属分类</th>
+                                            <th class="text-center">商品关键字</th>
+                                            <th class="text-center">商品摘要</th>
+                                            <th class="text-center">创建时间</th>
+                                            <th class="text-center">上次修改</th>
+                                            <th class="text-center">修改人</th>
                                             <th class="text-center">操作</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        {foreach $data.data as $v}
+                                        {foreach $data as $v}
                                         <tr>
+                                            <td align="center">{$v.goods_id}</td>
+                                            <td align="center">{$v.goods_name}</td>
+                                            <td align="center">{$v.face_pic}</td>
+                                            <td align="center">{$v.sell_price}</td>
+                                            <td align="center">{$v.store}</td>
                                             <td align="center">{$v.cate_id}</td>
-                                            <td align="center">{$v.cate_name}</td>
-                                            <td align="center">{$v.pid}</td>
-                                            <td align="center">{$v.path}</td>
-                                            <td align="center">{$v.level}</td>
+                                            <td align="center">{$v.keywords}</td>
+                                            <td align="center">{$v.desc}</td>
+                                            <td align="center">{$v.create_time}</td>
+                                            <td align="center">{$v.last_modify_time}</td>
+                                            <td align="center">{$v.last_modify_id}</td>
                                             <td align="center">
-                                                <a href="{:url('Cate/addChildCate',['id'=>$v.cate_id])}" class="btn btn-primary btn-sm shiny">
-                                                    <i class="fa fa-plus"></i> 添加子分类
+
+                                                {if $v.marketable eq 0}
+                                                <a href="#" class="btn btn-active btn-sm shiny" onclick="warning('确实要上架该商品吗','{:url(\'Goods/marketable\',[\'id\'=>$v.goods_id])}')">
+                                                    <i class="fa fa-upload"></i> 上架
                                                 </a>
-                                                <a href="{:url('Cate/edit',['id'=>$v.cate_id])}" class="btn btn-primary btn-sm shiny">
+                                                {else}
+                                                <a href="#" class="btn btn-warning btn-sm shiny" onclick="warning('确实要下架该商品吗','{:url(\'Goods/marketable\',[\'id\'=>$v.goods_id])}')">
+                                                    <i class="fa fa-download"></i> 下架
+                                                </a>
+                                                {/if}
+                                                <a href="{:url('Goods/edit',['id'=>$v.goods_id])}" class="btn btn-primary btn-sm shiny">
                                                     <i class="fa fa-edit"></i> 编辑
                                                 </a>
-                                                <a href="#" onClick="warning('确实要删除吗','{:url(\'Cate/del\',[\'id\'=>$v.cate_id])}')"
+                                                <a href="#" onClick="warning('确实要删除吗','{:url(\'Cate/del\',[\'id\'=>$v.goods_id])}')"
                                                    class="btn btn-danger btn-sm shiny">
                                                     <i class="fa fa-trash-o"></i> 删除
                                                 </a>
@@ -74,7 +93,7 @@
                         </div>
                     </div>
                 </div>
-                {$data.page}
+                {$data->render()}
             </div>
             <!-- /Page Body -->
         </div>

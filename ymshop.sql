@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2017-09-20 22:29:58
+Date: 2017-09-21 10:01:02
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -43,3 +43,22 @@ INSERT INTO `ym_cate` VALUES ('9', '粮油酱醋', '0', '9', '0');
 INSERT INTO `ym_cate` VALUES ('10', '环保生活', '0', '10', '0');
 INSERT INTO `ym_cate` VALUES ('11', '根茎类', '1', '1,11', '1');
 INSERT INTO `ym_cate` VALUES ('12', '青菜', '11', '1,11,12', '2');
+
+-- ----------------------------
+-- Table structure for ym_manager
+-- ----------------------------
+DROP TABLE IF EXISTS `ym_manager`;
+CREATE TABLE `ym_manager` (
+  `manager_id` int(11) NOT NULL,
+  `manager_name` varchar(20) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `create_time` char(10) NOT NULL,
+  `login_time` char(10) NOT NULL,
+  `manager_ip` varchar(20) NOT NULL,
+  `lock` tinyint(4) NOT NULL DEFAULT '0' COMMENT '0-正常  1-冻结 ',
+  PRIMARY KEY (`manager_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of ym_manager
+-- ----------------------------

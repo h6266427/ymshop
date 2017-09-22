@@ -1,6 +1,7 @@
 
 <!-- 头部 -->
 {:widget("Admin/head")}
+<style>#preview img{width: 100%}</style>
 <script src="__STATIC__/ueditor/ueditor.config.js"></script>
 <script src="__STATIC__/ueditor/ueditor.all.min.js"></script>
 <script src="__STATIC__/ueditor/lang/zh-cn/zh-cn.js"></script>
@@ -67,9 +68,8 @@
                                         <div class="form-group">
                                             <label for="pic" class="col-sm-2 control-label no-padding-right">封面图片</label>
                                             <div class="col-sm-6">
-                                                <input class="help-block" id=""  name="pic" type="file" >
-
-                                                <img style="margin-top: 10px" src="" width="100" alt="">
+                                                <input class="help-block" id="pic"  name="pic" type="file" onchange="preview(this)" >
+                                                <div id="preview" style="margin-top: 10px;width: 150px"></div>
 
                                             </div>
                                             <p class="help-block col-sm-4 red">* 必填</p>
@@ -142,8 +142,29 @@
                                             </div>
                                         </div>
 
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label no-padding-right">是否推荐上新</label>
+                                            <div class="col-xs-4">
+                                                <label>
+                                                    <input class="checkbox-slider slider-icon yesno" name="is_new"
+                                                           type="checkbox" >
+                                                    <span class="text"></span>
+                                                </label>
+                                            </div>
+                                        </div>
 
-                                        <input name="manager_id" value="" type="hidden">
+                                       <!-- <div class="form-group">
+                                            <label class="col-sm-2 control-label no-padding-right">是否选为热销商品</label>
+                                            <div class="col-xs-4">
+                                                <label>
+                                                    <input class="checkbox-slider slider-icon yesno" name="is_hot"
+                                                           type="checkbox" >
+                                                    <span class="text"></span>
+                                                </label>
+                                            </div>
+                                        </div>-->
+
+                                        <input name="manager_id" value="1" type="hidden">
 
 
                                         <div class="form-group">
@@ -171,7 +192,7 @@
 <script src="__STATIC__/admin/style/jquery.js"></script>
 <!--Beyond Scripts-->
 <script src="__STATIC__/admin/style/beyond.js"></script>
-
+<script src="__STATIC__/admin/style/previewImg.js"></script>
 <script type="text/javascript">
 
     //实例化编辑器

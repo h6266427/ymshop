@@ -1,0 +1,91 @@
+
+<!-- 头部 -->
+{:widget("Admin/head")}
+<style>#preview img{width: 100%}</style>
+<script src="__STATIC__/ueditor/ueditor.config.js"></script>
+<script src="__STATIC__/ueditor/ueditor.all.min.js"></script>
+<script src="__STATIC__/ueditor/lang/zh-cn/zh-cn.js"></script>
+<!-- /头部 -->
+
+<div class="main-container container-fluid">
+    <div class="page-container">
+        <!-- Page Sidebar -->
+        {:widget("Admin/sidebar")}
+        <!-- /Page Sidebar -->
+        <!-- Page Content -->
+        <div class="page-content">
+            <!-- Page Breadcrumb -->
+            <div class="page-breadcrumbs">
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="{:url('Goods/index')}">商品管理</a>
+                    </li>
+                    <li class="active">添加图片</li>
+                </ul>
+            </div>
+            <!-- /Page Breadcrumb -->
+
+            <!-- Page Body -->
+            <div class="page-body">
+
+                <div class="row">
+                    <div class="col-lg-12 col-sm-12 col-xs-12">
+                        <div class="widget">
+                            <div class="widget-header bordered-bottom bordered-blue">
+                                <span class="widget-caption">添加图片</span>
+                            </div>
+                            <div class="widget-body">
+                                <div id="horizontal-form">
+                                    <form class="form-horizontal" role="form" action="{:url('Imgs/add')}" method="post" enctype="multipart/form-data">
+
+                                        <div class="form-group">
+                                            <label for="pic" class="col-sm-2 control-label no-padding-right">选择图片</label>
+                                            <div class="col-sm-6">
+                                                <input class="help-block" id="pic"  name="pic" type="file" onchange="preview(this)" >
+                                                <div id="preview" style="margin-top: 10px;width: 150px"></div>
+
+                                            </div>
+                                            <p class="help-block col-sm-4 red">* 必填</p>
+                                        </div>
+
+                                        <input type="hidden" name="id" value={$gid}>
+                                        <input name="manager_id" value="1" type="hidden">
+
+
+                                        <div class="form-group">
+                                            <div class="col-sm-offset-2 col-sm-10">
+                                                <button type="submit" class="btn btn-default">添加</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /Page Body -->
+        </div>
+        <!-- /Page Content -->
+    </div>
+</div>
+
+<!--Basic Scripts-->
+<script src="__STATIC__/admin/style/jquery_002.js"></script>
+<script src="__STATIC__/admin/style/bootstrap.js"></script>
+<script src="__STATIC__/admin/style/jquery.js"></script>
+<!--Beyond Scripts-->
+<script src="__STATIC__/admin/style/beyond.js"></script>
+<script src="__STATIC__/admin/style/previewImg.js"></script>
+<script type="text/javascript">
+
+    //实例化编辑器
+    //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+    UE.getEditor('content',{initialFrameWidth:700,initialFrameHeight:400});
+
+
+</script>
+
+</body>
+</html>

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2017-09-22 12:41:13
+Date: 2017-09-22 23:57:39
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -85,13 +85,15 @@ CREATE TABLE `ym_goods` (
   `is_hot` tinyint(4) NOT NULL DEFAULT '0' COMMENT '是否是热销商品，是为1，否为0',
   `is_new` tinyint(4) NOT NULL DEFAULT '0' COMMENT '是否是上新商品，是为1，否为0',
   PRIMARY KEY (`goods_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ym_goods
 -- ----------------------------
-INSERT INTO `ym_goods` VALUES ('1', '夏威夷果', '0', '88', '99', '1', '999', '11', '1505662517', '1505662517', '1', '坚果', '好吃', '来自夏威夷的夏威夷果', '7', '0', '0');
-INSERT INTO `ym_goods` VALUES ('2', '火龙果', '0', '55', '66', '1', '100', '80', '1505662517', '1505662517', '2', '水果', '降火', '哈哈哈哈', '2', '0', '0');
+INSERT INTO `ym_goods` VALUES ('1', '夏威夷果', '0', '88', '99', '0', '999', '11', '1505662517', '1505662517', '1', '坚果', '好吃', '来自夏威夷的夏威夷果', '7', '0', '0');
+INSERT INTO `ym_goods` VALUES ('2', '火龙果', '1', '55', '66', '1', '100', '80', '1505662517', '1505662517', '2', '水果', '降火', '哈哈哈哈', '2', '0', '0');
+INSERT INTO `ym_goods` VALUES ('6', '111', '0', '1', '1', '1', '1', '0', '1506066425', '0', '0', '232', '1', '<p>aa</p>', '0', '0', '0');
+INSERT INTO `ym_goods` VALUES ('5', '2222', '1', '3', '3', '1', '80', '0', '1506066425', '0', '0', '445', 'aa', 'alfjk', '3', '0', '0');
 
 -- ----------------------------
 -- Table structure for ym_images
@@ -104,15 +106,20 @@ CREATE TABLE `ym_images` (
   `image_b_url` varchar(255) NOT NULL,
   `image_m_url` varchar(255) NOT NULL,
   `image_s_url` varchar(255) NOT NULL,
-  `is_face` tinyint(4) NOT NULL COMMENT '是否封面',
+  `is_face` tinyint(4) NOT NULL DEFAULT '0' COMMENT '是否封面 0-否 1-是',
   PRIMARY KEY (`image_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ym_images
 -- ----------------------------
 INSERT INTO `ym_images` VALUES ('1', '1', '/static/index/img/hot5.jpg', '', '', '', '1');
-INSERT INTO `ym_images` VALUES ('2', '2', '', '', '', '', '0');
+INSERT INTO `ym_images` VALUES ('3', '6', '/static/admin/images/uploads/20170922/eb8b2675ba41dc4e6864fb73c7c17313.jpg', '/static/admin/images/uploads/20170922/b_eb8b2675ba41dc4e6864fb73c7c17313.jpg', '/static/admin/images/uploads/20170922/m_eb8b2675ba41dc4e6864fb73c7c17313.jpg', '/static/admin/images/uploads/20170922/s_eb8b2675ba41dc4e6864fb73c7c17313.jpg', '0');
+INSERT INTO `ym_images` VALUES ('4', '5', '/static/admin/images/uploads/20170922/eb8b2675ba41dc4e6864fb73c7c17313.jpg', '/static/admin/images/uploads/20170922/b_eb8b2675ba41dc4e6864fb73c7c17313.jpg', '/static/admin/images/uploads/20170922/m_eb8b2675ba41dc4e6864fb73c7c17313.jpg', '/static/admin/images/uploads/20170922/s_eb8b2675ba41dc4e6864fb73c7c17313.jpg', '1');
+INSERT INTO `ym_images` VALUES ('5', '6', '/static/admin/images/uploads/20170922/459ebda20f2a8890c39b63d8e6c8ffb6.png', '/static/admin/images/uploads/20170922/b_459ebda20f2a8890c39b63d8e6c8ffb6.png', '/static/admin/images/uploads/20170922/m_459ebda20f2a8890c39b63d8e6c8ffb6.png', '/static/admin/images/uploads/20170922/s_459ebda20f2a8890c39b63d8e6c8ffb6.png', '0');
+INSERT INTO `ym_images` VALUES ('10', '6', '/static/admin/images/uploads/20170922/74c6e1d5bed538b0aa50a5a31a1c34ae.jpg', '/static/admin/images/uploads/20170922/b_74c6e1d5bed538b0aa50a5a31a1c34ae.jpg', '/static/admin/images/uploads/20170922/m_74c6e1d5bed538b0aa50a5a31a1c34ae.jpg', '/static/admin/images/uploads/20170922/s_74c6e1d5bed538b0aa50a5a31a1c34ae.jpg', '1');
+INSERT INTO `ym_images` VALUES ('9', '5', '/static/admin/images/uploads/20170922/48a753c612bedc398bba9af686268edc.png', '/static/admin/images/uploads/20170922/b_48a753c612bedc398bba9af686268edc.png', '/static/admin/images/uploads/20170922/m_48a753c612bedc398bba9af686268edc.png', '/static/admin/images/uploads/20170922/s_48a753c612bedc398bba9af686268edc.png', '0');
+INSERT INTO `ym_images` VALUES ('8', '2', '/static/admin/images/uploads/20170922/ece3adce534cfe55b59935fec824c3f8.jpg', '/static/admin/images/uploads/20170922/b_ece3adce534cfe55b59935fec824c3f8.jpg', '/static/admin/images/uploads/20170922/m_ece3adce534cfe55b59935fec824c3f8.jpg', '/static/admin/images/uploads/20170922/s_ece3adce534cfe55b59935fec824c3f8.jpg', '1');
 
 -- ----------------------------
 -- Table structure for ym_manager

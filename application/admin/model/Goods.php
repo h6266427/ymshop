@@ -20,8 +20,9 @@ class Goods extends Model{
             ->field('g.goods_id,g.goods_name,g.sell_price,g.store,g.keywords,g.desc,g.content,g.create_time,g.last_modify_time,g.marketable,g.status,g.is_hot,g.is_new,c.cate_id cid,c.cate_name,m.manager_name,i.image_id,i.image_url')
             ->join('cate c','c.cate_id=g.cate_id','left')
             ->join('manager m','g.last_modify_id=m.manager_id','left')
-            ->join('images i','i.goods_id=g.goods_id')
-            ->order('g.marketable desc,g.cate_id,g.goods_id')
+            ->join('images i','i.goods_id=g.goods_id','left')
+            ->where('i.is_face',1)
+            ->order('g.status,g.marketable desc,g.cate_id,g.goods_id')
             ->paginate(8);
 
         $page=$goodsData->render();
@@ -65,6 +66,41 @@ class Goods extends Model{
         return $data;
 
     }
+
+
+    /*
+     *
+     * 处理图片上传
+     */
+    static public function upload($fileName){
+        // 获取表单上传文件 例如上传了001.jpg
+        $file = request()->file($fileName);
+
+        // 移动到框架应用根目录/public/uploads/ 目录下
+        if($file){
+            //移动到应用框架的根目录的public/uploads/日期/文件夹下；
+            $info = $file->move(ROOT_PATH . 'public'.DS.'static'.DS.'admin' .DS.'imgs'. DS . 'uploads');
+            if($info){
+                // 成功上传后 获取上传信息
+
+                //$info->getSaveName();输出日期/文件名；url为根目录的static下的uploads/文件名；
+                $url='/static/admin/imgs/uploads/'.$info->getSaveName();
+
+                //将字符‘\’转化为‘/’；
+                $url=str_replace('\\','/',$url);
+                //dump($url);exit;
+                return ['status'=>'success',
+                    'url'=>$url];
+
+            }else{
+                // 上传失败获取错误信息
+                return ['status'=>'error',
+                    'msg'=>$file->getError()];
+            }
+        }
+
+    }
+
 
 
 
@@ -124,11 +160,14 @@ class Goods extends Model{
         return $res ? $res : false;
     }
 
-    //上传图片
-    static public function updImg(){
+    //图片数据写入数据库图片表
+    static public function insertImgTable($data){
+        if(empty($data)){
+            return false;
+        }
 
-
-
+        $res=db('images')->insert($data);
+        return $res? $res:false;
 
     }
 

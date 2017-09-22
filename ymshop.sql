@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost
+Source Server         : blog
 Source Server Version : 50505
 Source Host           : localhost:3306
 Source Database       : ymshop
@@ -10,10 +10,28 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2017-09-21 16:06:30
+Date: 2017-09-22 10:14:45
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for ym_address
+-- ----------------------------
+DROP TABLE IF EXISTS `ym_address`;
+CREATE TABLE `ym_address` (
+  `addr_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `area` varchar(100) NOT NULL COMMENT '区域 （省    市     区/县/镇）',
+  `address` varchar(255) NOT NULL COMMENT '地址  （XX路XX号XX室）',
+  `create_time` bigint(20) NOT NULL COMMENT '创建时间',
+  `def_addr` tinyint(4) NOT NULL DEFAULT '0' COMMENT '是否默认地址 ',
+  PRIMARY KEY (`addr_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of ym_address
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for ym_cate
@@ -76,6 +94,25 @@ INSERT INTO `ym_goods` VALUES ('1', '夏威夷果', '', '88', '99', '0', '999', 
 INSERT INTO `ym_goods` VALUES ('2', '火龙果', '', '55', '66', '1', '100', '80', '1505662517', '1505662517', '2', '水果', '降火', '哈哈哈哈', '2', '0', '0');
 
 -- ----------------------------
+-- Table structure for ym_images
+-- ----------------------------
+DROP TABLE IF EXISTS `ym_images`;
+CREATE TABLE `ym_images` (
+  `image_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `goods_id` int(11) NOT NULL,
+  `image_url` varchar(255) NOT NULL,
+  `image_b_url` varchar(255) NOT NULL,
+  `image_m_url` varchar(255) NOT NULL,
+  `image_s_url` varchar(255) NOT NULL,
+  `is_face` tinyint(4) NOT NULL COMMENT '是否封面',
+  PRIMARY KEY (`image_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of ym_images
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for ym_manager
 -- ----------------------------
 DROP TABLE IF EXISTS `ym_manager`;
@@ -92,4 +129,47 @@ CREATE TABLE `ym_manager` (
 
 -- ----------------------------
 -- Records of ym_manager
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for ym_order
+-- ----------------------------
+DROP TABLE IF EXISTS `ym_order`;
+CREATE TABLE `ym_order` (
+  `order_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `total_amount` int(11) NOT NULL COMMENT '订单总价',
+  `user_id` int(11) NOT NULL,
+  `status` varchar(20) NOT NULL COMMENT 'normal-正常 dead-取消  finish-完成',
+  `pay_status` tinyint(4) NOT NULL,
+  `pay_method` varchar(20) NOT NULL COMMENT '-- 支付方式  -1 --货到付款  online -- 在线支付  weixin -- 微信支付  alipay--支付宝',
+  `create_time` bigint(20) NOT NULL,
+  `last_modify` varchar(255) DEFAULT NULL COMMENT '最后一次修改',
+  PRIMARY KEY (`order_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of ym_order
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for ym_user
+-- ----------------------------
+DROP TABLE IF EXISTS `ym_user`;
+CREATE TABLE `ym_user` (
+  `user_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `username` varchar(30) NOT NULL,
+  `password` char(32) NOT NULL,
+  `mobile` varchar(11) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `reg_time` int(11) NOT NULL,
+  `ip` varchar(20) NOT NULL,
+  `login_count` int(11) NOT NULL,
+  `login_time` bigint(20) NOT NULL,
+  `pic` varchar(255) NOT NULL,
+  `lock` tinyint(4) NOT NULL DEFAULT '0' COMMENT '0-正常 1-冻结 2-永久冻结',
+  PRIMARY KEY (`user_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of ym_user
 -- ----------------------------

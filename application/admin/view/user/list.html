@@ -1,0 +1,96 @@
+{include file="common/head"/}
+
+<!-- /头部 -->
+
+<div class="main-container container-fluid">
+    <div class="page-container">
+        <!-- Page Sidebar -->
+        {include file="common/sidebar"/}
+        <!-- /Page Sidebar -->
+        <!-- Page Content -->
+        <div class="page-content">
+            <!-- Page Breadcrumb -->
+            <div class="page-breadcrumbs">
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="#">用户</a>
+                    </li>
+                    <li class="active">用户管理</li>
+                </ul>
+            </div>
+            <!-- /Page Breadcrumb -->
+
+            <!-- Page Body -->
+            <div class="page-body">
+
+
+                <div class="row">
+                    <div class="col-lg-12 col-sm-12 col-xs-12">
+                        <div class="widget">
+                            <div class="widget-body">
+                                <div class="flip-scroll">
+                                    <table class="table table-bordered table-hover">
+                                        <thead class="">
+                                        <tr>
+                                            <th class="text-center">ID</th>
+                                            <th class="text-center">用户名称</th>
+                                            <th class="text-center">是否冻结</th>
+                                            <th class="text-center">操作</th>
+                                        </tr>
+                                        </thead>
+
+                                        <tbody>
+
+                                        {foreach $data as $v}
+                                        <tr>
+                                            <td align="center">{$v.id}</td>
+
+                                            <td align="center">{$v.username}</td>
+
+                                            <td align="center">
+                                                {$v.lock=='1' ? '是':'否'}
+                                            </td>
+                                            <td align="center">
+
+
+                                                <a href="{:url(\"User/edit\",array("id"=>{$v.id}))}"
+                                                   class="btn btn-primary btn-sm shiny">
+                                                    <i class="fa fa-edit"></i> 冻结编辑
+                                                </a>
+
+                                                <a href="#" onClick="warning('确实要永久冻结吗', '{:url(\"User/del\",array("id"=>{$v.id}))}')"
+                                                   class="btn btn-danger btn-sm shiny">
+                                                    <i class="fa fa-trash-o"></i> 永久冻结
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        {/foreach}
+                                        {$data->render()}
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /Page Body -->
+        </div>
+        <!-- /Page Content -->
+    </div>
+</div>
+
+<!--Basic Scripts-->
+<script src="__STATIC__/admin/style/jquery_002.js"></script>
+<script src="__STATIC__/admin/style/bootstrap.js"></script>
+<script src="__STATIC__/admin/style/jquery.js"></script>
+<!--Beyond Scripts-->
+<script src="__STATIC__/admin/style/beyond.js"></script>
+
+
+</body></html>

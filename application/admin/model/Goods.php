@@ -17,9 +17,10 @@ class Goods extends Model{
         //三表联查出商品数据、分类名称，管理员名称
         $goodsData=db('goods')
             ->alias('g')
-            ->field('g.*,c.cate_id cid,c.cate_name,m.manager_name')
+            ->field('g.goods_id,g.goods_name,g.sell_price,g.store,g.keywords,g.desc,g.content,g.create_time,g.last_modify_time,g.marketable,g.status,g.is_hot,g.is_new,c.cate_id cid,c.cate_name,m.manager_name,i.image_id,i.image_url')
             ->join('cate c','c.cate_id=g.cate_id','left')
             ->join('manager m','g.last_modify_id=m.manager_id','left')
+            ->join('images i','i.goods_id=g.goods_id')
             ->order('g.marketable desc,g.cate_id,g.goods_id')
             ->paginate(8);
 
@@ -111,6 +112,26 @@ class Goods extends Model{
         $all=db('Cate')->order('path')->select();
         return $all?$all:false;
     }
+
+    //插入一条数据并返回数据id
+    static public function addGoodId($data)
+    {
+        if (empty($data)) {
+            return false;
+        }
+        //在数据库中创建一条数据并返回该数据id
+        $res = db('goods')->insertGetId($data);
+        return $res ? $res : false;
+    }
+
+    //上传图片
+    static public function updImg(){
+
+
+
+
+    }
+
 
 
 }

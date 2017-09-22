@@ -42,7 +42,43 @@ class Goods extends Controller{
         //dump($cateData);exit;
         $this->assign('cateData',$cateData);
 
+        if (request()->isPost()){
+            $data=[
+                'goods_name'=>input('goods_name'),
+                'cate_id'=>'cate_id',
+                'keywords'=>input('keywords'),
+                'desc'=>input('desc'),
+                'content'=>input('content'),
+                'create_time'=>time(),
 
+
+            ];
+
+            //判断是否上架
+            if(input('marketable')=='on'){
+                $data['marketable']=1;
+            }else{
+                $data['marketable']=0;
+            }
+
+            //判断是哪个管理员添加的
+
+
+            //
+
+
+            //验证
+            $validate=validate('Goods');
+            if (!$validate->scene('add')->check($data)){
+                return $this->error($validate->getError());
+            }
+
+            //写入数据库
+
+
+
+
+        }
 
 
         return $this->fetch();
@@ -58,6 +94,7 @@ class Goods extends Controller{
         $data=GoodsModel::goodById($gid);
         //判断上下架状态
         if($data['marketable']==0){
+            //正在下架中，改为上架
             $data['marketable']=1;
 
             //验证
@@ -74,6 +111,8 @@ class Goods extends Controller{
                 return $this->error('上架失败...');
             }
         }else{
+            //正在上架，要改成下架
+
             $data['marketable']=0;
 
             //验证

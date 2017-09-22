@@ -10,7 +10,11 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
+<<<<<<< HEAD
 Date: 2017-09-22 10:14:45
+=======
+Date: 2017-09-22 10:18:40
+>>>>>>> 996dd1678eb3b1c8da77649e638070a81e5c9ba4
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -90,8 +94,8 @@ CREATE TABLE `ym_goods` (
 -- ----------------------------
 -- Records of ym_goods
 -- ----------------------------
-INSERT INTO `ym_goods` VALUES ('1', '夏威夷果', '', '88', '99', '0', '999', '11', '1505662517', '1505662517', '1', '坚果', '好吃', '来自夏威夷的夏威夷果', '7', '0', '0');
-INSERT INTO `ym_goods` VALUES ('2', '火龙果', '', '55', '66', '1', '100', '80', '1505662517', '1505662517', '2', '水果', '降火', '哈哈哈哈', '2', '0', '0');
+INSERT INTO `ym_goods` VALUES ('1', '夏威夷果', '', '88', '99', '0', '999', '11', '1505662517', '1505669517', '1', '坚果', '好吃', '来自夏威夷的夏威夷果', '7', '0', '0');
+INSERT INTO `ym_goods` VALUES ('2', '火龙果', '/static/index/img/hot5.jpg', '55', '66', '1', '100', '80', '1505662517', '1505668517', '2', '水果', '降火', '哈哈哈哈', '2', '0', '0');
 
 -- ----------------------------
 -- Table structure for ym_images
@@ -120,16 +124,17 @@ CREATE TABLE `ym_manager` (
   `manager_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `manager_name` varchar(20) NOT NULL,
   `password` varchar(50) NOT NULL,
-  `create_time` char(10) NOT NULL,
-  `login_time` char(10) NOT NULL,
+  `create_time` int(10) NOT NULL,
+  `login_time` int(10) NOT NULL,
   `manager_ip` varchar(20) NOT NULL,
   `lock` tinyint(4) NOT NULL DEFAULT '0' COMMENT '0-正常  1-冻结 ',
   PRIMARY KEY (`manager_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ym_manager
 -- ----------------------------
+<<<<<<< HEAD
 
 -- ----------------------------
 -- Table structure for ym_order
@@ -173,3 +178,7 @@ CREATE TABLE `ym_user` (
 -- ----------------------------
 -- Records of ym_user
 -- ----------------------------
+=======
+INSERT INTO `ym_manager` VALUES ('1', 'admin', '123456', '1505662517', '1505662517', '', '0');
+INSERT INTO `ym_manager` VALUES ('2', 'aaa', '123456', '1505662517', '1505662517', '', '0');
+>>>>>>> 996dd1678eb3b1c8da77649e638070a81e5c9ba4

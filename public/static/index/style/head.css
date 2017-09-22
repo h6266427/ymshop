@@ -1,0 +1,334 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: "Microsoft Yahei", "Hiragino Sans GB", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-decoration: none;
+}
+/*头部*/
+.ym_head{
+    height: 80px;
+}
+.head_bar{
+    width: 100%;
+    height: 10px;
+    background-color: #15374a;
+}
+.head_wrap{
+    width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+.head_logo{
+    width: 16%;
+    height: 100px;
+    background: url('../img/hd_big_logo.png') no-repeat;
+    background-size: 150px;
+    position: absolute;
+    background-position: left 15px;
+}
+.head_items{
+    position: absolute;
+    left: 16%;
+    width: 980px;
+    font-weight: bold;
+}
+.head_item{
+    float: left;
+    display: inline-block;
+    width: 196px;
+    font-size: 13px;
+    line-height: 26px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    text-align: center;
+    background-color: transparent;
+    border-left: 2px solid #d6e2e6;
+
+    -webkit-transition: background 0.2s ease;
+    -moz-transition: background 0.2s ease;
+    -ms-transition: background 0.2s ease;
+    transtion: background 0.2s ease;
+}
+.head_item:hover{
+    background-color: #d6e2e6
+}
+.head_item:hover .head_list{
+    display: block;
+}
+
+.head_item a{
+    display: inline-block;
+    width: 100%;
+    color: #143749;
+    cursor: pointer;
+}
+.head_item a:hover {
+     text-decoration: underline;
+ }
+.head_list{
+      display: none;
+      position: absolute;
+      top: 26px;
+      left: -2px;
+  }
+.head_list>ul{
+    min-width: 166px;
+    margin-top: 4px;
+    list-style: none;
+    background-color: #fff;
+    padding: 0 15px;
+    border: 1px solid #eee;
+}
+.head_list:hover .head_list{
+    display: block;
+}
+.head_list>ul>li{
+    line-height: 40px;
+    border-bottom: 1px solid #eee;
+    text-align: center;
+    font-size: 14px;
+}
+
+
+.head_products{
+    border: none;
+}
+.head_products a:hover{
+     color: #515e6b;
+}
+.head_products,.head_goodthing,.head_eating{
+    position: relative;
+}
+
+/*所有商品隐藏列表页*/
+.products_hidden{
+    display: none;
+
+    position: absolute;
+    top: 26px;
+    height: auto;
+}
+.products_wrap{
+    border: 1px solid #D6E2E6;
+    overflow: auto;
+    background-color: #fff;
+    margin-top: 4px;
+    width: 980px;
+}
+.products_hidden:hover .products_hidden{
+    display: block;
+}
+
+.products_ul li{
+    list-style: none;
+}
+.product_kind{
+    float: left;
+    font-size: 12px;
+    text-align: center;
+    padding-top: 0;
+    display: block;
+    background-size: 38px;
+    width: 8%;
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+}
+.product_icon{
+    display: block;
+    height: 56px;
+    background: url("img/products_img1.jpg") no-repeat center ;
+    background-size: 38px;
+}
+
+.product_title{
+    line-height: 28px;
+}
+.product_list{
+    border-top: 1px solid #eee;
+    margin-top: 5px;
+    line-height: 28px;
+}
+.head_products:hover .products_hidden{
+    display: block;
+}
+
+.head_search{
+    position: absolute;
+    left: 66%;
+    width: 17%;
+    height: 36px;
+    border-bottom: 2px solid #d6e2e6;
+    background-size: 22px;
+    background-position: left 10px;
+    margin-top: 12px;
+}
+.keyword{
+    width: 83%;
+    line-height: 24px;
+    font-size: 13px;
+    float: left;
+    margin-top: 6px;
+    border: 0;
+    /* background-color: rgba(189, 221, 236, 0.41); */
+    height: 24px;
+    outline: none;
+    font-weight: bold;
+}
+.search_button{
+    background: url('../img/search.png') no-repeat;
+    width: 24px;
+    height: 24px;
+    float: right;
+    background-color: #AFC5CD;
+    border: 0;
+    cursor: pointer;
+    background-size: 16px;
+    background-position: center;
+    border-radius: 14px;
+    margin-top: 6px;
+}
+.search_button:hover{
+    background-color: #9EB6BF;
+}
+/*
+购物车和用户*/
+.shopping_cart{
+    font-size: 12px;
+    color: #fff;
+    background: url('../img/ym_icon_cart.png') no-repeat;
+    background-size: 22px;
+    background-position: center;
+    width: 29px;
+    height: 65px;
+    margin-left: 40px;
+    margin-right: 31px;
+    position: relative;
+    cursor: pointer;
+}
+.shopping_cart span{
+    background: #8dae98;
+    font-size: 12px;
+    border-radius: 8px;
+    color: #FFFFFF;
+    min-width: 16px;
+    font-weight: bold;
+    margin-left: 38px;
+    height: 14px;
+    line-height: 12px;
+    position: absolute;
+    top: 33px;
+    left: -25px;
+    text-align: center;
+    z-index: 111;
+}
+.head_user{
+    background: url('../img/ym_icon_user.png') no-repeat;
+    height: 30px;
+    width: 80px;
+    margin-top: 19px;
+    background-size: 22px;
+    background-position: center;
+    position: relative;
+    cursor: pointer;
+    border-left: 2px solid #d6e2e6;
+}
+.user_hidden{
+    display: none;
+    position: absolute;
+    top: 25px;
+    margin-top: 19px;
+    right: 1px;
+    cursor: auto;
+}
+.head_user:hover .user_hidden,.user_hidden:hover .user_hidden{
+    display: block;
+}
+.user_ul{
+    list-style: none;
+    background-color: rgb(255, 255, 255);
+    padding-left: 15px;
+    padding-right: 15px;
+    border: 1px solid #D6E2E6;
+    border-radius: 4px;
+}
+.user_ul:after{
+    content: "";
+    position: absolute;
+    top: -18px;
+    right: 23px;
+    margin-left: -16px;
+    border-width: 0 16px 19px;
+    border-style: solid;
+    border-color: rgb(214, 226, 230) transparent;
+    display: block;
+}
+.user_ul>li{
+
+    line-height: 40px;
+    border-bottom: 1px solid #D6E2E6;
+}
+.user_ul>li a{
+    display: block;
+    width: 93px;
+    color: #143749;
+    font-size: 13px;
+    font-weight: bold;
+}
+.user_ul>li a:hover{
+    text-decoration: underline;
+}
+.shopping_cart,.head_user{
+    float: right;
+}
+/*
+设置滚动时的样式*/
+.ym_head_scroll{
+    height: 45px;
+    width: 100%;
+    position: fixed;
+    top: -45px;
+    transform: translateY(45px);
+    z-index: 100;
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid #eee;
+    -webkit-transition: transform 0.5s ease;
+    /*-moz-transition: transform 0.2s ease;
+    -o-transition: transform 0.2s ease;
+    -ms-transition: transform 0.2s ease;*/
+    transition: transform 0.2s ease;
+
+}
+.ym_head_scroll .head_logo{
+    background: url('../img/hd_small_logo.png') no-repeat;
+    background-size: 132px;
+    height: 34px;
+    background-position: left center;
+}
+.ym_head_scroll .head_items{
+    height: 32px;
+}
+.ym_head_scroll .head_item{
+    line-height: 20px;
+    margin-top: 7px;
+    border-left: 2px solid #d6e2e6;
+}
+.ym_head_scroll .head_search{
+    margin-top: 0;
+    border-bottom: 0;
+}
+.ym_head_scroll .keyword{
+    border: 1px solid #ccc;
+    padding-left: 5px;
+}
+.ym_head_scroll .shopping_cart{
+    height: 31px;
+}
+.ym_head_scroll .shopping_cart>span{
+    top: 17px;
+}
+.ym_head_scroll .head_user{
+    margin-top: 4px;
+    height: 26px;
+}

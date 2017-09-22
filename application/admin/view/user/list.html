@@ -23,6 +23,10 @@
             <!-- Page Body -->
             <div class="page-body">
 
+                <button type="button" tooltip="添加用户" class="btn btn-sm btn-azure btn-addon"
+                        onClick="javascript:window.location.href = '{:url("User/add")}'"><i class="fa fa-plus"></i> Add
+                </button>
+
 
                 <div class="row">
                     <div class="col-lg-12 col-sm-12 col-xs-12">
@@ -41,31 +45,36 @@
 
                                         <tbody>
 
-                                        {foreach $data as $v}
+                                        {foreach $data.data as $v}
                                         <tr>
-                                            <td align="center">{$v.id}</td>
+                                            <td align="center">{$v.user_id}</td>
 
                                             <td align="center">{$v.username}</td>
 
                                             <td align="center">
-                                                {$v.lock=='1' ? '是':'否'}
+                                                {$v.lock>='1' ? '是':'否'}{if condition="$v.lock eq 2"}永久冻结{/if}
                                             </td>
                                             <td align="center">
 
 
-                                                <a href="{:url(\"User/edit\",array("id"=>{$v.id}))}"
-                                                   class="btn btn-primary btn-sm shiny">
+                                                <a href="{if condition="$v.lock eq 2"}#{else}{:url(\"User/edit\",array("user_id"=>$v.user_id))}{/if}"
+                                                   class="btn btn-primary btn-sm shiny" >
                                                     <i class="fa fa-edit"></i> 冻结编辑
                                                 </a>
 
-                                                <a href="#" onClick="warning('确实要永久冻结吗', '{:url(\"User/del\",array("id"=>{$v.id}))}')"
+                                                <a href="#" onClick="
+                                                {if condition="$v.lock eq 2"}#
+                                                {else}
+                                                warning('确实要永久冻结吗', '{:url(\"User/del\",array("user_id"=>$v.user_id))}')
+                                                {/if}"
+
                                                    class="btn btn-danger btn-sm shiny">
                                                     <i class="fa fa-trash-o"></i> 永久冻结
                                                 </a>
                                             </td>
                                         </tr>
                                         {/foreach}
-                                        {$data->render()}
+                                        {$data.page}
 
 
                                         </tbody>

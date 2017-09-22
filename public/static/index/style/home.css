@@ -1,0 +1,107 @@
+.inner_wrap{
+    width: 1200px;
+    margin: 0 auto;
+    font-size: 13px;
+    font-family: "Microsoft Yahei", "Hiragino Sans GB", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    color: #0d3749;
+}
+/*
+轮播图*/
+.lunbo_wrap{
+    width: 1200px;
+    height: 460px;
+    overflow: hidden;
+}
+
+.lunbo_list{
+    width: 7200px;
+
+}
+.lunbo_list>li{
+    display: none;
+    list-style: none;
+    float: left;
+}
+.lunbo_show{
+    display: block!important;
+}
+.lunbo_list>li img{
+    width: 1200px;
+
+
+}
+/*
+轮播图按钮*/
+.lunbo_buttons{
+    width: 100%;
+    height: 40px;
+    position: relative;
+}
+.lunbo_buttons ul>li{
+    list-style: none;
+    float: left;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    display: block;
+    width: 16.6667%;
+    height: 100%;
+    line-height: 40px;
+    cursor: pointer;
+    border-bottom: 2px solid #d6e2e6;
+
+    -webkit-transition: background 0.2s ease;
+    -moz-transition: background 0.2s ease;
+    -o-transition: background 0.2s ease;
+    -ms-transition: background 0.2s ease;
+    transition: background 0.2s ease;
+
+}
+.lunbo_button_on{
+    position: absolute;
+    left: 0;
+    z-index: 10;
+    width: 16.667%;
+    height: 37px;
+    border-bottom: 5px solid #d6e2e6;
+}
+/*
+推荐*/
+.recommend{
+    margin:  10px 0 50px;
+    padding: 20px 0;
+    height: 319px;
+    position: relative;
+}
+.recommend_item{
+    list-style: none;
+    float: left;
+    padding: 0;
+    width: 22%;
+    margin-right: 4%;
+}
+.recommend_item img{
+    width: 100%;
+
+}
+.recommend_item p{
+    line-height: 40px;
+    font-size: 16px;
+    font-weight: bold;
+}
+.recommend_item p a{
+    color: inherit;
+}
+.recommend_item p a:hover{
+    text-decoration: underline;
+}
+.recommend_desc{
+    font-size: 14px;
+    line-height: 24px;
+    color: #4f6269;
+    font-weight: normal;
+}
+
+/*
+热销*/

@@ -1,5 +1,6 @@
 {:widget('Admin/head')}
 
+<script src=""></script>
 <!-- /头部 -->
 
 <div class="main-container container-fluid">
@@ -24,7 +25,7 @@
             <div class="page-body">
 
                 <button type="button" tooltip="添加商品" class="btn btn-sm btn-azure btn-addon"
-                        onClick="javascript:window.location.href = '{:url(\'Cate/add\')}'"><i class="fa fa-plus"></i>
+                        onClick="javascript:window.location.href = '{:url(\'Goods/add\')}'"><i class="fa fa-plus"></i>
                     Add
                 </button>
                 <div class="row">
@@ -54,15 +55,15 @@
                                         <tr>
                                             <td align="center">{$v.goods_id}</td>
                                             <td align="center">{$v.goods_name}</td>
-                                            <td align="center">{$v.face_pic}</td>
+                                            <td align="center"><img src="{$v.face_pic}" alt="暂无封面" width="80"></td>
                                             <td align="center">{$v.sell_price}</td>
                                             <td align="center">{$v.store}</td>
-                                            <td align="center">{$v.cate_id}</td>
+                                            <td align="center">{$v.cate_name}</td>
                                             <td align="center">{$v.keywords}</td>
                                             <td align="center">{$v.desc}</td>
-                                            <td align="center">{$v.create_time}</td>
-                                            <td align="center">{$v.last_modify_time}</td>
-                                            <td align="center">{$v.last_modify_id}</td>
+                                            <td align="center" width="80">{$v.create_time|date = "Y-m-d H:i:s",###}</td>
+                                            <td align="center" width="80">{$v.last_modify_time|date='Y-m-d H:i:s',###}</td>
+                                            <td align="center">{$v.manager_name}</td>
                                             <td align="center">
 
                                                 {if $v.marketable eq 0}
@@ -93,7 +94,7 @@
                         </div>
                     </div>
                 </div>
-                {$data->render()}
+                {$page}
             </div>
             <!-- /Page Body -->
         </div>

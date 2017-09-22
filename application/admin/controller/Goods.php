@@ -17,13 +17,36 @@ class Goods extends Controller{
     public function index(){
 
         $data=GoodsModel::goodsList();
-        $this->assign('data',$data);
 
-        //
+        //dump($data['cateData']);exit;
+        //把商品数据返给模板
+        $this->assign('data',$data['data']);
+        //把商品分页返给数组；
+        $this->assign('page',$data['page']);
+
 
         return $this->fetch('goods');
     }
 
+    /*
+     * 添加商品
+     *
+     * */
+    public function add(){
+
+        $cateData=GoodsModel::disableCate();
+
+        foreach ($cateData as $k=>$v){
+            $cateData[$k]['cate_name']=str_repeat('&nbsp;&nbsp;',$cateData[$k]['level']).'>>'.$cateData[$k]['cate_name'];
+        }
+        //dump($cateData);exit;
+        $this->assign('cateData',$cateData);
+
+
+
+
+        return $this->fetch();
+    }
 
 
     /*
@@ -69,9 +92,17 @@ class Goods extends Controller{
         }
     }
 
+    /*
+     *
+     * 编辑商品
+     * */
+    public function edit(){
+        $id=input('id');
 
 
 
+        return $this->fetch();
+    }
 
 
 

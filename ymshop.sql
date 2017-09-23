@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2017-09-22 12:53:04
+Date: 2017-09-23 09:12:17
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -126,13 +126,17 @@ CREATE TABLE `ym_manager` (
   `manager_ip` varchar(20) NOT NULL,
   `lock` tinyint(4) NOT NULL DEFAULT '0' COMMENT '0-正常  1-冻结 ',
   PRIMARY KEY (`manager_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ym_manager
 -- ----------------------------
-INSERT INTO `ym_manager` VALUES ('1', 'Admin', '123', '1505662517', '1505662517', '', '0');
-INSERT INTO `ym_manager` VALUES ('2', 'aaa', '123', '1505662517', '1505662517', '', '0');
+INSERT INTO `ym_manager` VALUES ('1', '阿萨德', '202cb962ac59075b964b07152d234b70', '1506067998', '0', '', '0');
+INSERT INTO `ym_manager` VALUES ('4', '十大', '3c59dc048e8850243be8079a5c74d079', '1506068638', '0', '', '0');
+INSERT INTO `ym_manager` VALUES ('5', '哈哈', 'e53a0a2978c28872a4505bdb51db06dc', '1506068648', '0', '', '0');
+INSERT INTO `ym_manager` VALUES ('6', '按时打算', '7815696ecbf1c96e6894b779456d330e', '1506068710', '0', '', '0');
+INSERT INTO `ym_manager` VALUES ('7', '按时打算', 'f970e2767d0cfe75876ea857f92e319b', '1506068746', '0', '', '0');
+INSERT INTO `ym_manager` VALUES ('9', '按时打算', '7815696ecbf1c96e6894b779456d330e', '1506069002', '0', '', '0');
 
 -- ----------------------------
 -- Table structure for ym_order

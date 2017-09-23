@@ -105,3 +105,19 @@
 
 /*
 热销*/
+.item-img{
+    width: 250px;
+    height: 250px;
+    position: relative;
+}
+.tag{
+    position: absolute;
+    top:0;left:0;
+}
+/*
+商品模块
+*/
+.spmodel{
+    width: 100%;height: 682px;
+    border-bottom: 1px solid gainsboro;
+}

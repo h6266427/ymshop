@@ -174,7 +174,7 @@
             .replace(/www\.56\.com\/u\d+\/v_([\w\-]+)\.html/i, "player.56.com/v_$1.swf")
             .replace(/www.56.com\/w\d+\/play_album\-aid\-\d+_vid\-([^.]+)\.html/i, "player.56.com/v_$1.swf")
             .replace(/v\.pps\.tv\/play_([\w]+)\.html.*$/i, "player.pps.tv/player/sid/$1/v.swf")
-            .replace(/www\.letv\.com\/ptv\/vplay\/([\d]+)\.html.*$/i, "i7.imgs.letv.com/player/swfPlayer.swf?id=$1&autoplay=0")
+            .replace(/www\.letv\.com\/ptv\/vplay\/([\d]+)\.html.*$/i, "i7.images.letv.com/player/swfPlayer.swf?id=$1&autoplay=0")
             .replace(/www\.tudou\.com\/programs\/view\/([\w\-]+)\/?/i, "www.tudou.com/v/$1")
             .replace(/v\.qq\.com\/cover\/[\w]+\/[\w]+\/([\w]+)\.html/i, "static.video.qq.com/TPout.swf?vid=$1")
             .replace(/v\.qq\.com\/.+[\?\&]vid=([^&]+).*$/i, "static.video.qq.com/TPout.swf?vid=$1")
@@ -220,7 +220,7 @@
                  var div = document.createElement( "div" );
                  div.setAttribute( "name", j );
                  if ( j == "none" ) div.className="focus";
-                 div.style.cssText = "background:url(images/" + j + "_focus.jpg);";
+                 div.style.cssText = "background:url(imgs/" + j + "_focus.jpg);";
                  div.setAttribute( "title", nameMaps[j] );
                  floatContainer.appendChild( div );
              }

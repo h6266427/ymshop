@@ -1,6 +1,7 @@
 
 <!-- 头部 -->
 {:widget("Admin/head")}
+<style>#preview img{width: 100%}</style>
 <script src="__STATIC__/ueditor/ueditor.config.js"></script>
 <script src="__STATIC__/ueditor/ueditor.all.min.js"></script>
 <script src="__STATIC__/ueditor/lang/zh-cn/zh-cn.js"></script>
@@ -44,7 +45,7 @@
                                             <label for="title"
                                                    class="col-sm-2 control-label no-padding-right">商品名称</label>
                                             <div class="col-sm-6">
-                                                <input class="form-control" id="title" placeholder="请输入商品标题" name="title"
+                                                <input class="form-control" id="title" placeholder="请输入商品名称" name="goods_name"
                                                        value="" required="" type="text">
                                             </div>
                                             <p class="help-block col-sm-4 red">* 必填</p>
@@ -53,7 +54,7 @@
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label no-padding-right">所属分类</label>
                                             <div class="col-sm-6">
-                                                <select name="cateid" style="width: 100%;">
+                                                <select name="cate_id" style="width: 100%;">
                                                     <option selected="selected" value="0">——请选择——</option>
                                                     {foreach $cateData as $c}
                                                     <option value="{$c.cate_id}" {if($c['disabled'] eq 'disabled')}disabled{/if}>{$c.cate_name}</option>
@@ -67,9 +68,8 @@
                                         <div class="form-group">
                                             <label for="pic" class="col-sm-2 control-label no-padding-right">封面图片</label>
                                             <div class="col-sm-6">
-                                                <input class="help-block" id="face_pic"  name="face_pic" type="file" >
-
-                                                <img style="margin-top: 10px" src="" width="100" alt="">
+                                                <input class="help-block" id="pic"  name="pic" type="file" onchange="preview(this)" >
+                                                <div id="preview" style="margin-top: 10px;width: 150px"></div>
 
                                             </div>
                                             <p class="help-block col-sm-4 red">* 必填</p>
@@ -102,8 +102,37 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label no-padding-right">是否上架</label>
+                                            <label for=""
+                                                   class="col-sm-2 control-label no-padding-right">市场价格</label>
+                                            <div class="col-sm-6">
+                                                <input class="form-control" id="" placeholder="请输入市场价格" name="market_price"
+                                                       value="" required="" type="text">
+                                            </div>
+                                            <p class="help-block col-sm-4 red">* 必填</p>
+                                        </div>
 
+                                        <div class="form-group">
+                                            <label for=""
+                                                   class="col-sm-2 control-label no-padding-right">销售价格</label>
+                                            <div class="col-sm-6">
+                                                <input class="form-control" id="" placeholder="请输入销售价格" name="sell_price"
+                                                       value="" required="" type="text">
+                                            </div>
+                                            <p class="help-block col-sm-4 red">* 必填</p>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for=""
+                                                   class="col-sm-2 control-label no-padding-right">库存</label>
+                                            <div class="col-sm-6">
+                                                <input class="form-control" id="" placeholder="请输入库存" name="store"
+                                                       value="" required="" type="text">
+                                            </div>
+                                            <p class="help-block col-sm-4 red">* 必填</p>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label no-padding-right">是否上架</label>
                                             <div class="col-xs-4">
                                                 <label>
                                                     <input class="checkbox-slider slider-icon yesno" name="marketable"
@@ -113,8 +142,31 @@
                                             </div>
                                         </div>
 
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label no-padding-right">是否推荐上新</label>
+                                            <div class="col-xs-4">
+                                                <label>
+                                                    <input class="checkbox-slider slider-icon yesno" name="is_new"
+                                                           type="checkbox" >
+                                                    <span class="text"></span>
+                                                </label>
+                                            </div>
+                                        </div>
 
-                                        <input name="id" value="19" type="hidden">
+                                       <!-- <div class="form-group">
+                                            <label class="col-sm-2 control-label no-padding-right">是否选为热销商品</label>
+                                            <div class="col-xs-4">
+                                                <label>
+                                                    <input class="checkbox-slider slider-icon yesno" name="is_hot"
+                                                           type="checkbox" >
+                                                    <span class="text"></span>
+                                                </label>
+                                            </div>
+                                        </div>-->
+
+                                        <input name="manager_id" value="1" type="hidden">
+
+
                                         <div class="form-group">
                                             <div class="col-sm-offset-2 col-sm-10">
                                                 <button type="submit" class="btn btn-default">添加商品</button>
@@ -140,7 +192,7 @@
 <script src="__STATIC__/admin/style/jquery.js"></script>
 <!--Beyond Scripts-->
 <script src="__STATIC__/admin/style/beyond.js"></script>
-
+<script src="__STATIC__/admin/style/previewImg.js"></script>
 <script type="text/javascript">
 
     //实例化编辑器

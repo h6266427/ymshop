@@ -1,5 +1,5 @@
 {:widget('Admin/head')}
-
+<style>td{vertical-align: middle!important;}</style>
 <script src=""></script>
 <!-- /头部 -->
 
@@ -36,7 +36,7 @@
                                     <table class="table table-bordered table-hover">
                                         <thead class="">
                                         <tr>
-                                            <th class="text-center">ID</th>
+                                            <th class="text-center">商品ID</th>
                                             <th class="text-center">商品名称</th>
                                             <th class="text-center">商品封面</th>
                                             <th class="text-center">销售价格</th>
@@ -47,6 +47,7 @@
                                             <th class="text-center">创建时间</th>
                                             <th class="text-center">上次修改</th>
                                             <th class="text-center">修改人</th>
+                                            <th class="text-center">商品状态</th>
                                             <th class="text-center">操作</th>
                                         </tr>
                                         </thead>
@@ -55,7 +56,7 @@
                                         <tr>
                                             <td align="center">{$v.goods_id}</td>
                                             <td align="center">{$v.goods_name}</td>
-                                            <td align="center"><img src="{$v.face_pic}" alt="暂无封面" width="80"></td>
+                                            <td align="center"><img src="{$v.image_url}" alt="暂无封面" width="80"></td>
                                             <td align="center">{$v.sell_price}</td>
                                             <td align="center">{$v.store}</td>
                                             <td align="center">{$v.cate_name}</td>
@@ -65,23 +66,40 @@
                                             <td align="center" width="80">{$v.last_modify_time|date='Y-m-d H:i:s',###}</td>
                                             <td align="center">{$v.manager_name}</td>
                                             <td align="center">
-
-                                                {if $v.marketable eq 0}
-                                                <a href="#" class="btn btn-active btn-sm shiny" onclick="warning('确实要上架该商品吗','{:url(\'Goods/marketable\',[\'id\'=>$v.goods_id])}')">
-                                                    <i class="fa fa-upload"></i> 上架
-                                                </a>
+                                                {if($v.status eq 1)}已删除
                                                 {else}
-                                                <a href="#" class="btn btn-warning btn-sm shiny" onclick="warning('确实要下架该商品吗','{:url(\'Goods/marketable\',[\'id\'=>$v.goods_id])}')">
-                                                    <i class="fa fa-download"></i> 下架
+                                                {if($v.marketable eq 1)}正常{elseif ($v.marketable eq 0)}下架{/if}
+                                                {/if}</td>
+                                            <td align="center">
+
+                                                <a href="{:url('Imgs/index',['id'=>$v.goods_id])}" class="btn btn-primary btn-sm shiny">
+                                                    <i class="fa fa-imag"></i> 图片管理
                                                 </a>
-                                                {/if}
                                                 <a href="{:url('Goods/edit',['id'=>$v.goods_id])}" class="btn btn-primary btn-sm shiny">
                                                     <i class="fa fa-edit"></i> 编辑
                                                 </a>
-                                                <a href="#" onClick="warning('确实要删除吗','{:url(\'Cate/del\',[\'id\'=>$v.goods_id])}')"
-                                                   class="btn btn-danger btn-sm shiny">
-                                                    <i class="fa fa-trash-o"></i> 删除
+                                                <br>
+                                                {if $v.marketable eq 0}
+                                                <a href="#" class="btn btn-warning btn-sm shiny" onclick="warning('确实要上架该商品吗','{:url(\'Goods/marketable\',[\'id\'=>$v.goods_id])}')">
+                                                    <i class="fa fa-upload"></i> 上架
                                                 </a>
+                                                {else}
+                                                <a href="#" class="btn btn-active btn-sm shiny" onclick="warning('确实要下架该商品吗','{:url(\'Goods/marketable\',[\'id\'=>$v.goods_id])}')">
+                                                    <i class="fa fa-download"></i> 下架
+                                                </a>
+                                                {/if}
+
+                                                {if($v.status eq 0)}
+                                                <a href="#" onClick="warning('确实要删除吗','{:url(\'Goods/del\',[\'id\'=>$v.goods_id])}')"
+                                                   class="btn btn-danger btn-sm shiny">
+                                                    <i class="fa fa-trash-o"></i>删除
+                                                </a>
+                                                {else}
+                                                <a href="#" onClick="warning('确实要撤销删除吗','{:url(\'Goods/cancelDel\',[\'id\'=>$v.goods_id])}')"
+                                                   class="btn btn-danger btn-sm shiny">
+                                                    <i class="fa fa-"></i>撤销删除
+                                                </a>
+                                                {/if}
                                             </td>
                                         </tr>
                                         {/foreach}

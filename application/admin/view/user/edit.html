@@ -16,7 +16,7 @@
                         <a href="#">系统</a>
                     </li>
                     <li>
-                        <a href="{:url(" User/index")}">用户管理</a>
+                        <a href="{:url("User/index")}">用户管理</a>
                     </li>
                     <li class="active">添加用户</li>
                 </ul>
@@ -34,26 +34,28 @@
                             </div>
                             <div class="widget-body">
                                 <div id="horizontal-form">
-                                    <form class="form-horizontal" role="form" action="{:url('User/add')}"
+                                    <form class="form-horizontal" role="form" action="{:url('User/upd')}"
                                           method="post">
                                         <div class="form-group">
-                                            <label for="title"
+                                            <label for="username"
                                                    class="col-sm-2 control-label no-padding-right">用户</label>
                                             <div class="col-sm-6">
-                                                <input class="form-control" id="title" placeholder="" name="title"
+                                                <input class="form-control" id="username" placeholder="" name="username"
                                                        required="" type="text" value="{$data.username}" disabled>
                                             </div>
 
                                         </div>
+                                        <input type="hidden" name="user_id" value="{$data.user_id}">
+
 
                                         <div class="form-group">
                                             <label for=""
                                                    class="col-sm-2 control-label no-padding-right">是否冻结</label>
                                             <div class="col-sm-6">
-                                                <select name="cateid" style="width: 100%;">
-                                                    <option selected="selected" value="0">否</option>
+                                                <select name="lock" style="width: 100%;">
+                                                    <option {if condition="$data.lock eq 0"}selected="selected"{/if} value="0">否</option>
 
-                                                    <option value="1">是</option>
+                                                    <option {if condition="$data.lock eq 1"}selected="selected"{/if} value="1">是</option>
 
                                                 </select>
                                             </div>

@@ -44,6 +44,11 @@ footer a{
     line-height: 27px;
     position: absolute;
     bottom: 0;
+    color: rgba(97, 94, 94, 0.81);
+    font-weight: bold;
+    font-size: 11px;
+    background-color: #fff;
+
 }
 .page-helper{
     float: left;
@@ -65,4 +70,7 @@ footer a{
     margin-bottom: 16px;
     line-height: 36px;
     font-weight: bold;
+}
+footer a:hover{
+    text-decoration: underline;
 }

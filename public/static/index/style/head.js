@@ -3,7 +3,7 @@ $(function () {
     //设置所有商品里的商品背景图片
     var pImg=document.getElementsByClassName('product_icon');
     for(var i=0;i<pImg.length;i++){
-        pImg[i].style.backgroundImage="url('/static/img/products_img"+(i+1)+".jpg')";
+        pImg[i].style.backgroundImage="url('/static/index/img/products_img"+(i+1)+".jpg')";
     }
 
 

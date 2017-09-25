@@ -1,0 +1,157 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.innerwrap{
+    width: 1200px;
+    height: 574px;
+    margin: 0 auto;
+    /*  background-color: #00a1d6;*/
+}
+.box{
+    background: none;
+    padding-left: 0;
+    margin-bottom: 40px;
+    box-sizing: border-box;
+}
+.signin{
+    margin-left: 0;
+    position: relative;
+    width: 100%;
+    border-radius: 5px;
+    margin-top: 30px;
+    margin-bottom: 150px;
+    border: none;
+    background: #fff;
+    height: 295px;
+}
+.signtitle{
+    padding-left: 0;
+    text-align: left;
+    border: none;
+    height:44px;
+}
+.signtitle h2{
+    letter-spacing: 15px;
+    font-family: "Microsoft Yahei", "Hiragino Sans GB", Arial, sans-serif;
+    font-weight: bold;
+    margin: 0;
+    line-height: 24px;
+    font-size: 24px;
+    color: #15374a;
+}
+.signin form>ul{
+    width: 30%;
+    position: absolute;
+    top: 50px;
+    border-top: 2px solid #d6e2e6;
+    padding-top: 20px;
+    margin-top: 0;
+    margin-bottom: 10px;
+    list-style: none;
+}
+.item{
+    margin-bottom: 9px;
+    height: auto;
+    font-size: 14px;
+    font-weight: bold;
+    color: #15374A;
+    overflow: hidden;
+}
+.formlable{
+    display: block;
+    width: 100%;
+    text-align: left;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0;
+    height: 32px;
+    overflow: hidden;
+    float: left;
+    line-height: 2.1em;
+    min-height: 1em;
+}
+.formact{
+    margin-left: 0;
+    position: relative;
+    font-size: 14px;
+    font-weight: bold;
+    color: #15374A;
+}
+.x-input{
+    border: 2px solid #d6e2e6;
+    height: 44px;
+    line-height: 39px;
+    padding: 1px 10px;
+    width: 336px;
+    border-radius: 0;
+    color: rgb(21, 55, 74);
+}
+.spe_user{
+    margin-bottom: 0;
+}
+.normal{
+    overflow: hidden;
+    font-size: 116.66667%;
+}
+.btn-big{
+    width: 100%;
+    height: 38px;
+    text-align: center;
+    border: 0 none;
+    display: inline-block;
+    background-color: #15374A;
+    color: #fff;
+    font-weight: bold;
+}
+.btn{
+    position: relative;
+    text-decoration: none;
+    border-radius: 0px;
+    font-size: 16px;
+    padding: 6px 12px;
+    line-height: 1.42857143;
+    white-space: nowrap;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    user-select: none;
+    background-image: none;
+    outline: none;
+}
+.forget_pd{
+    font-size: 14px;
+    line-height: 50px;
+    margin-left: 3px;
+    margin-right: 3px;
+    color: #515e6b;
+    background-color: transparent;
+    text-decoration: none;
+}
+.need-signup{
+    background-color: transparent;
+    padding: 0;
+    margin-top: -70px;
+    border:none;
+    width: 790px;
+    overflow: hidden;
+    color: #535E6A;
+    text-align: center;
+    background: none;
+    font-size: 14px;
+    float: right;
+}
+.sin-logo{
+    width: 100%;
+    height: 480px;
+    background: url(../image/login.jpg) no-repeat;
+    background-size: 100%;
+}
+.text_box{
+    margin-top: 20px;
+}
+.text_box a{
+    color: #515e6b;
+    text-decoration: underline;
+
+}

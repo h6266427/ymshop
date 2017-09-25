@@ -89,6 +89,7 @@ img{
     margin-left: 7%;
     font-weight: bold;
 }
+
 .helper-item .node-index, .helper-item .article-index-list {
     line-height: 28px;
     width: 100%;
@@ -96,6 +97,7 @@ img{
     overflow: hidden;
     text-overflow: ellipsis;
     font-weight: bold;
+
 }
 dd, dt {
     line-height: 1.42857143;
@@ -123,6 +125,7 @@ a:focus, a:hover {
     margin-left: 7%;
     font-weight: bold;
 }
+
 .footerContactInfo .wechate_qr {
     width: 90px;
     height: 90px;

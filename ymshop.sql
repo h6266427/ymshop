@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2017-09-23 09:23:05
+Date: 2017-09-26 11:45:01
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -31,6 +31,23 @@ CREATE TABLE `ym_address` (
 
 -- ----------------------------
 -- Records of ym_address
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for ym_cart
+-- ----------------------------
+DROP TABLE IF EXISTS `ym_cart`;
+CREATE TABLE `ym_cart` (
+  `cart_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `goods_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `goods_num` int(11) NOT NULL,
+  `selected` tinyint(4) NOT NULL COMMENT '是否选中 0-1  1选中',
+  PRIMARY KEY (`cart_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of ym_cart
 -- ----------------------------
 
 -- ----------------------------
@@ -114,6 +131,39 @@ CREATE TABLE `ym_images` (
 INSERT INTO `ym_images` VALUES ('1', '1', '/static/index/img/hot5.jpg', '', '', '', '1');
 
 -- ----------------------------
+-- Table structure for ym_item
+-- ----------------------------
+DROP TABLE IF EXISTS `ym_item`;
+CREATE TABLE `ym_item` (
+  `item_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `order_id` bigint(20) NOT NULL,
+  `goods_id` int(11) NOT NULL,
+  `goods_num` int(11) NOT NULL,
+  `goods_price` decimal(10,0) NOT NULL,
+  PRIMARY KEY (`item_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of ym_item
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for ym_log
+-- ----------------------------
+DROP TABLE IF EXISTS `ym_log`;
+CREATE TABLE `ym_log` (
+  `log_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `order_id` bigint(20) NOT NULL,
+  `content` tinyint(4) NOT NULL COMMENT '生成订单/取消订单',
+  `status` varchar(20) NOT NULL,
+  PRIMARY KEY (`log_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of ym_log
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for ym_manager
 -- ----------------------------
 DROP TABLE IF EXISTS `ym_manager`;
@@ -126,31 +176,32 @@ CREATE TABLE `ym_manager` (
   `manager_ip` varchar(20) NOT NULL,
   `lock` tinyint(4) NOT NULL DEFAULT '0' COMMENT '0-正常  1-冻结 ',
   PRIMARY KEY (`manager_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ym_manager
 -- ----------------------------
-INSERT INTO `ym_manager` VALUES ('1', '阿萨德', '202cb962ac59075b964b07152d234b70', '1506067998', '0', '', '0');
-INSERT INTO `ym_manager` VALUES ('4', '十大', '3c59dc048e8850243be8079a5c74d079', '1506068638', '0', '', '0');
-INSERT INTO `ym_manager` VALUES ('5', '哈哈', 'e53a0a2978c28872a4505bdb51db06dc', '1506068648', '0', '', '0');
-INSERT INTO `ym_manager` VALUES ('6', '按时打算', '7815696ecbf1c96e6894b779456d330e', '1506068710', '0', '', '0');
-INSERT INTO `ym_manager` VALUES ('7', '按时打算', 'f970e2767d0cfe75876ea857f92e319b', '1506068746', '0', '', '0');
-INSERT INTO `ym_manager` VALUES ('9', '按时打算', '7815696ecbf1c96e6894b779456d330e', '1506069002', '0', '', '0');
+INSERT INTO `ym_manager` VALUES ('1', 'Admin', '123', '1505662517', '1505662517', '', '0');
+INSERT INTO `ym_manager` VALUES ('2', 'aaa', '123', '1505662517', '1505662517', '', '0');
 
 -- ----------------------------
 -- Table structure for ym_order
 -- ----------------------------
 DROP TABLE IF EXISTS `ym_order`;
 CREATE TABLE `ym_order` (
-  `order_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `order_id` bigint(10) unsigned NOT NULL,
   `total_amount` int(11) NOT NULL COMMENT '订单总价',
   `user_id` int(11) NOT NULL,
   `status` varchar(20) NOT NULL COMMENT 'normal-正常 dead-取消  finish-完成',
   `pay_status` tinyint(4) NOT NULL,
   `pay_method` varchar(20) NOT NULL COMMENT '-- 支付方式  -1 --货到付款  online -- 在线支付  weixin -- 微信支付  alipay--支付宝',
   `create_time` int(10) NOT NULL,
-  `last_modify` varchar(255) DEFAULT NULL COMMENT '最后一次修改',
+  `last_modify` varchar(255) NOT NULL COMMENT '最后一次修改',
+  `ship_name` varchar(20) NOT NULL,
+  `ship_mobile` varchar(11) NOT NULL,
+  `ship_area` varchar(255) NOT NULL COMMENT '地域',
+  `ship_addr` varchar(255) NOT NULL COMMENT '地址',
+  `memo` varchar(255) NOT NULL COMMENT '订单附言',
   PRIMARY KEY (`order_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -166,7 +217,7 @@ CREATE TABLE `ym_user` (
   `user_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `username` varchar(30) NOT NULL,
   `password` char(32) NOT NULL,
-  `mobile` varchar(11) NOT NULL,
+  `phone` varchar(11) NOT NULL,
   `email` varchar(100) NOT NULL,
   `reg_time` int(11) NOT NULL,
   `ip` varchar(20) NOT NULL,
@@ -175,8 +226,13 @@ CREATE TABLE `ym_user` (
   `pic` varchar(255) NOT NULL,
   `lock` tinyint(4) NOT NULL DEFAULT '0' COMMENT '0-正常 1-冻结 2-永久冻结',
   PRIMARY KEY (`user_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ym_user
 -- ----------------------------
+INSERT INTO `ym_user` VALUES ('1', '胡雨', '12', '12', '12', '12', '', '0', '0', '', '0');
+INSERT INTO `ym_user` VALUES ('2', '迪卡', '', '', '', '0', '', '0', '0', '', '0');
+INSERT INTO `ym_user` VALUES ('3', '', 'd41d8cd98f00b204e9800998ecf8427e', '123', '', '0', '', '0', '0', '', '0');
+INSERT INTO `ym_user` VALUES ('4', '', 'd41d8cd98f00b204e9800998ecf8427e', '123456', '', '0', '', '0', '0', '', '0');
+INSERT INTO `ym_user` VALUES ('5', '新用户啊啊啊', 'd41d8cd98f00b204e9800998ecf8427e', '啊啊啊', '', '0', '', '0', '0', '', '0');

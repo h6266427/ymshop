@@ -1,136 +1,85 @@
+.footer_wrap{
+    position: absolute;
+    bottom: 0;
+}
 footer{
+    width: 100%;height: 880px;
+    background-image:url("../img/footer_pic-small.jpg");
+    background-size: 100%;
+    position: relative;
+    padding-top: 80px;
     font-family: "Microsoft Yahei", "Hiragino Sans GB", Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    color: #0d3749;
+    color: #1e384c;
     font-size: 14px;
 }
-.footer-inner-wrap {
-    width: 1200px;
-    margin: 0 auto;
+footer a{
+    font-family: "Microsoft Yahei", "Hiragino Sans GB", Arial, sans-serif;
+    color: #1e384c;
+    font-size: 14px;
+    line-height: 26px;
+    font-weight: bold;
 }
-.footer-yimi {
-    position: relative;
+.footerLogoSec{
+    width: 100%;height: auto;
+
 }
-.footerPhoto {
-    width: 100%;
-}
-img{
-    vertical-align: middle;
-}
-.footer-main {
-    position: absolute;
-    top: 75px;
-    left: 0;
-    right: 0;
-}
-.footerLogoSec {
-    float: left;
-    width: 35%;
-}
-.footerLogoSec .footerLogo {
-    float: left;
-    width: 32%;
-    background: url(/static/index/img/logo_v.png) no-repeat;
-    background-size: 120px;
-    height: 200px;
+.footerContactInfo{
+
 }
 
-.page-helper {
+.footerlogo{
+    height: 200px;width: auto;
     float: left;
-    overflow: hidden;
-    width: 42%;
-    margin-left: 4%;
-    padding-bottom: 20px;
+    margin-left: 50px;
+
 }
-.page-helper .helper-item:first-child {
-    width: 34%;
-}
-.page-helper .helper-item {
-    width: 22%;
-    margin-left: 2%;
-}
-.helper-item {
+.footerLogoSec p {
+    width: 250px;
     float: left;
-    width: 120px;
-    margin: 0 15px;
+
+
+    line-height: 26px;
+    margin-left: 7%;
+    font-weight: bold;
 }
-.footerContactInfo {
-    width: 15%;
-    text-align: left;
+.footerBottom{
+    width: 100%;height: 27px;
+    text-align: center;
+    line-height: 27px;
+    position: absolute;
+    bottom: 0;
+}
+.page-helper{
     float: left;
-    padding: 0;
-    font-family: 'Din-Bold';
-    color: #253e51;
-    line-height: 21px;
-    font-size: 12px;
-    margin-left: 2%;
+    width: 504px;height: 160px;
+}
+
+.helper-item{
+ width: 130px;float: left;
+}
+
+/*
+
+
+*/
+/**/
+
+footer a:focus,footer a:hover {
+    color: #23527c;
+    text-decoration: underline;
+
+}
+.footerContactInfo{
+    width: auto;float: left;
+    font-family: "Microsoft Yahei", "Hiragino Sans GB", Arial, sans-serif;
+    color: #1e384c;
+    font-size: 14px;
+    line-height: 26px;
+
 }
 .footerContactInfo .number {
     font-size: 24px;
     margin-bottom: 16px;
     line-height: 36px;
-}
-.footerBottom {
-    position: absolute;
-    bottom: 0;
-    color: rgba(97, 94, 94, 0.81);
-    text-align: center;
-    width: 100%;
     font-weight: bold;
-    font-size: 11px;
-    background-color: #fff;
-    line-height: 27px;
-}
-.footerLogoSec p {
-    float: left;
-    width: 60%;
-    color: #1e384c;
-    line-height: 26px;
-    margin-left: 7%;
-    font-weight: bold;
-}
-
-.helper-item .node-index, .helper-item .article-index-list {
-    line-height: 28px;
-    width: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-weight: bold;
-
-}
-dd, dt {
-    line-height: 1.42857143;
-}
-dd {
-    margin-left: 0!important;
-    display: block;
-    -webkit-margin-start: 40px;
-}
-.helper-item .node-index a:hover, .helper-item .article-index-list a:hover {
-    color: #555;
-}
-.helper-item .node-index a {
-    color: #1e384c;
-}
-footer a:focus,footer a:hover {
-    color: #23527c;
-    text-decoration: underline;
-}
-.footerLogoSec p {
-    float: left;
-    width: 60%;
-    color: #1e384c;
-    line-height: 26px;
-    margin-left: 7%;
-    font-weight: bold;
-}
-
-.footerContactInfo .wechate_qr {
-    width: 90px;
-    height: 90px;
-    background: url(/static/index/img/qr.png) no-repeat;
-    background-size: 86px;
-    margin-top: 6px;
-    margin-bottom: 30px;
 }

@@ -1,229 +1,17 @@
-<div class="footer_wrap">
-
-
+<div style="clear: both"></div>
 <footer>
-    <div class="footer-inner-wrap">
-
-        <div id="footer" class="page-footer">
-            <script>
-                var Shop = window['Shop'] || {"url":{"region":"\/tools-selRegion.html","placeholder":"https:\/\/www.yimishiji.com\/public\/app\/b2c\/statics\/images\/imglazyload.gif"}};
-                window.addEvent('domready', function () {
-                    var __time_out = 1000;
-                    if (Shop.set != undefined && Shop.set.refer_timeout) __time_out = Shop.set.refer_timeout;
-                    var ReferObj = {};
-                    Object.append(ReferObj, {
-                        serverTime:1506216081,
-                        init: function () {
-                            var FIRST_REFER = Memory.get('first_refer');
-                            var NOW_REFER   = Memory.get('now_refer');
-                            var nowDate     = this.time = this.serverTime * 1000;
-                            if (!window.location.href.test('#r-') && !document.referrer || document.referrer.test(document.domain))return;
-                            if (window.location.href.test('#r-')) Memory.clean('n');
-                            if (!FIRST_REFER) {
-
-                                if (NOW_REFER) {
-                                    Memory.set('first_refer', NOW_REFER, this.getTimeOut(JSON.decode(NOW_REFER).DATE));
-                                } else {
-                                    this.setRefer('first_refer', __time_out);
-                                }
-                            }
-                            this.setRefer('now_refer', __time_out);
-                            this.createGUID();
-                        },
-                        getUid: function () {
-                            var lf = window.location.href, pos = lf.indexOf('#r-');
-                            return pos != -1 ? lf.substr(pos + 4) : '';
-                        },
-                        getRefer: function () {
-                            return document.referrer ? document.referrer : '';
-                        },
-                        setRefer: function (referName, timeout) {
-                            var uid  = this.getUid(), referrer = this.getRefer();
-                            var data = {'ID': uid, 'REFER': referrer, 'DATE': this.time};
-
-                            if ('now_refer' == referName) {
-                                var refer = JSON.decode(Memory.get('first_refer'));
-                                if (uid != '' && refer && refer.ID == '') {
-                                    var fdata = {'ID': uid, 'REFER': refer.REFER, 'DATE': refer.DATE};
-                                    Memory.set('first_refer', JSON.encode(fdata), this.getTimeOut(refer.DATE));
-                                } else if (uid == '') {
-                                    Object.append(data, {'ID': refer.ID});
-                                }
-                            }
-                            Memory.set(referName, JSON.encode(data), __time_out || 15);
-                        },
-                        getTimeOut: function (nowDate) {
-                            var timeout = nowDate + __time_out * 24 * 3600 * 1000;
-                            var date    = new Date(timeout);
-                            return date;
-                        },
-                        createGUID: function () {
-                            var GUID = (function () {
-                                var S4 = function () {
-                                    return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
-                                };
-                                return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4()).toUpperCase();
-                            })();
-                            Memory.set('n', GUID, 3650);
-                        }
-                    });
-                    ReferObj.init();
-                });
-
-
-                miniCart = {
-                    'show': function (target) {
-                        target = $(target);
-                        if (!target) return;
-
-                        if (this.dialog) {
-                            this.hide();
-                        }
-
-                        var options = {
-                            body: 'popup-body',
-                            header: 'popup-header',
-                            close: 'popup-btn-close',
-                            content: 'popup-content',
-                            title: '正在加入购物车',
-                            main: '<div class="loading" style="padding:12px">loading...</div>'
-                        }, dialog   = this.dialog = new Element('div#mini_cart_dialog.popup-container.mini-cart-dialog', {
-                            'html': $('popup_template').get('html').substitute(options),
-                            styles: {
-                                display: 'block',
-                                zIndex: maxZindex('div', 1)
-                            }
-                        }).inject(document.body);
-
-                        this.title   = dialog.getElement('.popup-header h2');
-                        this.close   = dialog.getElements('.popup-btn-close');
-                        this.content = dialog.getElement('.popup-content');
-                        this.dialog.addEvent('click:relay(.popup-btn-close)', this.hide.bind(this));
-
-                        var setSize = this.setSize = function () {
-                            if (!dialog.isDisplayed()) return;
-                            dialog.setStyles({
-                                top: target.getPosition().y + target.getSize().y,
-                                left: target.getPosition().x.limit(0, window.getSize().x - dialog.getSize().x) + window.getScroll().x
-                            });
-                        };
-
-                        setSize();
-                        window.addEvent('resize', setSize);
-                    },
-                    'hide': function () {
-                        try {
-                            this.dialog.destroy();
-                            window.removeEvent('resize', this.setSize);
-                        } catch (e) {
-                        }
-                    },
-                    'load': function (options) {
-                        options = options || {};
-                        options = Object.merge({
-                            method: 'post',
-                            onRequest: function () {
-                                miniCart.show(options.target);
-                            },
-                            onSuccess: function (re) {
-                                if (re) {
-                                    this.title.innerHTML   = '提醒';
-                                    this.content.innerHTML = re;
-                                }
-
-                                updateCartInfo();
-
-                                if (document.getElement('.minicart_box') && document.getElement('.minicart_box').get('show_gallery')) {
-                                    document.getElement('.minicart_box').fireEvent('_show'); //迷你购物车
-                                }
-                                options.callback && options.callback(re);
-                            }.bind(this),
-                            onFailure: function (xhr) {
-                                this.title.innerHTML   = '提醒';
-                                this.content.innerHTML = '<div class="minicart-error"><p align="center">加入购物车失败。<br />可能库存不足或提交信息不完整。</p></div>';
-                            }.bind(this)
-                        }, options || {});
-                        if (!options.url) return false;
-
-                        new Request(options).send(options.data ? options.data.toQueryString() + '&mini_cart=true' : 'mini_cart=true');
-                    },
-                    init: function (target, url, data) {
-                        var linktocart;
-                        if (typeOf(target) == 'element') linktocart = target.getElements('[target=_dialog_minicart]');
-                        else if (typeOf(target) == 'elements') linktocart = target;
-                        else linktocart = $$('a[target=_dialog_minicart], button[target=_dialog_minicart]');
-                        if (linktocart.length) {
-                            linktocart.addEvent('click', function (e) {
-                                e.preventDefault();
-                                miniCart.load({url: url || this.href, data: data || this.getParent('.goods-item') || this.getParent('li'), target: this});
-                            });
-                        }
-                    }
-                };
-
-                formToCart = function (container, target) {
-                    container = $(container || document.body);
-                    target    = target || '.action-addtocart';
-                    if (!container) return;
-
-                    var formtocart = container.getElement('form[target=_dialog_minicart]') || container.getFirst().getParent('form[target=_dialog_minicart]');
-                    if (formtocart) {
-                        formtocart.addEvent('submit', function (e) {
-                            e.stop();
-                            target = this.getElement(target) || this.getElement('*[type=submit]');
-                            miniCart.load({
-                                url: this.action,
-                                method: this.method,
-                                data: this,
-                                target: target,
-                                callback: function () {
-                                    target.removeClass('disabled');
-                                }.bind(this)
-                            });
-                        });
-                    }
-                    ;
-                }
-
-                window.addEvent('domready', function () {
-                    miniCart.init();
-                    formToCart();
-                });
-            </script>
-
-            <script id="popup_template" type="text/template">
-                <div class="{body}">
-                    <div class="{header} clearfix">
-                        <h2>{title}</h2>
-                        <span><button type="button" title="关闭" class="{close}" hidefocus><i>×</i></button></span>
-                    </div>
-                    <div class="{content} clearfix">{main}</div>
-                </div>
-            </script>
-            <script id="message_template" type="text/template">
-                <div class="{body} clearfix">
-                    <div class="icon">{icon}</div>
-                    <div class="{content}">{main}</div>
-                </div>
-            </script>
-            <script id="dropmenu_template" type="text/template">
-                <div class="{body}">
-                    <div class="{content} clearfix">{main}</div>
-                </div>
-            </script>
-            <p>&nbsp;</p>    </div>
-    </div>
     <div class="footer-yimi">
-        <img class='footerPhoto' src='__STATIC__/index/img/footer_pic-small.jpg'>
-        <div class='footer-inner-wrap footer-main'>
+        <!--<img class='footerPhoto' src='https://www.yimishiji.com/themes/yimi/images/footer_pic-small.jpg'>-->
+        <div class='inner-wrap footer-main'>
             <div class='footerLogoSec'>
-                <div class='footerLogo'>
+                <div class='footerlogo'>
+                    <img src="__STATIC__/index/img/logo_v.png" width="120px">
                 </div>
                 <p>我们希望从每个家庭餐桌上的最小单位一粒米开始，以线上市集的方法，让更多人结识友善耕耘的农夫，一步一步、一米一米地改善全中国的饮食生态。</p>
             </div>
 
             <div id="helper" class="page-helper">
-                <div class="helper-item" ><dl class="content-list">
+                <div class="helper-item" style="margin-left: 50px; "><dl class="content-list">
                     <!-- <dt class="content-title">
                          <a class="link" href="https://www.yimishiji.com/article-help-l-1.html">帮助中心</a>
                      </dt>-->
@@ -244,23 +32,7 @@
                     </dd>
                 </dl>
                 </div>
-                <div class="helper-item" ><dl class="content-list">
-                    <!--<dt class="content-title">
-                        <a class="link" href="https://www.yimishiji.com/article-help-l-1.html">帮助中心</a>
-                    </dt>-->
-                    <dd class="node-index content-item">
-                        <a href="https://www.yimishiji.com/article-help_compass-141.html" title=全程冷链>全程冷链</a>
-                    </dd>
-                    <dd class="node-index content-item">
-                        <a href="https://www.yimishiji.com/article-help_compass-142.html" title=送达范围及时段>送达范围及时段</a>
-                    </dd>
-                    <dd class="node-index content-item">
-                        <a href="https://www.yimishiji.com/article-help_compass-143.html" title=运费提示>运费提示</a>
-                    </dd>
-                </dl>
-                </div>
-
-                <div class="helper-item" ><dl class="content-list">
+                <div class="helper-item" style="float: right;margin-right: 30px; "><dl class="content-list">
                     <!--<dt class="content-title">
                         <a class="link" href="https://www.yimishiji.com/article-help-l-1.html">帮助中心</a>
                     </dt>-->
@@ -272,6 +44,21 @@
                     </dd>
                     <dd class="node-index content-item">
                         <a href="https://www.yimishiji.com/article-help_payment-144.html" title=支付方式>支付方式</a>
+                    </dd>
+                </dl>
+                </div>
+                <div class="helper-item" style="float: right;margin-right: 10px"><dl class="content-list">
+                    <!--<dt class="content-title">
+                        <a class="link" href="https://www.yimishiji.com/article-help-l-1.html">帮助中心</a>
+                    </dt>-->
+                    <dd class="node-index content-item">
+                        <a href="https://www.yimishiji.com/article-help_compass-141.html" title=全程冷链>全程冷链</a>
+                    </dd>
+                    <dd class="node-index content-item">
+                        <a href="https://www.yimishiji.com/article-help_compass-142.html" title=送达范围及时段>送达范围及时段</a>
+                    </dd>
+                    <dd class="node-index content-item">
+                        <a href="https://www.yimishiji.com/article-help_compass-143.html" title=运费提示>运费提示</a>
                     </dd>
                 </dl>
                 </div>
@@ -289,6 +76,7 @@
                 <p>
                 <p>微信公众号</p>
                 <p class='number wechate_qr'>
+                    <img src="__STATIC__/index/img/qr.png">
                 <p>
             </div>
         </div>
@@ -301,6 +89,5 @@
 
 
 
+
 </footer>
-</div>
-<script src="__STATIC__/index/style/head.js" type="text/javascript"></script>

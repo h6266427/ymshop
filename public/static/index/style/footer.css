@@ -113,7 +113,7 @@ dd {
 .helper-item .node-index a {
     color: #1e384c;
 }
-a:focus, a:hover {
+footer a:focus,footer a:hover {
     color: #23527c;
     text-decoration: underline;
 }

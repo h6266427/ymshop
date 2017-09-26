@@ -1,6 +1,6 @@
 {:widget('Common/head')}
 
-<link rel="stylesheet" href="__STATIC__/index/style/zhuce.css" type="text/css">
+<link rel="stylesheet" href="__STATIC__/index/style/signup.css" type="text/css">
 
 <body>
 <div class="innerwrap">
@@ -14,19 +14,19 @@
                     <li class="form-item">
                         <label for="" class="form-label">手机号</label>
                         <span class="form-act">
-        <input class="x-input" type="text" name="" placeholder="请填写正确手机号"
+        <input class="x-input phonenumber" type="text" name="username" placeholder="请填写正确手机号"
                vtype="required&amp;&amp;mobile" data-caution="请填写正确手机号"> </span>
                     </li>
                     <li class="form-item">
                         <label for="" class="form-label">密码</label>
                         <span class="form-act">
-        <input class="x-input" type="password" name="pam_account[login_password]" maxlength="20"
+        <input class="x-input password" type="password" name="password" maxlength="20"
                placeholder="6-20个字符" id="dom_el_94665a2" oncontextmenu="return false;"
                onpaste="return false;"></li>
                     <li class="form-item">
                         <label for="" class="form-label">确认密码</label>
                         <span class="form-act">
-        <input class="x-input action-confirm-password" type="password" name="pam_account[psw_confirm]"
+        <input class="x-input psw_confirm" type="password" name="psw_confirm"
                id="dom_el_94665a3" maxlength="20" placeholder="再次填写密码" vtype="equal:pam_account[login_password]"
                data-caution="密码与确认密码不相符，请重新填写" oncontextmenu="return false;" onpaste="return false;">        <span
                                 class="validation-messagebox"></span></span>
@@ -34,20 +34,23 @@
                     <li class="form-item">
                         <label for="" class="form-label">校验码</label>
                         <span class="form-act">
-          <input class="x-input verify-input" type="text" name="signupverifycode" placeholder="填写校验码" id="vocdes"
-                 style="width:100px" where="bottom" maxlength="4" autocomplete="off"> <img src="" alt="验证码"
-                                                                                           title="点击更换验证码"
-                                                                                           class="verify-code auto-change-verify-handle"> <a
-                                href="/index-gen_vcode-LOGINVCODE-4.html"
-                                class="verify-code auto-change-verify-handle lnklike">看不清楚?换一个</a>        </span>
+                            <input class="x-input captcha" type="text" name="captcha" placeholder="填写校验码" id="vocdes"
+                 style="width:100px" where="bottom" maxlength="4" autocomplete="off" >
+                            <img src="" alt="验证码无法显示" title="点击更换验证码" class="verify-code auto-change-verify-handle">
+                            <a href="/index-gen_vcode-LOGINVCODE-4.html"
+                                class="verify-code auto-change-verify-handle lnklike">看不清楚?换一个</a>
+                        </span>
                     </li>
                     <li class="form-item action-need-verify">
                         <label for="" class="form-label">验证码</label>
                         <span class="form-act">
-        <input class="x-input verify-input snscode" type="text" name="vcode" id="dom_el_94665a4" placeholder="填写验证码"
-               style="width:100px" vtype="required" where="bottom">
-                            <a href="" class="btna"><span class="yzm">获取短信验证码</span></a>
+                            <input class="x-input verify-input sms" type="text" name="vcode" id="dom_el_94665a4"
+                                   placeholder="填写验证码"
+                                   style="width:100px" vtype="required" where="bottom">
+                            <a onclick="sendSMS()"  class="btna" ><span class="yzm">获取短信验证码</span></a>
          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <!--<i class="sms-right" style="display: none;"></i>
+                            <i class="sms-error" style="display: none;"></i>-->
       </span>
                     </li>
                     <li class="form-item">
@@ -84,4 +87,5 @@
 </div>
 {:widget('Common/footer')}
 </body>
+<script src="/static/index/style/signup.js"></script>
 </html>

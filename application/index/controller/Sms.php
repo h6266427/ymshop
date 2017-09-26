@@ -6,36 +6,31 @@
  * Time: 22:55
  */
 
-
 namespace app\index\controller;
-
-include __DIR__.'/php/api_demo/SmsDemo.php';
 
 use php\api_demo\SmsDemo;
 
 header('Content-Type: text/plain; charset=utf-8');
 
-
 class Sms {
-
 
     public function send(){
 
-
+        //echo 'aaa';exit;
         $demo = new SmsDemo(
             "LTAITu1egRxNy9iA",
             "v4QZE5HhPIn4UpC68WEJh8bu4z3zki"
         );
 
         //dump($demo);exit;
-        $code=rand(1000,9999);
+        $code=rand(100000,999999);
 
 
         echo "SmsDemo::sendSms\n";
         $response = $demo->sendSms(
             "一米", // 短信签名
             "SMS_99305017", // 短信模板编号
-            "15640234002", // 短信接收者
+            "15640234002", // 短信接收者 15940501865
             Array(  // 短信模板中字段的值
                 "code"=>$code,
                 "product"=>"一米"

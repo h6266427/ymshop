@@ -127,10 +127,10 @@ class Imgs extends Model{
         $image=db('images')->find($id);
 
         //删除图片
-        $o=unlink('.'.$image['image_url']);
-        $b=unlink('.'.$image['image_b_url']);
-        $m=unlink('.'.$image['image_m_url']);
-        $s=unlink('.'.$image['image_s_url']);
+        $o=@unlink('.'.$image['image_url']);
+        $b=@unlink('.'.$image['image_b_url']);
+        $m=@unlink('.'.$image['image_m_url']);
+        $s=@unlink('.'.$image['image_s_url']);
 
        //删数据库图片行
         $del=db('images')->delete($id);
@@ -142,6 +142,15 @@ class Imgs extends Model{
      * 公共方法
      *
      * */
+
+    //输入id查找该条图片数据
+    static public function imgById($id){
+        if (empty($id)){
+            return false;
+        }
+        $data=db('images')->find($id);
+        return $data?$data:false;
+    }
 
     //输入id查找该条商品数据
     static public function goodById($id){

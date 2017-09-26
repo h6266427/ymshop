@@ -1,75 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <style>
-        *{
-            margin:0;
-            padding:0;
-        }
-        .mainbox{
-            width: 1200px;
-            height: 526px;
-            margin: 0 auto;
-        }
-        .main{
-            width: 1020px;
-            height: 296px;
-            margin:0 auto;
-         /*   background-color: #00a1d6;*/
-            position: relative;
-        }
-        .main h1{
-            padding-left: 42px;
-            background: url(../ymshop/image/cart.png) no-repeat;
-            background-size: 29px;
-            background-position: left center;
-            font-weight: bold;
-            font-family: "Microsoft Yahei", "Hiragino Sans GB", Arial, sans-serif;
-            font-size: 21px;
-            letter-spacing: 2px;
-            margin: 20px auto;
-        }
-        .title{
-            height: 31px;
-        }
-        #cart_steps{
-            position: absolute;
-            top: 0;
-            right: 30px;
-        }
-        .ym_step{
-            font-size: 15px;
-            font-weight: bold;
-            margin: 5px;
-            line-height: 30px;
-        }
-        .common{
-            border-bottom: 3px solid #e98772;
-        }
-        .ym_step>a{
-            color: #143749;
-            text-decoration: none;
-            background-color: transparent;
-        }
-        .step_number{
-            margin-right: 10px;
-        }
-        .ym_step_arrow{
-            background-image: url(../ymshop/image/2.png);
-            background-size: 13px;
-            background-repeat: no-repeat;
-            background-position: center;
-        }
-        .cart_table{
-            table-layout: fixed;
-            font-weight: bold;
-            font-size: 14px;
-        }
+{:widget('Common/head')}
+    <link rel="stylesheet" href="/static/index/style/cart.css" type="text/css">
 
-    </style>
-</head>
 <body>
 <div class="mainbox">
     <div class="main">
@@ -99,23 +30,69 @@
             </tbody>
             </table>
         </div>
-        <div>
-            <form action="">
-                <table class="cart_table">
-                    <thead>
-                    <tr>
-                        <th style="width: 45px;">
-                            <input type="checkbox" id="select_all"
-                                   class="select_all cart-checkbox" name="SelectAll">
-                        </th>
-                        <th style="width: 75px;">商品</th>
-                        <th></th><th style="width: 150px;">售价</th>
-                        <th style="width: 135px;">数量</th><th style="width: 150px;">小计</th>
-                        <th style="width: 90px;">操作</th></tr></thead>
-                </table>
-            </form>
+        <table class="cart_table" cellpadding="0" cellspacing="0">
+            <thead>
+                <tr class="th">
+                    <th width="50"><input type="checkbox"checked="checked" class="inp1"></th>
+                    <th width="100">商品</th>
+                    <th></th>
+                    <th ><p style="margin-top:9px">售价</p></th>
+                    <th ><p style="margin-top:9px">数量</p></th>
+                    <th ><p style="margin-top:9px">小计</p></th>
+                    <th ><p style="margin-top:9px">操作</p></th>
+                </tr>
+            </thead>
+            <tbody>
+            {foreach $cart as $v}
+                <tr >
+                    <td>
+                        <input type="checkbox" checked="checked" class="inp2">
+                    </td>
+                    <td><img src="/static/index/img/pic.jpg" style="width: 44px;height: 44px " alt=""></td>
+                    <td>梨城故事 原味酸奶</td>
+                    <td >￥12.00</td>
+                    <td class="num-btns"><input type="submit" value="-" class="dec-btn">
+                        <input type="text" value="1" class="num">
+                        <input type="submit" value="+" class="inc-btn">
+                    </td>
+                    <td >￥12.00</td>
+                    <td ><input type="submit" value=" " name="del" class="inp3"></td>
+                </tr>
+            {/foreach}
+            </tbody>
+
+        </table>
+        <div class="tc">
+           <div class="tc1">
+                <button style="width: 80px;height: 30px;">清空购物车</button>
+                <button style="width: 70px;height: 30px;">删除勾选</button>
+           </div>
+            <div class="tc2">
+                <p style="font-size: 14px;font-weight: 800">订单金额</p>
+                <span style="font-size: 30px;font-weight: 400">￥12.00</span><br>
+                <span style="font-size: 14px">不含运费</span>
+            </div>
+            <div class="tc3">
+                <a href="">订单结算</a>
+            </div>
+        </div>
+        <div class="td">
+            <h3 style="font-size: 17px">金额明细</h3>
+            <div class="nav">
+                <ul class="account">
+                    <li><span style="float: left">商品小计</span>
+                        <span style="float: right">￥12.00</span></li>
+                    <li><span style="float: left">购买金额</span>
+                        <span style="float: right;font-size: 25px;font-weight: bold">￥12.00</span></li>
+                    <li><span style="float: left">可得积分</span>
+                        <span style="float: right">12点</span></li>
+                </ul>
+                <button>查看优惠祥情</button>
+            </div>
         </div>
     </div>
+
 </div>
 </body>
+{:widget('Common/footer')}
 </html>

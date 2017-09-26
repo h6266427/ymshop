@@ -103,164 +103,31 @@
             </div>
             <div class="sp_right" >
                 <ul>
+                    {foreach $data as $v}
                     <li>
                         <div class="tupian">
-                            <img src="__STATIC__/index/img/南瓜.jpg" width="180px">
-                            <img src="__STATIC__/index/img/tehui_tag.png" style="width: 90px; z-index: 20;">
+                            <div class="goods_img"><img src="{$v.image_m_url}"></div>
+                            <img src="__STATIC__/index/img/tehui_tag.png" style="position:absolute;width: 90px; z-index: 20;">
                             <!--  增减商品数目的控件 -->
                             <div class="anniu">
-                                <a  class="cover-dec" onclick="decToCart(1)"></a><a class="cover-inc" onclick="addToCart(1)"></a>
+                                <a  class="cover-dec" onclick="decToCart({$v.goods_id})"></a><a class="cover-inc" onclick="addToCart({$v.goods_id})"></a>
                                 <!--<span class="cover-num">0</span>-->
                                 <div class="cover"><span class="cover-num">0</span></div>
                             </div>
-
                         </div>
                         <div style=" text-align: center;">
-                            <h3 class="sptt">有机板栗王南瓜</h3>
+                            <h3 class="sptt">{$v.goods_name}</h3>
                             <div class="huise">
-                                <a href="">半亩园</a>
+                                <a href="" style="white-space: nowrap;width: 70px;overflow: hidden;text-overflow: ellipsis;">{$v.keywords}</a>
                                 <span>1kg/份</span>
                             </div>
                             <div class="jiage">
-                                <span class="discount_price">￥29.00</span>
+                                <span class="discount_price">￥{$v.sell_price}.00</span>
                             </div>
-
-
                         </div>
                     </li>
-                    <li>
-                        <div class="tupian">
-                            <img src="__STATIC__/index/img/南瓜.jpg" width="180px">
-                            <img src="__STATIC__/index/img/tehui_tag.png" style="width: 90px; z-index: 20;">
-                            <div class="anniu"></div><!--  增减商品数目的控件 -->
-                        </div>
-                        <div style=" text-align: center;">
-                            <h3 class="sptt">新疆有机板栗王南瓜</h3>
-                            <div class="huise">
-                                <a href="">半亩园</a>
-                                <span>1kg/份</span>
-                            </div>
-                            <div class="jiage">
-                                <span class="discount_price">￥29.00</span>
-                            </div>
+                    {/foreach}
 
-
-                        </div>
-                    </li>
-                    <li>
-                        <div class="tupian">
-                            <img src="__STATIC__/index/img/南瓜.jpg" width="180px">
-                            <img src="__STATIC__/index/img/tehui_tag.png" style="width: 90px; z-index: 20;">
-                            <div class="anniu"></div><!--  增减商品数目的控件 -->
-                        </div>
-                        <div style=" text-align: center;">
-                            <h3 class="sptt">新疆有机板栗王南瓜</h3>
-                            <div class="huise">
-                                <a href="">半亩园</a>
-                                <span>1kg/份</span>
-                            </div>
-                            <div class="jiage">
-                                <span class="discount_price">￥29.00</span>
-                            </div>
-
-
-                        </div>
-                    </li>
-                    <li>
-                        <div class="tupian">
-                            <img src="__STATIC__/index/img/南瓜.jpg" width="180px">
-                            <img src="__STATIC__/index/img/tehui_tag.png" style="width: 90px; z-index: 20;">
-                            <div class="anniu"></div><!--  增减商品数目的控件 -->
-                        </div>
-                        <div style=" text-align: center;">
-                            <h3 class="sptt">新疆有机板栗王南瓜</h3>
-                            <div class="huise">
-                                <a href="">半亩园</a>
-                                <span>1kg/份</span>
-                            </div>
-                            <div class="jiage">
-                                <span class="discount_price">￥29.00</span>
-                            </div>
-
-
-                        </div>
-                    </li>
-                    <li>
-                        <div class="tupian">
-                            <img src="__STATIC__/index/img/南瓜.jpg" width="180px">
-                            <img src="__STATIC__/index/img/tehui_tag.png" style="width: 90px; z-index: 20;">
-                            <div class="anniu"></div><!--  增减商品数目的控件 -->
-                        </div>
-                        <div style=" text-align: center;">
-                            <h3 class="sptt">新疆有机板栗王南瓜</h3>
-                            <div class="huise">
-                                <a href="">半亩园</a>
-                                <span>1kg/份</span>
-                            </div>
-                            <div class="jiage">
-                                <span class="discount_price">￥29.00</span>
-                            </div>
-
-
-                        </div>
-                    </li>
-                    <li>
-                        <div class="tupian">
-                            <img src="__STATIC__/index/img/南瓜.jpg" width="180px">
-                            <img src="__STATIC__/index/img/tehui_tag.png" style="width: 90px; z-index: 20;">
-                            <div class="anniu"></div><!--  增减商品数目的控件 -->
-                        </div>
-                        <div style=" text-align: center;">
-                            <h3 class="sptt">新疆有机板栗王南瓜</h3>
-                            <div class="huise">
-                                <a href="">半亩园</a>
-                                <span>1kg/份</span>
-                            </div>
-                            <div class="jiage">
-                                <span class="discount_price">￥29.00</span>
-                            </div>
-
-
-                        </div>
-                    </li>
-                    <li>
-                        <div class="tupian">
-                            <img src="__STATIC__/index/img/南瓜.jpg" width="180px">
-                            <img src="__STATIC__/index/img/tehui_tag.png" style="width: 90px; z-index: 20;">
-                            <div class="anniu"></div><!--  增减商品数目的控件 -->
-                        </div>
-                        <div style=" text-align: center;">
-                            <h3 class="sptt">新疆有机板栗王南瓜</h3>
-                            <div class="huise">
-                                <a href="">半亩园</a>
-                                <span>1kg/份</span>
-                            </div>
-                            <div class="jiage">
-                                <span class="discount_price">￥29.00</span>
-                            </div>
-
-
-                        </div>
-                    </li>
-                    <li>
-                        <div class="tupian">
-                            <img src="__STATIC__/index/img/南瓜.jpg" width="180px">
-                            <img src="__STATIC__/index/img/tehui_tag.png" style="width: 90px; z-index: 20;">
-                            <div class="anniu"></div><!--  增减商品数目的控件 -->
-                        </div>
-                        <div style=" text-align: center;">
-                            <h3 class="sptt">新疆有机板栗王南瓜</h3>
-                            <div class="huise">
-                                <a href="">半亩园</a>
-                                <span>1kg/份</span>
-                            </div>
-                            <div class="jiage">
-                                <span class="discount_price">￥29.00</span>
-                            </div>
-
-
-                        </div>
-                    </li>
                 </ul>
 
             </div>

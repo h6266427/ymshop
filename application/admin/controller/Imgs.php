@@ -73,7 +73,7 @@ class Imgs extends Controller{
                     //写入数据库images表;
                     $insert=ImgsModel::insertImgTable($imgs);
                     if($insert){
-                        return $this->success('添加图片成功~',url('Goods/index'));
+                        return $this->success('添加图片成功~',url('Imgs/index',['id'=>$id]));
                     }else{
                         return $this->error('添加图片失败...');
                     }
@@ -111,11 +111,14 @@ class Imgs extends Controller{
      * */
     public function del(){
         $iId=input('id');
-
+        $check=ImgsModel::imgById($iId);
+        if($check['is_face']==1){
+            return $this->error('封面图片无法删除！');
+        }
         $del=ImgsModel::delImg($iId);
 
         if ($del){
-            return $this->success('删除图片成功~',url('Imgs/index',['id'=>$iId]));
+            return $this->success('删除图片成功~',url('Imgs/index',['id'=>$check['goods_id']]));
         }
         return $this->error('删除图片失败...');
 

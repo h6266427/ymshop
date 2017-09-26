@@ -44,95 +44,96 @@ class Goods extends Controller{
         $this->assign('cateData',$cateData);
 
         if (request()->isPost()){
-            $data=[
-                'goods_name'=>input('goods_name'),
-                'cate_id'=>input('cate_id'),
-                'keywords'=>input('keywords'),
-                'desc'=>input('desc'),
-                'content'=>input('content'),
-                'market_price'=>input('market_price'),
-                'sell_price'=>input('sell_price'),
-                'store'=>input('store'),
-                'create_time'=>time(),
-                'manager_id'=>input('manager_id')
-            ];
-
-            //判断是否上架
-            if(input('marketable')=='on'){
-                $data['marketable']=1;
+            if (empty($_FILES['pic']['tmp_name'])){
+                return $this->error('必须添加一张封面图片！');
             }else{
-                $data['marketable']=0;
-            }
+                $data=[
+                    'goods_name'=>input('goods_name'),
+                    'cate_id'=>input('cate_id'),
+                    'keywords'=>input('keywords'),
+                    'desc'=>input('desc'),
+                    'content'=>input('content'),
+                    'market_price'=>input('market_price'),
+                    'sell_price'=>input('sell_price'),
+                    'store'=>input('store'),
+                    'create_time'=>time()
+                ];
 
-            //判断是否推荐上新
-            if (input('is_new')=='on'){
-                $data['is_new']=1;
-            }else{
-                $data['is_new']=0;
-            }
-
-
-            //判断是哪个管理员添加的,填写last_modify_id字段
-
-
-            //验证
-            $validate=validate('Goods');
-            if (!$validate->scene('add')->check($data)){
-                return $this->error($validate->getError());
-            }
-
-            //写入数据库
-            //获取添加的商品数据的goods_id;
-            $res=GoodsModel::addGoodId($data);
-
-
-            //处理图片表
-            if($_FILES['pic']['tmp_name']!=''){
-
-                //处理图片
-                $arr=GoodsModel::upload('pic');
-
-                //判断是否保存图片成功；
-                if($arr['status']=='success'){
-                    //成功
-                    $imgs=[
-                        'image_url'=>$arr['url'],
-                        'is_face'=>1,
-                        'goods_id'=>$res,
-                    ];
-
-                    $imgName=basename($imgs['image_url']);
-                    $dirName=dirname($imgs['image_url']);
-
-                    //图片缩放
-                    $image = \think\Image::open('.'.$imgs['image_url']);
-
-                    // 按照原图的比例生成一个最大为650*650的缩略图并保存为$imgName;
-                    //650*650
-                    $image->thumb(650, 650)->save('.'.$dirName.'/b_'.$imgName);
-                    //250*250
-                    $image->thumb(250, 250)->save('.'.$dirName.'/m_'.$imgName);
-                    //60*60
-                    $image->thumb(60, 60)->save('.'.$dirName.'/s_'.$imgName);
-
-                    //缩放完成编写字段
-                    $imgs['image_b_url']=$dirName.'/b_'.$imgName;
-                    $imgs['image_m_url']=$dirName.'/m_'.$imgName;
-                    $imgs['image_s_url']=$dirName.'/s_'.$imgName;
-
-                    //写入数据库images表;
-                    $insert=GoodsModel::insertImgTable($imgs);
-                    if($insert){
-                        return $this->success('添加商品成功~',url('Goods/index'));
-                    }else{
-                        return $this->error('添加商品失败...');
-                    }
-
+                //判断是否上架
+                if(input('marketable')=='on'){
+                    $data['marketable']=1;
                 }else{
-                    return $this->error($arr['msg']);
+                    $data['marketable']=0;
+                }
+
+                //判断是否推荐上新
+                if (input('is_new')=='on'){
+                    $data['is_new']=1;
+                }else{
+                    $data['is_new']=0;
+                }
+
+
+                //判断是哪个管理员添加的,填写last_modify_id字段
+                $data['last_modify_id']=input('manager_id');
+
+                //验证
+                $validate=validate('Goods');
+                if (!$validate->scene('add')->check($data)){
+                    return $this->error($validate->getError());
+                }
+
+                //写入数据库
+                //获取添加的商品数据的goods_id;
+                $res=GoodsModel::addGoodId($data);
+
+                //处理图片表
+                if($_FILES['pic']['tmp_name']!=''){
+
+                    //处理图片
+                    $arr=GoodsModel::upload('pic');
+
+                    //判断是否保存图片成功；
+                    if($arr['status']=='success'){
+                        //成功
+                        $imgs=[
+                            'image_url'=>$arr['url'],
+                            'is_face'=>1,
+                            'goods_id'=>$res,
+                        ];
+
+                        $imgName=basename($imgs['image_url']);
+                        $dirName=dirname($imgs['image_url']);
+
+                        //图片缩放
+                        $image = \think\Image::open('.'.$imgs['image_url']);
+
+                        // 按照原图的比例生成一个最大为650*650的缩略图并保存为$imgName;
+                        //650*650
+                        $image->thumb(650, 650)->save('.'.$dirName.'/b_'.$imgName);
+                        //250*250
+                        $image->thumb(250, 250)->save('.'.$dirName.'/m_'.$imgName);
+                        //60*60
+                        $image->thumb(60, 60)->save('.'.$dirName.'/s_'.$imgName);
+
+                        //缩放完成编写字段
+                        $imgs['image_b_url']=$dirName.'/b_'.$imgName;
+                        $imgs['image_m_url']=$dirName.'/m_'.$imgName;
+                        $imgs['image_s_url']=$dirName.'/s_'.$imgName;
+
+                        //写入数据库images表;
+                        $insert=GoodsModel::insertImgTable($imgs);
+                        if($insert){
+                            return $this->success('添加商品成功~',url('Goods/index'));
+                        }else{
+                            return $this->error('添加商品失败...');
+                        }
+
+                    }else{
+                        return $this->error($arr['msg']);
+                    }
                 }
             }
-
         }
 
         return $this->fetch();
@@ -215,8 +216,8 @@ class Goods extends Controller{
                 'market_price'=>input('market_price'),
                 'sell_price'=>input('sell_price'),
                 'store'=>input('store'),
-                'manager_id'=>input('manager_id'),
-                'last_modify_time'=>time()
+                'last_modify_time'=>time(),
+                'last_modify_id'=>input('manager_id')
             ];
 
             //判断是否上架

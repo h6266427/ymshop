@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .mainbox{
+            width: 1200px;
+            height: 526px;
+            margin: 0 auto;
+        }
+        .main{
+            width: 1020px;
+            height: 296px;
+            margin:0 auto;
+         /*   background-color: #00a1d6;*/
+            position: relative;
+        }
+        .main h1{
+            padding-left: 42px;
+            background: url(../ymshop/image/cart.png) no-repeat;
+            background-size: 29px;
+            background-position: left center;
+            font-weight: bold;
+            font-family: "Microsoft Yahei", "Hiragino Sans GB", Arial, sans-serif;
+            font-size: 21px;
+            letter-spacing: 2px;
+            margin: 20px auto;
+        }
+        .title{
+            height: 31px;
+        }
+        #cart_steps{
+            position: absolute;
+            top: 0;
+            right: 30px;
+        }
+        .ym_step{
+            font-size: 15px;
+            font-weight: bold;
+            margin: 5px;
+            line-height: 30px;
+        }
+        .common{
+            border-bottom: 3px solid #e98772;
+        }
+        .ym_step>a{
+            color: #143749;
+            text-decoration: none;
+            background-color: transparent;
+        }
+        .step_number{
+            margin-right: 10px;
+        }
+        .ym_step_arrow{
+            background-image: url(../ymshop/image/2.png);
+            background-size: 13px;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .cart_table{
+            table-layout: fixed;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="mainbox">
+    <div class="main">
+        <div class="title">
+            <h1>购物车</h1>
+        </div>
+        <div id="cart_steps" class="">
+            <table width="100%"><tbody>
+            <tr>
+                <th></th>
+                <th style="width: 45px;"></th>
+                <th></th>
+                <th style="width: 45px;"></th>
+                <th></th>
+            </tr>
+            <tr>
+                <td class="ym_step common"><a>
+                    <span class="step_number">1</span>购物篮</a></td>
+                <td class="ym_step_arrow"></td><td class="ym_step">
+                <a href="javascript:void(0);" name="Submit">
+                    <span class="step_number">2</span>结账</a></td>
+                <td class="ym_step_arrow"></td>
+                <td class="ym_step"><a>
+                    <span class="step_number">3</span>收银台</a>
+                </td>
+            </tr>
+            </tbody>
+            </table>
+        </div>
+        <div>
+            <form action="">
+                <table class="cart_table">
+                    <thead>
+                    <tr>
+                        <th style="width: 45px;">
+                            <input type="checkbox" id="select_all"
+                                   class="select_all cart-checkbox" name="SelectAll">
+                        </th>
+                        <th style="width: 75px;">商品</th>
+                        <th></th><th style="width: 150px;">售价</th>
+                        <th style="width: 135px;">数量</th><th style="width: 150px;">小计</th>
+                        <th style="width: 90px;">操作</th></tr></thead>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,5 +1,9 @@
+.footer_wrap{
+    position: absolute;
+    bottom: 0;
+}
 footer{
-    width: 100%;height: 850px;
+    width: 100%;height: 880px;
     background-image:url("../img/footer_pic-small.jpg");
     background-size: 100%;
     position: relative;
@@ -44,18 +48,26 @@ footer a{
     line-height: 27px;
     position: absolute;
     bottom: 0;
-    color: rgba(97, 94, 94, 0.81);
-    font-weight: bold;
-    font-size: 11px;
-    background-color: #fff;
-
 }
 .page-helper{
     float: left;
     width: 504px;height: 160px;
 }
+
 .helper-item{
  width: 130px;float: left;
+}
+
+/*
+
+
+*/
+/**/
+
+footer a:focus,footer a:hover {
+    color: #23527c;
+    text-decoration: underline;
+
 }
 .footerContactInfo{
     width: auto;float: left;
@@ -70,7 +82,4 @@ footer a{
     margin-bottom: 16px;
     line-height: 36px;
     font-weight: bold;
-}
-footer a:hover{
-    text-decoration: underline;
 }

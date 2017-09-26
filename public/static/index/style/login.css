@@ -4,35 +4,34 @@
 }
 .innerwrap{
     width: 1200px;
+    height: 574px;
     margin: 0 auto;
+    /*  background-color: #00a1d6;*/
 }
-.signup-article{
-    position: relative;
-    margin-bottom: 60px;
-    width: 100%;
-    float: left;
+.box{
+    background: none;
+    padding-left: 0;
+    margin-bottom: 40px;
+    box-sizing: border-box;
 }
-.signup{
-    float: left;
-    width: 35%;
-    height: auto;
-    margin-top: 0;
+.signin{
     margin-left: 0;
     position: relative;
+    width: 100%;
     border-radius: 5px;
+    margin-top: 30px;
     margin-bottom: 150px;
     border: none;
     background: #fff;
+    height: 295px;
 }
-.sign-title{
-    height: auto;
-    margin-bottom: 20px;
-    margin-top: 20px;
+.signtitle{
     padding-left: 0;
     text-align: left;
     border: none;
+    height:44px;
 }
-.sign-title h2{
+.signtitle h2{
     letter-spacing: 15px;
     font-family: "Microsoft Yahei", "Hiragino Sans GB", Arial, sans-serif;
     font-weight: bold;
@@ -41,12 +40,17 @@
     font-size: 24px;
     color: #15374a;
 }
-.signup ul{
+.signin form>ul{
+    width: 30%;
+    position: absolute;
+    top: 50px;
+    border-top: 2px solid #d6e2e6;
+    padding-top: 20px;
     margin-top: 0;
     margin-bottom: 10px;
     list-style: none;
 }
-.form-item{
+.item{
     margin-bottom: 9px;
     height: auto;
     font-size: 14px;
@@ -54,39 +58,41 @@
     color: #15374A;
     overflow: hidden;
 }
-.form-label{
-    line-height: 46px;
-    font-weight: bold;
-    margin-right: 10px;
+.formlable{
+    display: block;
+    width: 100%;
     text-align: left;
-    height: auto;
-    width: 18%;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0;
+    height: 32px;
     overflow: hidden;
     float: left;
+    line-height: 2.1em;
+    min-height: 1em;
 }
-.form-act{
+.formact{
     margin-left: 0;
     position: relative;
+    font-size: 14px;
+    font-weight: bold;
+    color: #15374A;
 }
 .x-input{
-    width: 73%;
     border: 2px solid #d6e2e6;
-    height: 38px;
+    height: 44px;
     line-height: 39px;
     padding: 1px 10px;
+    width: 336px;
     border-radius: 0;
-    float: right;
     color: rgb(21, 55, 74);
 }
-
-.password-check q{
-    float: left;
-    margin-bottom: 5px;
-    font-size: 12px;
+.spe_user{
+    margin-bottom: 0;
 }
-.lnklike{
-    font-size: 14px;
-    cursor: pointer;
+.normal{
+    overflow: hidden;
+    font-size: 116.66667%;
 }
 .btn-big{
     width: 100%;
@@ -113,33 +119,39 @@
     background-image: none;
     outline: none;
 }
+.forget_pd{
+    font-size: 14px;
+    line-height: 50px;
+    margin-left: 3px;
+    margin-right: 3px;
+    color: #515e6b;
+    background-color: transparent;
+    text-decoration: none;
+}
 .need-signup{
-    width: 750px;
-    /*    height: 624px;*/
+    background-color: transparent;
+    padding: 0;
+    margin-top: -70px;
+    border:none;
+    width: 790px;
+    overflow: hidden;
     color: #535E6A;
     text-align: center;
     background: none;
     font-size: 14px;
     float: right;
-    overflow: hidden;
 }
-.btna{
-    position: relative;
-    text-align: center;
-    cursor: pointer;
-    float: right;
-    display: inline-block;
-    border-radius: 0px;
-    font-size: 16px;
-    width: 138px;
-    height: 44px;
-    background-color: #15374A;
-    color: #fff;
-    margin-bottom: 0;
+.sin-logo{
+    width: 100%;
+    height: 480px;
+    background: url(../image/login.jpg) no-repeat;
+    background-size: 100%;
 }
+.text_box{
+    margin-top: 20px;
+}
+.text_box a{
+    color: #515e6b;
+    text-decoration: underline;
 
-.yzm{
-    display: block;
-    margin-top: 10px;
-    color: white;
 }

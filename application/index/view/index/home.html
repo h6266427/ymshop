@@ -1,5 +1,5 @@
 {:widget('Common/head')}
-
+<link rel="stylesheet" href="__STATIC__/index/style/home.css">
 <div class="inner_wrap">
     <div class="lunbo">
         <div class="lunbo_wrap">
@@ -42,7 +42,8 @@
                     优惠专区
                 </a></p>
                 <div class="recommend_desc">
-                    在这个优惠自选区里，有很多好的食材值得一试，只要经过简单的处理，就可以享受到美食的味道。                </div>
+                    在这个优惠自选区里，有很多好的食材值得一试，只要经过简单的处理，就可以享受到美食的味道。
+                </div>
             </li>
             <li class="recommend_item">
                 <a href=""><img src="__STATIC__/index/img/recommend3.jpg" alt=""></a>
@@ -50,7 +51,8 @@
                     海拔3300米小金青苹果
                 </a></p>
                 <div class="recommend_desc">
-                    川藏高原独特的气候环境给予最自然的味道；生产过程不用农药、化肥和除草剂 ,果实甘甜可口，吸引周边鸟儿们每天来吃。                </div>
+                    川藏高原独特的气候环境给予最自然的味道；生产过程不用农药、化肥和除草剂 ,果实甘甜可口，吸引周边鸟儿们每天来吃。
+                </div>
             </li>
             <li class="recommend_item" style="margin-right: 0">
                 <a href=""><img src="__STATIC__/index/img/recommend4.jpg" alt=""></a>
@@ -63,31 +65,36 @@
             </li>
         </ul>
     </div>
-    <div class="hot">
+
+    <!--<div class="hot">
         <ul>
             <div>
                 <div class="hot_logo"><img src="__STATIC__/index/img/hot_logo.jpg" width="37px"></div>
                 <li class="">
                     <div class="rank">1</div>
+
                     <div class="item-img">
                         <span><img class="tag" src="__STATIC__/index/img/tehui_tag.png"width="125"></span><img src="__STATIC__/index/img/hot_big_1.jpg" width="250px">
                     </div>
+
                     <div>
                         <h3 class="goods_name"><a href="">长的慢-食材好 A</a></h3>
-                        <div><a class="des" href="" title="一米市集严选">一米市集严选</a><span class="product_unit">1组/份</span></div>
-                        <div class="goods_price"><span class="sell_price">￥99.00</span><span class="market_price">￥114.00</span></div>
+                        <div><a class="des" href="" title="一米市集严选">一米市集严选</a><span class="product_unit">1组/份</span>
+                        </div>
+                        <div class="goods_price"><span class="sell_price">￥99.00</span><span class="market_price">￥114.00</span>
+                        </div>
                     </div>
                 </li>
             </div>
             <div>
-
 
             </div>
 
 
         </ul>
 
-    </div>
+    </div>-->
+
     <div class="spmodel">
         <div style="width: 1200px;height: 640px">
             <div class="sp_left" >
@@ -100,10 +107,16 @@
                         <div class="tupian">
                             <img src="__STATIC__/index/img/南瓜.jpg" width="180px">
                             <img src="__STATIC__/index/img/tehui_tag.png" style="width: 90px; z-index: 20;">
-                            <div class="anniu"></div><!--  增减商品数目的控件 -->
+                            <!--  增减商品数目的控件 -->
+                            <div class="anniu">
+                                <a  class="cover-dec" onclick="decToCart(1)"></a><a class="cover-inc" onclick="addToCart(1)"></a>
+                                <!--<span class="cover-num">0</span>-->
+                                <div class="cover"><span class="cover-num">0</span></div>
+                            </div>
+
                         </div>
                         <div style=" text-align: center;">
-                            <h3 class="sptt">新疆有机板栗王南瓜</h3>
+                            <h3 class="sptt">有机板栗王南瓜</h3>
                             <div class="huise">
                                 <a href="">半亩园</a>
                                 <span>1kg/份</span>
@@ -1794,5 +1807,7 @@
 
 {:widget('Common/footer')}
 
+
 </body>
+<script src="__STATIC__/index/style/home.js" type="text/javascript"></script>
 </html>

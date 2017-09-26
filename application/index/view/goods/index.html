@@ -1,0 +1,152 @@
+{:widget('Common/head')}
+<link rel="stylesheet" href="__STATIC__/index/style/goods.css">
+<body>
+<div class="inner_wrap">
+    <div class="goods_xiangqing">
+        <div class="good_xq_tp">
+            <div class="luesuotu">
+                <div class="sp-thumbs sp-tb-active">
+                    <a href="#" style="background-image:url(__STATIC__/index/img/南瓜.jpg)" class=""></a>
+                    <a href="" style="background-image:url(__STATIC__/index/img/南瓜.jpg)" class=""></a>
+                    <a href="" style="background-image:url(__STATIC__/index/img/mihoutao.jpg)" class="show"></a>
+                    <a href="" style="background-image:url(__STATIC__/index/img/南瓜.jpg)" class=""></a></div>
+            </div>
+            <div class="goods_imgs">
+
+                <img src="__STATIC__/index/img/mihoutao.jpg" width="650">
+            </div>
+        </div>
+
+        <!--右边部分-->
+        <div class="goods_right">
+            <!-- 非预售商品 -->
+            <!-- 农场 名称 评分-->
+            <div class="row row_name">
+                <div class="col-md-12 farmName">
+                    <span>甜心桃</span>
+                </div>
+                <div class="col-md-12 productTitle">
+                    <span>生态种植浦江红心猕猴桃 24个</span>
+                </div>
+                <div class="productRating"
+                     style=" background: url(__STATIC__/index/img/bkg_rating.png) no-repeat;background-size: 100% 100%;">
+                    <!-- <span>50</span> -->
+                    <span>5.0</span>
+                </div>
+                <div id="commentCount" class="commentCount">
+
+                    <div id="commentCountLink" style="">
+                        <a href="#" onclick="return false;">2</a>个人评论
+                    </div>
+
+                </div>
+            </div>
+            <!-- 农场 名称 评分-->
+
+
+            <!-- 价钱-->
+            <div class="productPriceSection">
+                ￥98.00
+            </div>
+
+            <!-- 说明 -->
+            <div class="row productDescription">
+                <!-- 商品描述 -->
+            </div>
+            <!-- 说明 -->
+
+
+            <!-- 商品规格 保存方式 保质期 -->
+            <div class="row productSpec">
+                <div class="col-sd-4 col-md-4">
+                    <div class="specTitle">
+                        <span>规格</span>
+                    </div>
+                    <div class="specValue">
+                        <span>2400g/份</span>
+                    </div>
+                </div>
+                <div class="col-sd-4 col-md-4">
+                    <div class="specTitle">
+                        <span>保存方式</span>
+                    </div>
+                    <div class="specValue">
+                        <span>冷藏</span>
+                    </div>
+
+                </div>
+                <div class="col-sd-4 col-md-4">
+                    <div class="specTitle">
+                        <span>保质期</span>
+                    </div>
+                    <div class="specValue">
+                        <span>3天</span>
+                    </div>
+
+                </div>
+            </div>
+            <!-- 商品规格 保存方式 保质期 -->
+
+
+            <!-- 购物 -->
+            <div class="row productAddToCart">
+
+                <form id="formTwo" action="/cart-add-goods.html" method="post" target="_dialog_minicart">
+                            <div class="item-content">
+                                <div class="p-quantity">
+                                <a class="btn-decrease">-</a><input type="text" name="goods_num" class="action-quantity-input " value="1" min="1" max="5" onkeypress="return numbersonly(this, event)"><a  class="btn-increase">+</a>
+                                </div>
+                            </div>
+                    <script>
+                        $('.btn-decrease').click(function () {
+                            if($('.action-quantity-input')[0].value>1){
+                                $('.action-quantity-input')[0].value--;
+                            }
+                        });
+                        $('.btn-increase').click(function () {
+                            if($('.action-quantity-input')[0].value<5){
+                                $('.action-quantity-input')[0].value++;
+                            }
+                        })
+                    </script>
+
+
+                    <div class="col-sd-12 col-md-6">
+                        <!--购买按钮-->
+                        <div class="product-buy-action">
+                            <!-- 加入购物车 -->
+                            <button type="submit" class="pd_buy_button pd_buy_buttons " label="加入购物车" rel="_request" }="" >
+                            加入购物车</button>
+                            <!-- 加入购物车 -->
+                        </div>
+                        <!--购买按钮-->
+                    </div>
+                    <input type="hidden" name="card_info" id="card_info">
+                </form>
+            </div>
+            <!-- 购物 -->
+
+
+        </div>
+            <!-- 价钱-->
+
+
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+
+</div>
+
+
+</body>
+
+{:widget('Common/footer')}
+
+</html>

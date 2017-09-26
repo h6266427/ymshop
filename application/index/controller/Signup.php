@@ -16,7 +16,10 @@ class Signup extends Controller{
         return $this->fetch('signup');
     }
 
+    public function signUp(){
 
+
+    }
 
 
     public function send(){
@@ -28,7 +31,7 @@ class Signup extends Controller{
             "v4QZE5HhPIn4UpC68WEJh8bu4z3zki"
         );
         $code=rand(100000,999999);
-        return $code;
+
         //echo "SmsDemo::sendSms\n";
         $response = $demo->sendSms(
             "一米", // 短信签名

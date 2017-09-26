@@ -25,7 +25,6 @@ class Sms {
         //dump($demo);exit;
         $code=rand(100000,999999);
 
-
         echo "SmsDemo::sendSms\n";
         $response = $demo->sendSms(
             "一米", // 短信签名

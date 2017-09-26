@@ -1,4 +1,4 @@
-var sms=9087;
+var sms;
 
 function sendSMS() {
     var phone=$('.phonenumber').val();
@@ -15,12 +15,9 @@ function sendSMS() {
             type:'post',
             dataType:'json',
             data:{phone:phone},
-            url:'/index/Sms/send',
+            url:'/index/Signup/send',
             success:function (json) {
-                alert(json);
-            },
-            error:function (json) {
-                console.log(json);
+                sms=json.sms;
             }
         });
         var seconds=10;
@@ -40,10 +37,8 @@ function sendSMS() {
 
     }
 }
-
 /*
 function smsCheck() {
-
     if($('.sms').val()==sms){
         $('.sms-right').css('display','inline-block');
         $('.sms-error').css('display','none');
@@ -58,6 +53,7 @@ function validate() {
     var psw=$('.password').val();
     var pswCon=$('.psw-confirm').val();
     var sms=$('.sms').val();
+
 
 
 

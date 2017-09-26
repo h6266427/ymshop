@@ -1,5 +1,5 @@
 {:widget('Common/head')}
-
+<link rel="stylesheet" href="__STATIC__/index/style/home.css">
 <div class="inner_wrap">
     <div class="lunbo">
         <div class="lunbo_wrap">
@@ -65,7 +65,8 @@
             </li>
         </ul>
     </div>
-    <div class="hot">
+
+    <!--<div class="hot">
         <ul>
             <div>
                 <div class="hot_logo"><img src="__STATIC__/index/img/hot_logo.jpg" width="37px"></div>
@@ -92,7 +93,8 @@
 
         </ul>
 
-    </div>
+    </div>-->
+
     <div class="spmodel">
         <div style="width: 1200px;height: 640px">
             <div class="sp_left" >
@@ -105,10 +107,16 @@
                         <div class="tupian">
                             <img src="__STATIC__/index/img/南瓜.jpg" width="180px">
                             <img src="__STATIC__/index/img/tehui_tag.png" style="width: 90px; z-index: 20;">
-                            <div class="anniu"></div><!--  增减商品数目的控件 -->
+                            <!--  增减商品数目的控件 -->
+                            <div class="anniu">
+                                <a  class="cover-dec" onclick="decToCart(1)"></a><a class="cover-inc" onclick="addToCart(1)"></a>
+                                <!--<span class="cover-num">0</span>-->
+                                <div class="cover"><span class="cover-num">0</span></div>
+                            </div>
+
                         </div>
                         <div style=" text-align: center;">
-                            <h3 class="sptt">新疆有机板栗王南瓜</h3>
+                            <h3 class="sptt">有机板栗王南瓜</h3>
                             <div class="huise">
                                 <a href="">半亩园</a>
                                 <span>1kg/份</span>

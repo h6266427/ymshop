@@ -65,7 +65,8 @@
     float: left;
 }
 .form-act{
-    margin-left: 0;
+    margin-left: 10px;
+    padding: 10px 0;
     position: relative;
 }
 .x-input{
@@ -75,9 +76,9 @@
     line-height: 39px;
     padding: 1px 10px;
     border-radius: 0;
-    float: right;
     color: rgb(21, 55, 74);
 }
+
 
 .password-check q{
     float: left;
@@ -126,20 +127,39 @@
 .btna{
     position: relative;
     text-align: center;
-    cursor: pointer;
-    float: right;
+    text-decoration: none;
     display: inline-block;
     border-radius: 0px;
     font-size: 16px;
     width: 138px;
     height: 44px;
+    cursor: pointer;
     background-color: #15374A;
     color: #fff;
     margin-bottom: 0;
+    margin-left: 10px;
 }
-
+.btna:hover{
+    text-decoration: underline;
+}
 .yzm{
     display: block;
     margin-top: 10px;
-    color: white;
 }
+/*
+.count-down{
+    background-color: gray;
+    font-weight: 400;
+    text-decoration: none;
+}
+.sms-right{
+    width: 20px;
+    height: 15px;
+    background-image: url("/static/index/img/tick.png");
+
+}
+.sms-error{
+    width: 18px;
+    height: 18px;
+    background-image: url("/static/index/img/error.png");
+}*/

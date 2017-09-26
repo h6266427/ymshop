@@ -53,8 +53,21 @@ footer a{
     float: left;
     width: 504px;height: 160px;
 }
+
 .helper-item{
  width: 130px;float: left;
+}
+
+/*
+
+
+*/
+/**/
+
+footer a:focus,footer a:hover {
+    color: #23527c;
+    text-decoration: underline;
+
 }
 .footerContactInfo{
     width: auto;float: left;

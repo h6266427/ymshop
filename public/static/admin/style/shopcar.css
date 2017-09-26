@@ -1,0 +1,216 @@
+*{
+    margin:0;
+    padding:0;
+}
+.mainbox{
+    width: 1200px;
+    height: 526px;
+    margin: 0 auto;
+}
+.main{
+    width: 1020px;
+    height: 296px;
+    margin:0 auto;
+    position: relative;
+}
+.main h1{
+    padding-left: 42px;
+    background: url(../ymshop/image/cart.png) no-repeat;
+    background-size: 29px;
+    background-position: left center;
+    font-weight: bold;
+    font-family: "Microsoft Yahei", "Hiragino Sans GB", Arial, sans-serif;
+    font-size: 21px;
+    letter-spacing: 2px;
+    margin: 20px auto;
+}
+.title{
+    height: 31px;
+}
+
+#cart_steps{
+    position: absolute;
+    top: 0;
+    right: 30px;
+}
+.ym_step{
+    font-size: 15px;
+    font-weight: bold;
+    margin: 5px;
+    line-height: 30px;
+}
+.common{
+    border-bottom: 3px solid #e98772;
+}
+.ym_step>a{
+    color: #143749;
+    text-decoration: none;
+    background-color: transparent;
+}
+.step_number{
+    margin-right: 10px;
+}
+.ym_step_arrow{
+    background-image: url(../ymshop/image/2.png);
+    background-size: 13px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.th{
+    width: 1018px;
+    height: 41px;
+    border: 1px solid darkgray;
+    margin-top: 20px;
+    border-bottom: none;
+}
+.th1{
+    width: 45px;
+    height: 41px;
+    position: relative;
+    float: left;
+}
+.inp1{
+    width:20px;
+    height: 20px;
+    transform: translate(50%,50%);
+}
+.th2{
+    width: 75px;
+    height: 41px;
+    float: left;
+    position: relative;
+}
+.th3{
+    width: 374px;
+    height: 41px;
+    float: left;
+}
+.th4{
+    width: 150px;
+    height: 41px;
+    float: left;
+}
+.th5{
+    width: 135px;
+    height: 41px;
+    float: left;
+}
+.th6{
+    width: 150px;
+    height: 41px;
+    float: left;
+}
+.th7{
+    width: 89px;
+    height:41px;
+    float: left;
+}
+.tb{
+    width: 1018px;
+    height: 73px;
+    border: 1px solid darkgray;
+    border-bottom: none;
+}
+.tb1{
+    width: 45px;
+    height: 73px;
+    float: left;
+    position: relative;
+    text-align: center;
+}
+.inp2{
+    width:20px;
+    height: 20px;
+    margin-top: 25px;
+}
+.tb2{
+    width: 75px;
+    height: 73px;
+    float: left;
+    position: relative;
+}
+.tb3{
+    width: 374px;
+    height: 73px;
+    float: left;
+}
+.tb4{
+    width: 150px;
+    height: 73px;
+    float: left;
+}
+.tb5{
+    width: 135px;
+    height: 73px;
+    float: left;
+}
+.tb6{
+    width: 150px;
+    height: 73px;
+    float: left;
+}
+.tc{
+    width: 1018px;
+    height: 101px;
+    border: 1px solid darkgray;
+    border-bottom: none;
+    position: relative;
+    background-color: lightgrey;
+}
+.tc1{
+    width: 322px;
+    height: 30px;
+    margin:25px 0 0 25px;
+    /*     background-color: #00b5e5;*/
+}
+.tc2{
+    width: 135px;
+    height: 70px;
+    position: relative;
+    /*        background-color: #1f9432;*/
+    margin: -35px 0 0 580px;
+}
+.tc3{
+    width: 240px;
+    height: 40px;
+    float: right;
+    position: relative;
+    right: 30px;
+    bottom: 60px;
+}
+.tc3 a{
+    color: #fff;
+    border: 0;
+    /* padding-left: 41px; */
+    height: 40px;
+    min-width: 200px;
+    border-radius: 0;
+    background: url(../ymshop/image/haha.png) no-repeat #15374a;
+    background-size: 22px;
+    background-position: 15px 9px;
+    display: block;
+    line-height: 40px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 3px;
+}
+.td{
+    width: 255px;
+    height: 260px;
+    /*    background-color: #0f7cbf;*/
+    position: relative;
+    left: 765px;
+}
+.td h3{
+    display: block;
+    position: absolute;
+    top: 30px;
+}
+.nav{
+    position: absolute;
+    top: 60px;
+}
+.nav ul>li{
+    width: 233px;
+    height: 50px;
+}

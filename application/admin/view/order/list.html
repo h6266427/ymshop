@@ -1,0 +1,104 @@
+{include file="common/head"/}
+
+<!-- /头部 -->
+
+<div class="main-container container-fluid">
+    <div class="page-container">
+        <!-- Page Sidebar -->
+        {include file="common/sidebar"/}
+        <!-- /Page Sidebar -->
+        <!-- Page Content -->
+        <div class="page-content">
+            <!-- Page Breadcrumb -->
+            <div class="page-breadcrumbs">
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="#">订单</a>
+                    </li>
+                    <li class="active">订单管理</li>
+                </ul>
+            </div>
+            <!-- /Page Breadcrumb -->
+
+            <!-- Page Body -->
+            <div class="page-body">
+                <button type="button" tooltip="搜索" class="btn btn-sm btn-azure btn-addon"
+                        onClick="javascript:window.location.href = '{:url("Order/search")}'"><i class="fa fa-plus"></i> 搜索
+                </button>
+
+
+
+                <div class="row">
+                    <div class="col-lg-12 col-sm-12 col-xs-12">
+                        <div class="widget">
+                            <div class="widget-body">
+                                <div class="flip-scroll">
+                                    <table class="table table-bordered table-hover">
+                                        <thead class="">
+                                        <tr>
+                                            <th class="text-center">订单号</th>
+                                            <th class="text-center">交易状态</th>
+                                            <th class="text-center">订单总价</th>
+                                            <th class="text-center">支付方式</th>
+                                            <th class="text-center">收货人</th>
+                                            <th class="text-center">收货地址</th>
+                                            <th class="text-center">买家留言</th>
+                                            <th class="text-center">创建时间</th>
+
+                                        </tr>
+                                        </thead>
+
+                                        <tbody>
+
+                                        {foreach $data.data as $v}
+                                        <tr>
+                                            <td align="center">{$v.order_id}</td>
+
+                                            <td align="center">{$v.status=='finish'?'交易完成':$v.status=='dead'?'交易取消':'交易进行中'}</td>
+
+                                            <td align="center">{$v.total_amount}</td>
+                                            <td align="center">{$v.pay_status}</td>
+                                            <td align="center">{$v.ship_name}</td>
+
+                                            <td align="center">{$v.ship_area.$v.ship_addr}</td>
+
+                                            <td align="center">
+                                                {if condition="$v.memo neq ''"}
+                                                {$v.memo}
+                                                {else}'暂无留言'
+                                                {/if}
+                                            </td>
+
+                                            <td align="center">{$v.create_time|date="Y-m-d H:i:s",###}</td>
+
+                                        </tr>
+                                        {/foreach}
+                                        {$data.page}
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /Page Body -->
+        </div>
+        <!-- /Page Content -->
+    </div>
+</div>
+
+<!--Basic Scripts-->
+<script src="__STATIC__/admin/style/jquery_002.js"></script>
+<script src="__STATIC__/admin/style/bootstrap.js"></script>
+<script src="__STATIC__/admin/style/jquery.js"></script>
+<!--Beyond Scripts-->
+<script src="__STATIC__/admin/style/beyond.js"></script>
+
+
+</body></html>

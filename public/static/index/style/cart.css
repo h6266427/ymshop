@@ -1,13 +1,11 @@
 .mainbox{
     width: 1200px;
-    height: 526px;
-    margin: 0 auto;
+    margin: 0 auto 50px;
 }
 
 .main{
     width: 1020px;
-    height: 296px;
-    margin:0 auto;
+    margin:0 auto ;
     position: relative;
     color: #143749;
 }
@@ -20,10 +18,11 @@
     font-family: "Microsoft Yahei", "Hiragino Sans GB", Arial, sans-serif;
     font-size: 21px;
     letter-spacing: 2px;
-    margin: 20px auto;
+
 }
 .title{
     height: 31px;
+    margin: 20px auto;
 }
 
 #cart_steps{
@@ -202,4 +201,20 @@ td>p{
     padding: 10px;
     font-size: 14px;
     font-weight: bold;
+}
+
+.cart-empty {
+    margin-bottom: 50px;
+    border: 1px solid #e6e6e6;
+    background-color: #efefef;
+    text-align: center;
+    padding: 80px 0 90px;
+    font-size: 14px;
+    line-height: 2;
+    color: #15374A;
+    font-weight: bold;
+}
+.cart-empty img {
+    width: 44px;
+    margin-bottom: 15px;
 }

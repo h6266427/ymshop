@@ -30,6 +30,12 @@
             </tbody>
             </table>
         </div>
+        {if empty($cart)}
+        <div class="cart-empty">
+            <img src="/static/index/img/ym_icon_cart.png">
+            <p>购物篮中空空的喔,慢慢逛，不要忘记带上「食欲」</p>
+        </div>
+        {else}
         <table class="cart_table" cellpadding="0" cellspacing="0">
             <thead>
                 <tr class="th">
@@ -44,20 +50,22 @@
             </thead>
             <tbody>
 
+            {foreach $cart as $v}
                 <tr >
                     <td>
                         <input type="checkbox" checked="checked" class="inp2">
                     </td>
-                    <td><img src="/static/index/img/pic.jpg" style="width: 44px;height: 44px " alt=""></td>
-                    <td>梨城故事 原味酸奶</td>
-                    <td >￥12.00</td>
+                    <td><img src="{$v.image_s_url}" style="width: 44px;height: 44px " alt=""></td>
+                    <td>{$v.goods_name}</td>
+                    <td >￥{$v.sell_price}.00</td>
                     <td class="num-btns"><input type="submit" value="-" class="dec-btn">
-                        <input type="text" value="1" class="num">
+                        <input type="text" value="{$v.goods_num}" class="num">
                         <input type="submit" value="+" class="inc-btn">
                     </td>
-                    <td >￥12.00</td>
+                    <td >￥{$v.sell_price*$v.goods_num}.00</td>
                     <td ><input type="submit" value=" " name="del" class="inp3"></td>
                 </tr>
+            {/foreach}
 
             </tbody>
 
@@ -69,7 +77,7 @@
            </div>
             <div class="tc2">
                 <p style="font-size: 14px;font-weight: 800">订单金额</p>
-                <span style="font-size: 30px;font-weight: 400">￥12.00</span><br>
+                <span style="font-size: 30px;font-weight: 400">￥{foreach $cart as $v}{$v.sell_price*$v.goods_num}{/foreach}.00</span><br>
                 <span style="font-size: 14px">不含运费</span>
             </div>
             <div class="tc3">
@@ -90,9 +98,11 @@
                 <button>查看优惠祥情</button>
             </div>
         </div>
+        {/if}
     </div>
 
 </div>
+
 </body>
 {:widget('Common/footer')}
 </html>

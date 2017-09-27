@@ -30,6 +30,7 @@ class Cart extends Model{
             ->alias('g')
             ->field('g.goods_id,g.goods_name,g.sell_price,i.image_s_url')
             ->join('images i','i.goods_id=g.goods_id','left')
+            //->join('cart c','c.goods_id=g.goods_id','left')
             ->where('i.is_face',1)
             ->find($goods_id);
         return $cartData??false;

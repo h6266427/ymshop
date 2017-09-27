@@ -11,46 +11,49 @@ use app\index\model\Cart as CartModel;
 class Cart extends Base {
     public function index(){
 
+        //cookie('cart',null);
+
         //判断是否登陆
         $isLogin=$this->isLogin();
+        $cartData=[];
         if ($isLogin!=false) {
             //已登陆
 
             //判断该用户的购物车是否有商品
             //查询登录的用户的购物车数据
             $cartData = CartModel::cartById($isLogin['user_id']);
-            $this->assign('cart',$cartData);
+            //$this->assign('cart',$cartData);
 
         }else{
             //未登录
-            dump(unserialize(cookie('cart')));exit;
+            //反字符串化cookie;
             $cart=unserialize(cookie('cart'));
             if(!empty($cart)){
-                //两表联查出商品和图片数据
+                //cookie里有商品
+
+
+                //两表联查出商品、图片数据
                 foreach ($cart as $k=>$v){
-                    $cartData=CartModel::cartData($v['goods_id']);
-                    if($cartData){
-                        $arr[$v['goods_id']]=$cartData;
-                        dump($arr);exit;
+                    $res=CartModel::cartData($v['goods_id']);
+
+                    //往数量信息里添加cookie里的数量信息
+                    $res['goods_num']=$v['goods_num'];
+                    if($res){
+                        $cartData[$v['goods_id']]=$res;
+                        //dump($cartData);exit;
                     }
                 }
-                dump($cart);exit;
 
-
-
-                $this->assign('cart',$arr);
+                //$this->assign('cart',$cartData);
 
             }else{
-                dump($cart);exit;
-                $arr=[
-                    'goods_id'=>'',
-                    'user_id'=>'',
-                    'goods_num'=>'',
-                ];
-                $this->assign('cart',$arr);
+                //购物车里没有商品
+
+
             }
         }
 
+        $this->assign('cart',$cartData);
         return $this->fetch('cart');
     }
 
@@ -64,7 +67,6 @@ class Cart extends Base {
 
         //记得判断商品数量在库存减去冻结库存之间；
 
-        return json(['sms'=>$goods_num.','.$goods_id,'status'=>'success']);
 
         //判断是否登陆
         $isLogin=$this->isLogin();

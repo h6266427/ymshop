@@ -64,7 +64,7 @@ class Cart extends Base {
 
         //记得判断商品数量在库存减去冻结库存之间；
 
-
+        return json(['sms'=>$goods_num.','.$goods_id,'status'=>'success']);
 
         //判断是否登陆
         $isLogin=$this->isLogin();

@@ -45,8 +45,7 @@
                         <label for="" class="form-label">验证码</label>
                         <span class="form-act">
                             <input class="x-input verify-input sms" type="text" name="vcode" id="dom_el_94665a4"
-                                   placeholder="填写验证码" <!--onblur="smsCheck()"-->
-                                   style="width:100px" vtype="required" where="bottom">
+                                   placeholder="填写验证码" style="width:100px" vtype="required" where="bottom">
                             <a onclick="sendSMS()"  class="btna" ><span class="yzm">获取短信验证码</span></a>
          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <!--<i class="sms-right" style="display: none;"></i>
@@ -72,7 +71,7 @@
                     <li class="form-item-normal signup_subbtn">
                         <label for="" class="form-label"></label>
                         <span class="form-act">
-        <button type="submit" class="btn btn-big" rel="_request"><i class="hide"></i>注 册</button>
+        <a class="btn btn-big" onclick="validate()"><i class="hide"></i>注 册</a>
       </span>
                     </li>
                 </ul>

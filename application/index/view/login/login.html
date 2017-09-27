@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>login</title>
-    <link rel="stylesheet" href="../ymshop/style/login.css" type="text/css">
+    <link rel="stylesheet" href="__STATIC__/index/style/login.css" type="text/css">
 </head>
 <body>
 <div class="innerwrap">
@@ -12,12 +12,12 @@
             <div class="signtitle">
                 <h2>登录</h2>
             </div>
-            <form action="">
+            <form action="{:url('Login/dologin')}">
                 <ul>
                     <li class="item">
                         <label class="formlable">登录账号</label>
                         <span class="formact">
-                            <input class="x-input" type="text" name="uname" id="dom_el_9198271" value="" placeholder="用户名/邮箱地址/手机号" vtype="required" data-caution="请填写登录帐号" autofocus="autofocus">
+                            <input class="x-input" type="text" name="username" id="dom_el_9198271" value="" placeholder="用户名/邮箱地址/手机号" vtype="required" data-caution="请填写登录帐号" autofocus="autofocus">
                         </span>
                     </li>
                     <li class="item">

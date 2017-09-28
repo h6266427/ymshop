@@ -185,6 +185,7 @@ class Cart extends Base {
         if($logIn){
             //已登录
 
+
         }else{
             //未登录，清空cookie
             cookie('cart',null);

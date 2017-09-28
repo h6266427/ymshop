@@ -81,7 +81,6 @@ function validate() {
                         url:"/index/Signup/signUp",
                         success:function (json) {
                             alert(json.msg);
-                            alert('aa');
                         }
                     })
                 }

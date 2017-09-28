@@ -35,6 +35,9 @@ class Signup extends Controller{
             return $this->error($validate->getError());
         }
 
+        //将密码加密
+        $user['password']=md5($user['password']);
+
         $user['phone']=input('username');
         $user['reg_time']=time();
 

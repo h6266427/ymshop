@@ -12,13 +12,14 @@ use think\Validate;
 class Signup extends Validate{
 
     protected $rule=[
-        'username'=>['reg'=>'/^1[3|4|5|8][0-9]\d{4,8}$/'],
-        'password'=>['reg'=>'/^[a-zA-Z]\w{5,19}$/']
+        'username'=>"unique:user|['regex'=>'/^1[3|4|5|8][0-9]\d{4,8}$/']",
+        'password'=>['regex'=>'/^[a-zA-Z]\w{5,19}$/']
     ];
 
     protected $message=[
-        'username.reg'=>'用户名格式错误！',
-        'password.reg'=>'密码格式错误！'
+        'username.regex'=>'用户名格式错误！',
+        'username.unique'=>'用户名已存在！',
+        'password.regex'=>'密码格式错误！'
     ];
 
     protected $scene=[

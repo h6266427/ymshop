@@ -153,7 +153,7 @@ class Cart extends Base {
 
                 if(array_key_exists($goods_id,$cart)){
                     //如果添加的商品是已添加过的
-                    $cart[$goods_id]['goods_num']+=input('goods_num');
+                    $cart[$goods_id]['goods_num']=input('goods_num');
                     $cart=serialize($cart);
                     cookie('cart',$cart);
                     return json(['status'=>'success',
@@ -173,10 +173,23 @@ class Cart extends Base {
             }
 
         }
+    }
 
 
+    /*
+     * 清空购物车
+     *
+     * */
+    public function clear(){
+        $logIn=$this->isLogin();
+        if($logIn){
+            //已登录
 
-
+        }else{
+            //未登录，清空cookie
+            cookie('cart',null);
+        }
+        return $this->success('清空成功！',url('Cart/index'));
     }
 
 

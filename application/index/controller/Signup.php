@@ -6,6 +6,7 @@
  * Time: 21:20
  */
 namespace app\index\controller;
+use app\index\model\Signup as SignupModel;
 use php\api_demo\SmsDemo;
 use think\Controller;
 
@@ -16,12 +17,42 @@ class Signup extends Controller{
         return $this->fetch('signup');
     }
 
+
+    /*
+     * 注册新用户
+     *
+     * */
+
     public function signUp(){
+        $user=[
+            'username'=>input('username'),
+            'password'=>input('password')
+        ];
 
+        //验证
+        $validate=validate('Signup');
+        if(!$validate->scene('add')->check($user)){
+            return $this->error($validate->getError());
+        }
 
+        $user['phone']=input('username');
+        $user['reg_time']=time();
+
+        $res=SignupModel::insertToUser($user);
+        if($res!=false){
+            return json([
+                'msg'=>'注册成功！'
+            ]);
+        }else{
+            return json(['msg'=>'注册失败...']);
+        }
     }
 
 
+    /*
+     * 发送短信验证码
+     *
+     * */
     public function send(){
 
         $phoneNumber=input('phone');
@@ -31,7 +62,7 @@ class Signup extends Controller{
             "v4QZE5HhPIn4UpC68WEJh8bu4z3zki"
         );
         $code=rand(100000,999999);
-
+        return json(['sms'=>$code]);
         //echo "SmsDemo::sendSms\n";
         $response = $demo->sendSms(
             "一米", // 短信签名

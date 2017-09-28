@@ -27,6 +27,7 @@ class Login extends Controller{
         if(!isset($info)||empty($info)){
             return $this->error('用户名或者密码错误');
         }
+        session('user',$info);
         return $this->success('登入成功',url('Index/index'));
     }
 }

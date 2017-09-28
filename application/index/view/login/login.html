@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>login</title>
+{:widget('Common/head')}
     <link rel="stylesheet" href="__STATIC__/index/style/login.css" type="text/css">
-</head>
-<body>
+
 <div class="innerwrap">
     <div class="box">
         <div class="signin">
@@ -47,11 +42,12 @@
                 <div class="sin-logo"></div>
                 <div class="text_box">
                     <strong>我不是会员，</strong>
-                    <a href="">要加入。</a>
+                    <a href="{:url('Signup/index')}">要加入。</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
+{:widget('Common/footer')}
 </body>
 </html>

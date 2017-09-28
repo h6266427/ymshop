@@ -54,8 +54,8 @@ function validate() {
     var phone=$('.phonenumber').val();
     var psw=$('.password').val();
     var pswCon=$('.psw_confirm').val();
+    var $captcha=$('.captcha').val();
     var smsCon=$('.sms').val();
-
     //手机号验证
     var phoneReg=/^1[3|4|5|8][0-9]\d{4,8}$/;
 
@@ -77,7 +77,7 @@ function validate() {
                     $.ajax({
                         type:"post",
                         dataType:'json',
-                        data:{username:phone,password:psw},
+                        data:{username:phone,password:psw,captcha:$captcha},
                         url:"/index/Signup/signUp",
                         success:function (json) {
                             alert(json.msg);

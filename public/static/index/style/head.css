@@ -462,6 +462,20 @@
 .user_ul>li a:hover{
     text-decoration: underline;
 }
+.user_face{
+    display: inline-block;
+    width: 100%;
+    height: 40px;
+    margin: 10px 0;
+    background: url(../img/ym_icon_user.png) no-repeat center center;
+    background-size: contain;
+    float: left;
+}
+.user_name{
+    color: #143749;
+    font-size: 13px;
+    font-weight: bold;
+}
 .shopping_cart,.head_user{
     float: right;
 }

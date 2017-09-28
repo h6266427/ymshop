@@ -8,8 +8,23 @@ use app\index\controller\Base;
 
 class Index extends Base {
     public function index(){
+        $this->checkCart();
 
+        return $this->fetch('home');
 
+    }
+
+    public function lis(){
+
+        $this->checkCart();
+        return $this->fetch('list');
+    }
+
+    /*
+     * 将购物车里的商品数量显示在页面的方法
+     *
+     * */
+    private function checkCart(){
         //判断是否登录
         $isLogin=$this->isLogin();
         if($isLogin){
@@ -17,9 +32,20 @@ class Index extends Base {
 
             //把该用户id对应的购物车表里的商品数据导入
             $userId=session('user')['user_id'];
-            $data=IndexModel::checkCartList($userId);
+            $data=IndexModel::goodsList();
+            $num=IndexModel::getNum($userId);
 
-
+            foreach ($data as $k=>$v){
+                foreach ($num as $nk=>$nv){
+                    if ($data[$k]['goods_id']==$num[$nk]['goods_id']){
+                        $data[$k]['goods_num']=$num[$nk]['goods_num'];
+                        break;
+                    }else{
+                        $data[$k]['goods_num']=0;
+                    }
+                }
+            }
+            //dump($data);exit;
         }else{
             //未登录
 
@@ -49,24 +75,8 @@ class Index extends Base {
                     $data[$k]['goods_num']=0;
                 }
             }
-
-
-
         }
-
-
-
-
         $this->assign('data',$data);
-        return $this->fetch('home');
-
     }
-
-    public function lis(){
-
-        return $this->fetch('list');
-    }
-
-
 
 }

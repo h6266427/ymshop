@@ -36,10 +36,15 @@
                         <span class="form-act">
                             <input class="x-input captcha" type="text" name="captcha" placeholder="填写校验码" id="vocdes"
                  style="width:100px" where="bottom" maxlength="4" autocomplete="off" >
-                            <img src="" alt="验证码无法显示" title="点击更换验证码" class="verify-code auto-change-verify-handle">
-                            <a href="/index-gen_vcode-LOGINVCODE-4.html"
-                                class="verify-code auto-change-verify-handle lnklike">看不清楚?换一个</a>
+                            <img src="{:captcha_src()}" alt="验证码无法显示" title="点击更换验证码" class="verify-code"
+                                 onClick="this.src='{:captcha_src()}'" >
+                            <a href="#" class="auto-change-verify-handle" onclick="changeCaptcha()">看不清楚?换一个</a>
                         </span>
+                        <script>
+                            function changeCaptcha() {
+                                $('.verify-code').attr('src','{:captcha_src()}');
+                            }
+                        </script>
                     </li>
                     <li class="form-item action-need-verify">
                         <label for="" class="form-label">验证码</label>
@@ -76,6 +81,10 @@
                     </li>
                 </ul>
             </form>
+            <div class="text_box">
+                <strong>我已是会员，</strong>
+                <a href="{:url('Login/index')}">要登录。</a>
+            </div>
         </div>
         <div class="need-signup">
             <div>

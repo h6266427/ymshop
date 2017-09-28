@@ -180,12 +180,26 @@
             </form>
         </div>
         <div class="head_user">
+            {if (empty($user))}
             <div class="user_hidden">
                 <ul class="user_ul">
-                    <li><a href="">登入</a></li>
+                    <li><a href="{:url('Login/index')}">登入</a></li>
                     <li style="border: none"><a href="{:url('Signup/index')}">注册</a></li>
                 </ul>
             </div>
+            {else}
+            {foreach $user as $v}
+            <div class="user_hidden">
+                <ul class="user_ul">
+                    <li style="border: none;"><i  class="user_face"></i></li>
+                    <li class="user_name">{$user['username']}</li>
+                    <li style="border: none"><a href="{:url('Personal/index')}">个人中心</a></li>
+                    <li style="border: none"><a href="{:url('Signup/index')}">注册</a></li>
+                    <li><a href="{:url('Login/quit')}">登出</a></li>
+                </ul>
+            </div>
+            {/foreach}
+            {/if}
         </div>
         <div class="shopping_cart">
             <span><a href="" style="color: white">0</a></span>

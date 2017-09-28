@@ -7,8 +7,15 @@
  */
 namespace app\index\controller;
 use think\Controller;
-class Login extends Controller{
+use app\index\controller\Base;
+
+class Login extends Base {
     public function index(){
+        $isLogin=$this->isLogin();
+        if(!empty($isLogin)){
+            return $this->redirect(url('Personal/index'));
+        }
+
         return $this->fetch('login');
     }
     public function dologin(){
@@ -27,7 +34,22 @@ class Login extends Controller{
         if(!isset($info)||empty($info)){
             return $this->error('用户名或者密码错误');
         }
-        session('user',$info);
+        //验证成功后登录次数加1，且记录登录时间
+        $info['login_count']+=1;
+        $info['login_time']=time();
+        $upd=db('user')->update($info);
+        if($upd!=false){
+            session('user',$info);
+        }
         return $this->success('登入成功',url('Index/index'));
+    }
+
+    /*
+     * 退出登录
+     *
+     * */
+    public function quit(){
+        session('user',null);
+        return $this->success('登出成功！',url('Index/index'));
     }
 }

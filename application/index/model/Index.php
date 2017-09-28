@@ -29,7 +29,7 @@ class Index extends Model{
         return $goodsData;
     }
 
-    static public function checkCartList($userId){
+    /*static public function checkCartList($userId){
         if(empty($userId)){
             return false;
         }
@@ -41,14 +41,26 @@ class Index extends Model{
             i.image_m_url')
             ->join('goods g','g.goods_id=c.goods_id','left')
             ->join('images i','i.goods_id=c.goods_id','left')
-            ->where('c.user_id',$userId)
-            ->and('i.is_face',1)
+            ->where(['c.user_id'=>$userId,'i.is_face'=>1])
             ->select();
         if(!empty($data)){
             return $data;
         }
         return false;
+    }*/
 
+
+    static public function getNum($userId){
+        if (empty($userId)){
+            return false;
+        }
+        $data=db('cart')->where('user_id',$userId)->select();
+        if (!empty($data)){
+            return $data;
+        }
+        return false;
     }
+
+
 
 }

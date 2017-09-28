@@ -24,11 +24,18 @@ class Signup extends Controller{
      * */
 
     public function signUp(){
+
+        //验证效验码
+        $captcha=input('captcha');
+        if(!captcha_check($captcha)){
+            //验证失败
+            return json(['msg'=>'校验码错误！']);
+        };
+
         $user=[
             'username'=>input('username'),
             'password'=>input('password')
         ];
-
         //验证
         $validate=validate('Signup');
         if(!$validate->scene('add')->check($user)){

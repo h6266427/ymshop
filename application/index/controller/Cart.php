@@ -21,7 +21,7 @@ class Cart extends Base {
 
             //判断该用户的购物车是否有商品
             //查询登录的用户的购物车数据
-            $cartData = CartModel::cartById($isLogin['user_id']);
+            $cartData = CartModel::checkCartList($isLogin['user_id']);
             //$this->assign('cart',$cartData);
 
         }else{
@@ -100,7 +100,7 @@ class Cart extends Base {
                 }
                 if(array_key_exists($goods_id,$cartData)){
                     //存在
-                    $cartData[$goods_id]['goods_num']+=$goods_num;
+                    $cartData[$goods_id]['goods_num']=$goods_num;
                     $res=CartModel::updCart($cartData[$goods_id]);
                     if($res){
                         return json(['status'=>'success',

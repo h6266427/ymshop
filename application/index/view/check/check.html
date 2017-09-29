@@ -8,43 +8,98 @@
         <div class="table">
             <table width="100%">
                 <tbody>
-                <tr><td class="ym_step"><a href="/cart.html">
-                    <span class="step_number">1</span>购物篮</a></td>
+                <tr>
+                    <td class="ym_step"><a href="/cart.html">
+                        <span class="step_number">1</span>购物篮</a></td>
                     <td class="ym_step_arrow"></td>
                     <td class="ym_step current"><a>
                         <span class="step_number">2</span>结账</a></td>
                     <td class="ym_step_arrow"></td>
-                    <td class="ym_step"><a href=""><span class="step_number">3</span>收银台</a></td></tr></tbody></table>
+                    <td class="ym_step"><a href=""><span class="step_number">3</span>收银台</a></td>
+                </tr>
+                </tbody>
+            </table>
         </div>
         <div class="dressbox">
             <div class="checktitle">收货信息</div>
-            <div>
+            <div class="">
                 <div class="deeper">
                     <a class="btn ym-btn-dropdown" id="shipping_address"
                        style="width: 100%;">请选择收货地址</a>
                     <div class="addr" style="width: 100%">
-                        <a href="" class="btn">
+                        <a class="">
                             地址地址地址地址
                         </a>
-                        <a href="" class="btn">+添加地址</a>
-                        <div class="new_addr">
-                            <form action="" method="post">
-                                <input type="text" name="ship_name" id="ship_name" placeholder="收货人">
-                                <input type="text" name="ship_mobile" id="ship_mobile" placeholder="手机/电话">
-                                <br>
-                                <select name="" id=""></select>
-                                <select name="" id=""></select>
-                                <select name="" id=""></select>
-                                <input type="text" name="ship_name" id="ship_name" placeholder="收货地址">
-                                <label><input type="checkbox" name="def_addr" id="" checked="checked">默认地址</label>
-                                <br>
-                                <button type="submit">保存地址</button>
-                            </form>
-                        </div>
-
+                        <a class="addadd">+添加地址</a>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="new_addr">
+
+            <form action="" method="post">
+                <input type="text" name="ship_name" id="ship_name" placeholder="收货人">
+                <input type="text" name="ship_mobile" id="ship_mobile" placeholder="手机/电话">
+
+                <div style="clear: both;margin-bottom: 15px"></div>
+
+                <select name="sheng" id="sheng" class="area">
+                    <option value="">请选择</option>
+                    {foreach $data as $v}
+                    <option value="{$v.area_id}">{$v.area_name}</option>
+                    {/foreach}
+                </select>
+
+                <select name="" id="shi" class="area">
+                    <option selected="selected" value="">请选择</option>
+
+                </select>
+                <!--<script>
+                    $("#sheng").change(function () {
+                        var sheng = $('#sheng').val();
+                         //console.log(sheng);
+                        $.ajax({
+                            type: 'GET',
+                            dataType: 'json',
+                            data: {sheng: sheng},
+                            url: "{:url('Check/sheng')}",
+                            success: function (d) {
+                                $("#shi").empty();
+                               //    console.log(d);
+                                for (var i = 0; i < d.length; i++) {
+                                        $("#shi").append("<option value="+d[i].area_id+">"+d[i].area_name+"</option>")
+                                }
+                            }
+                        })
+                    });
+                </script>-->
+                <select name="" id="xian" class="area">
+                    <option selected="selected" value="">请选择</option>
+                </select>
+                <!--<script>
+                    $("#shi").change(function () {
+                        var shi = $('#shi').val();
+                        //console.log(sheng);
+                        $.ajax({
+                            type: 'GET',
+                            dataType: 'json',
+                            data: {shi: shi},
+                            url: "{:url('Check/shi')}",
+                            success: function (d) {
+                                $("#xian").empty();
+                                //    console.log(d);
+                                for (var i = 0; i < d.length; i++) {
+                                    $("#xian").append("<option value="+d[i].area_id+">"+d[i].area_name+"</option>")
+                                }
+                            }
+                        })
+                    });
+                </script>-->
+                <input type="text" name="ship_name" id="ship_addr" placeholder="收货地址">
+                <label><input type="checkbox" name="def_addr" id="" checked="checked">默认地址</label>
+                <div style="clear: both;margin-bottom: 15px"></div>
+                <button type="submit" class="new_addr_submit">保存地址</button>
+            </form>
         </div>
         <div class="checkout">
             <div class="checkout_title">收货时间</div>
@@ -106,11 +161,15 @@
         </div>
         <div class="facash">
             <div class="checktitle"><b>发票</b></div>
-            <div class="deeper"><a class="btn ym-btn-dropdown" id="invoice" data-target="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="width: 100%;">不开发票</a></div>
+            <div class="deeper"><a class="btn ym-btn-dropdown" id="invoice" data-target="#" data-toggle="dropdown"
+                                   role="button" aria-haspopup="true" aria-expanded="false"
+                                   style="width: 100%;">不开发票</a></div>
         </div>
         <div class="facash" style="margin-top: 20px">
             <div class="checktitle"><b>留言</b></div>
-            <div class="deeper"><a class="btn" style="line-height: 72px;background: none;"  data-target="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="width: 100%;">可在此给留言客服</a></div>
+            <div class="deeper"><a class="btn" style="line-height: 72px;background: none;" data-target="#"
+                                   data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"
+                                   style="width: 100%;">可在此给留言客服</a></div>
         </div>
         <div class="sum">
             <ul class="summary" id="order_price">
@@ -120,8 +179,11 @@
                 <li class="discount"><span class="summary-label"><em style="font-style: normal;">优惠</em></span>
                     <span class="summary-price"><b>-<span class="">￥</span>
                         <span class="">0.00</span></b></span></li>
-                <li class="discount"><span class="summary-label"><em style="font-style: normal;">运费</em></span><span class="summary-price"><b>+<span class="">￥</span><span class="">30.00</span></b></span></li><hr>
-                <li class="total" style="margin-top: 25px"><span class="summary-label"><em style="font-style: normal;">应付金额</em></span><span class="summary-price"><b><span class="">￥</span><span class="">62.00</span></b></span></li>
+                <li class="discount"><span class="summary-label"><em style="font-style: normal;">运费</em></span><span
+                        class="summary-price"><b>+<span class="">￥</span><span class="">30.00</span></b></span></li>
+                <hr>
+                <li class="total" style="margin-top: 25px"><span class="summary-label"><em style="font-style: normal;">应付金额</em></span><span
+                        class="summary-price"><b><span class="">￥</span><span class="">62.00</span></b></span></li>
                 <div><a class="ym_button" name="CheckCreateOrder">提交订单</a>
                 </div>
                 <div style="margin: 14px 5px 0px;font-size: 10px; color: rgb(21, 55, 74);">
@@ -132,6 +194,7 @@
         </div>
     </div>
 </div>
+<script src="__STATIC__/index/style/check.js"></script>
 </body>
 {:widget('Common/footer')}
 </html>

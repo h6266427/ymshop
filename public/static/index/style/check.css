@@ -291,8 +291,6 @@ ul>li em{
 .addr a{
     display: inline-block;width: 100%;
     color: #143749;
-
-
     white-space: nowrap;
     vertical-align: middle;
     padding-left: 20px;
@@ -303,7 +301,6 @@ ul>li em{
     margin-bottom: 0;
     text-align: left;
     font-weight: bold;
-
     margin-top: 0;
     font-size: 14px;
 }

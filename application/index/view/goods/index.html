@@ -23,10 +23,10 @@
             <!-- 农场 名称 评分-->
             <div class="row row_name">
                 <div class="col-md-12 farmName">
-                    <span>甜心桃</span>
+                    <span>{$data['keywords']}</span>
                 </div>
                 <div class="col-md-12 productTitle">
-                    <span>生态种植浦江红心猕猴桃 24个</span>
+                    <span>{$data['goods_name']}</span>
                 </div>
                 <div class="productRating"
                      style=" background: url(__STATIC__/index/img/bkg_rating.png) no-repeat;background-size: 100% 100%;">
@@ -46,12 +46,13 @@
 
             <!-- 价钱-->
             <div class="productPriceSection">
-                ￥98.00
+                ￥{$data.sell_price}.00
             </div>
 
             <!-- 说明 -->
             <div class="row productDescription">
                 <!-- 商品描述 -->
+                {$data['desc']}
             </div>
             <!-- 说明 -->
 

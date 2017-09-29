@@ -7,6 +7,20 @@ function passId(goods_id) {
     $clickId=goods_id;
 }
 
+$('.cover').click(function () {
+    $.ajax({
+        type:'post',
+        dataType:'json',
+        data:{goods_id:$clickId},
+        url:"/index/Goods/index",
+        success:function (json) {
+            if(json.status=='success'){
+                console.log(json.msg);
+            }
+        }
+    })
+});
+
 $('.cover-inc').click(function () {
 
     if($(this).siblings('.cover').find('.cover-num')[0].innerHTML>=0){

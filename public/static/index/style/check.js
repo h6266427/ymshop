@@ -49,5 +49,7 @@ $(".addadd").click(function () {
 });
 $(".addadd").siblings().click(function () {
     //alert('dddd');
-    $(".new_addr").hide()
+    $(".new_addr").hide();
+   // alert($(this).text());
+    $("#shipping_address").text($(this).text());
 });

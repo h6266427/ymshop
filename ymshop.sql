@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2017-09-28 22:00:10
+Date: 2017-09-30 00:03:57
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -26,12 +26,16 @@ CREATE TABLE `ym_address` (
   `address` varchar(255) NOT NULL COMMENT '地址  （XX路XX号XX室）',
   `create_time` int(11) NOT NULL COMMENT '创建时间',
   `def_addr` tinyint(4) NOT NULL DEFAULT '0' COMMENT '是否默认地址 ',
+  `ship_name` varchar(10) NOT NULL,
+  `ship_mobile` varchar(11) NOT NULL,
   PRIMARY KEY (`addr_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ym_address
 -- ----------------------------
+INSERT INTO `ym_address` VALUES ('1', '6', '福建厦门', '哈哈哈哈', '1562020291', '1', '李四', '13800000000');
+INSERT INTO `ym_address` VALUES ('2', '6', '吉林长春朝阳区', '啦啦啦啦', '1506672729', '1', '顶顶顶', '15600000000');
 
 -- ----------------------------
 -- Table structure for ym_area
@@ -3470,13 +3474,14 @@ CREATE TABLE `ym_cart` (
   `goods_num` int(11) NOT NULL,
   `selected` tinyint(4) NOT NULL COMMENT '是否选中 0-1  1选中',
   PRIMARY KEY (`cart_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ym_cart
 -- ----------------------------
-INSERT INTO `ym_cart` VALUES ('1', '1', '6', '5', '1');
-INSERT INTO `ym_cart` VALUES ('2', '4', '6', '1', '1');
+INSERT INTO `ym_cart` VALUES ('1', '1', '6', '4', '0');
+INSERT INTO `ym_cart` VALUES ('2', '4', '6', '1', '0');
+INSERT INTO `ym_cart` VALUES ('3', '5', '6', '1', '0');
 
 -- ----------------------------
 -- Table structure for ym_cate
@@ -3654,6 +3659,23 @@ CREATE TABLE `ym_order` (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for ym_orderdetail
+-- ----------------------------
+DROP TABLE IF EXISTS `ym_orderdetail`;
+CREATE TABLE `ym_orderdetail` (
+  `detail_id` int(11) NOT NULL,
+  `order_id` int(11) NOT NULL,
+  `goods_id` int(11) NOT NULL,
+  `goods_num` tinyint(4) NOT NULL,
+  `sell_price` decimal(10,0) NOT NULL,
+  PRIMARY KEY (`detail_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of ym_orderdetail
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for ym_user
 -- ----------------------------
 DROP TABLE IF EXISTS `ym_user`;
@@ -3678,4 +3700,4 @@ CREATE TABLE `ym_user` (
 INSERT INTO `ym_user` VALUES ('1', '胡雨', '12', '12', '12', '12', '', '0', '0', '', '0');
 INSERT INTO `ym_user` VALUES ('2', '迪卡', '', '', '', '0', '', '0', '0', '', '0');
 INSERT INTO `ym_user` VALUES ('5', '新用户啊啊啊', 'd41d8cd98f00b204e9800998ecf8427e', '啊啊啊', '', '0', '', '0', '0', '', '0');
-INSERT INTO `ym_user` VALUES ('6', '15640234002', 'aaa111', '15640234002', '', '1506564716', '', '1', '1506606268', '', '0');
+INSERT INTO `ym_user` VALUES ('6', '15640234002', 'aaa111', '15640234002', '', '1506564716', '', '11', '1506684254', '', '0');

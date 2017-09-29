@@ -39,7 +39,7 @@
         <table class="cart_table" cellpadding="0" cellspacing="0">
             <thead>
                 <tr class="th">
-                    <th width="50"><input type="checkbox"checked="checked" class="inp1"></th>
+                    <th width="50"><input type="checkbox"  class="inp1"></th>
                     <th width="100">商品</th>
                     <th></th>
                     <th ><p style="margin-top:9px">售价</p></th>
@@ -53,7 +53,7 @@
             {foreach $cart as $v}
                 <tr >
                     <td>
-                        <input type="checkbox" checked="checked" class="inp2">
+                        <input type="checkbox" {if ($v.selected eq 1)}checked="checked"{/if} class="inp2" onclick="selectGoods({$v.goods_id})">
                     </td>
                     <td><img src="{$v.image_s_url}" style="width: 44px;height: 44px " alt=""></td>
                     <td>{$v.goods_name}</td>
@@ -81,15 +81,35 @@
                 <?php
                 $sum=0;
                 foreach($cart as $v){
+                if($v['selected'] == 1){
                 $sum+=$v['sell_price']*$v['goods_num'];
+                }
                 }
                 ?>
 
-                <span style="font-size: 30px;font-weight: 400">￥{$sum}.00</span><br>
+                <span style="font-size: 30px;font-weight: 400" id="sum">￥{$sum}.00</span><br>
+                <script>
+                    function selectGoods(goods_id) {
+                        $goods_id=goods_id;
+                        $.ajax({
+                            type:'post',
+                            dataType:'json',
+                            data:{goods_id:$goods_id},
+                            url:'/index/Cart/select',
+                            success:function (json) {
+                                if(json.msg=='success'){
+                                    location='/index/Cart/index';
+
+                                    //$('#sum')[0].innerHTML='￥{$sum}.00'
+                                }
+                            }
+                        })
+                    }
+                </script>
                 <span style="font-size: 14px">不含运费</span>
             </div>
             <div class="tc3">
-                <a href="">订单结算</a>
+                <a href="/index/Check/index">订单结算</a>
             </div>
         </div>
         <div class="td">
@@ -113,4 +133,5 @@
 
 </body>
 {:widget('Common/footer')}
+<!--<script src="__STATIC__/index/style/cart.js"></script>-->
 </html>

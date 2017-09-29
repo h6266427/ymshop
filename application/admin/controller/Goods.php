@@ -83,7 +83,7 @@ class Goods extends Controller{
                     return $this->error($validate->getError());
                 }
 
-                //写入数据库
+                //写入数据库商品表
                 //获取添加的商品数据的goods_id;
                 $res=GoodsModel::addGoodId($data);
 
@@ -124,6 +124,9 @@ class Goods extends Controller{
                         //写入数据库images表;
                         $insert=GoodsModel::insertImgTable($imgs);
                         if($insert){
+
+
+
                             return $this->success('添加商品成功~',url('Goods/index'));
                         }else{
                             return $this->error('添加商品失败...');

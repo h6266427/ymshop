@@ -112,11 +112,11 @@
                             <div class="anniu">
                                 <a  class="cover-dec" onclick="passId({$v.goods_id})"></a><a class="cover-inc" onclick="passId({$v.goods_id})"></a>
                                 <!--<span class="cover-num">0</span>-->
-                                <div class="cover" onclick="passId({$v.goods_id})"><span class="cover-num">{$v.goods_num}</span></div>
+                                <div class="cover" onclick="javascript:window.open('/index/Goods/index/goods_id/{$v.goods_id}')"><span class="cover-num">{$v.goods_num}</span></div>
                             </div>
                         </div>
                         <div style=" text-align: center;">
-                            <h3 class="sptt">{$v.goods_name}</h3>
+                            <a class="sptt" onclick="javascript:window.open('{:url(\'Goods/index\',[\'goods_id\'=>$v.goods_id])}')">{$v.goods_name}</a>
                             <div class="huise">
                                 <a href="" style="white-space: nowrap;width: 70px;overflow: hidden;text-overflow: ellipsis;">{$v.keywords}</a>
                                 <span>1kg/份</span>

@@ -7,7 +7,11 @@
             <div class="signtitle">
                 <h2>登录</h2>
             </div>
+            {if (isset($toCheck))}
+            <form action="{:url('Login/dologin',['fromCart'=>1])}">
+            {else}
             <form action="{:url('Login/dologin')}">
+            {/if}
                 <ul>
                     <li class="item">
                         <label class="formlable">登录账号</label>

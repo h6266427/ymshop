@@ -25,8 +25,19 @@ class Cart extends Model{
 
     }
 
+    //用goods_id查出购物车商品数据
+    static public function cartByGoodsId($goodsId){
+        if(empty($goodsId)){
+            return false;
+        }
+        $data=db('cart')->where('goods_id',$goodsId)->find();
 
+        if(!empty($data)){
+            return $data;
+        }
+        return false;
 
+    }
 
 
 

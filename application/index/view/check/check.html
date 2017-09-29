@@ -9,7 +9,7 @@
             <table width="100%">
                 <tbody>
                 <tr>
-                    <td class="ym_step"><a href="/cart.html">
+                    <td class="ym_step"><a href="/index/Cart/index">
                         <span class="step_number">1</span>购物篮</a></td>
                     <td class="ym_step_arrow"></td>
                     <td class="ym_step current"><a>
@@ -21,15 +21,17 @@
             </table>
         </div>
         <div class="dressbox">
-            <div class="checktitle">收货信息</div>
+            <div class="checktitle"">收货信息</div>
             <div class="">
-                <div class="deeper">
-                    <a class="btn ym-btn-dropdown" id="shipping_address"
+                <div class="order-info">
+                    <a class="btn ym-btn-dropdown" id="choosed"
                        style="width: 100%;">请选择收货地址</a>
                     <div class="addr" style="width: 100%">
-                        <a class="">
-                            地址地址地址地址
-                        </a>
+                        {if ($addr!=false)}
+                        {foreach $addr as $k=>$v}
+                        <a class="addr_show"><b class="addr_id">{$addr[$k]['addr_id']}</b>{$addr[$k]['area'].$addr[$k]['address']}&nbsp;&nbsp;{$addr[$k]['ship_name']}&nbsp;&nbsp;{$addr[$k]['ship_mobile']}</a>
+                        {/foreach}
+                        {/if}
                         <a class="addadd">+添加地址</a>
                     </div>
                 </div>
@@ -37,66 +39,29 @@
         </div>
         <div class="new_addr">
 
-            <form action="" method="post">
+            <form action="{:url('Address/add')}" method="post">
                 <input type="text" name="ship_name" id="ship_name" placeholder="收货人">
                 <input type="text" name="ship_mobile" id="ship_mobile" placeholder="手机/电话">
 
                 <div style="clear: both;margin-bottom: 15px"></div>
 
-                <select name="sheng" id="sheng" class="area">
-                    <option value="">请选择</option>
+                <select name="area_sheng" id="sheng" class="area" required>
+                    <option value="" selected >请选择</option>
                     {foreach $data as $v}
                     <option value="{$v.area_id}">{$v.area_name}</option>
                     {/foreach}
                 </select>
 
-                <select name="" id="shi" class="area">
+                <select name="area_shi" id="shi" class="area" required>
                     <option selected="selected" value="">请选择</option>
 
                 </select>
-                <!--<script>
-                    $("#sheng").change(function () {
-                        var sheng = $('#sheng').val();
-                         //console.log(sheng);
-                        $.ajax({
-                            type: 'GET',
-                            dataType: 'json',
-                            data: {sheng: sheng},
-                            url: "{:url('Check/sheng')}",
-                            success: function (d) {
-                                $("#shi").empty();
-                               //    console.log(d);
-                                for (var i = 0; i < d.length; i++) {
-                                        $("#shi").append("<option value="+d[i].area_id+">"+d[i].area_name+"</option>")
-                                }
-                            }
-                        })
-                    });
-                </script>-->
-                <select name="" id="xian" class="area">
+
+                <select name="area_qu" id="xian" class="area" required>
                     <option selected="selected" value="">请选择</option>
                 </select>
-                <!--<script>
-                    $("#shi").change(function () {
-                        var shi = $('#shi').val();
-                        //console.log(sheng);
-                        $.ajax({
-                            type: 'GET',
-                            dataType: 'json',
-                            data: {shi: shi},
-                            url: "{:url('Check/shi')}",
-                            success: function (d) {
-                                $("#xian").empty();
-                                //    console.log(d);
-                                for (var i = 0; i < d.length; i++) {
-                                    $("#xian").append("<option value="+d[i].area_id+">"+d[i].area_name+"</option>")
-                                }
-                            }
-                        })
-                    });
-                </script>-->
-                <input type="text" name="ship_name" id="ship_addr" placeholder="收货地址">
-                <label><input type="checkbox" name="def_addr" id="" checked="checked">默认地址</label>
+                <input type="text" name="address" id="ship_addr" placeholder="收货地址">
+                <label><input type="checkbox" name="def_addr" id="" {if (empty($addr))}checked="checked"{/if}>默认地址</label>
                 <div style="clear: both;margin-bottom: 15px"></div>
                 <button type="submit" class="new_addr_submit">保存地址</button>
             </form>
@@ -106,7 +71,7 @@
             <div style="height: 54px">
                 <div class="timedate">
                     <div class="dropdowm">
-                        <a class="btn ym-btn-dropdown" id="dLabel">2017-09-27</a>
+                        <a class="btn ym-btn-dropdown" id="dLabel">{$time|date='Y-m-d',###}</a>
                     </div>
                 </div>
                 <div class="timedate2">
@@ -156,6 +121,34 @@
                     <img src="../ymshop/image/pic.jpg" style="width:44px;
                     height: 44px;margin-right: 16px" alt="">
                     <div class="cart_count">共1件商品</div>
+                    <table width="100%" >
+                        <thead style="text-align: left">
+                            <th></th>
+                            <th>商品</th>
+                            <th></th>
+                            <th></th>
+                            <th>单价</th>
+                            <th>数量</th>
+                            <th></th>
+                            <th>小计</th>
+                        </thead>
+                        <tbody>
+
+                            {foreach $cart as $v}
+                            <tr >
+                                <td class="g_id" style="opacity:0;">{$v.goods_id}</td>
+                                <td><img src="{$v.image_s_url}" style="width: 44px;height: 44px " alt=""></td>
+                                <td class="g_name">{$v.goods_name}</td>
+                                <td>￥</td>
+                                <td class="g_price">{$v.sell_price}.00</td>
+                                <td class="g_num">{$v.goods_num}</td>
+                                <td>￥</td>
+                                <td class="g_sum">{$v.sell_price*$v.goods_num}.00</td>
+                            </tr>
+                            {/foreach}
+
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -175,16 +168,22 @@
             <ul class="summary" id="order_price">
                 <li class="goods"><span class="summary-label"><em style="font-style: normal;">商品小计</em></span>
                     <span class="summary-price"><b><span class="">￥</span>
-                        <span class="">32.00</span></b></span></li>
+                        <?php
+                        $sum=0;
+                        foreach($cart as $v){
+                        $sum+=$v['sell_price']*$v['goods_num'];
+                        }
+                        ?>
+                        <span class="">{$sum}.00</span></b></span></li>
                 <li class="discount"><span class="summary-label"><em style="font-style: normal;">优惠</em></span>
                     <span class="summary-price"><b>-<span class="">￥</span>
                         <span class="">0.00</span></b></span></li>
                 <li class="discount"><span class="summary-label"><em style="font-style: normal;">运费</em></span><span
-                        class="summary-price"><b>+<span class="">￥</span><span class="">30.00</span></b></span></li>
+                        class="summary-price"><b>+<span class="">￥</span><span class="transport">30.00</span></b></span></li>
                 <hr>
                 <li class="total" style="margin-top: 25px"><span class="summary-label"><em style="font-style: normal;">应付金额</em></span><span
-                        class="summary-price"><b><span class="">￥</span><span class="">62.00</span></b></span></li>
-                <div><a class="ym_button" name="CheckCreateOrder">提交订单</a>
+                        class="summary-price"><b><span class="">￥</span><span class="account">{$sum+30}.00</span></b></span></li>
+                <div><a class="ym_button" name="CheckCreateOrder" onclick="submitOrder()">提交订单</a>
                 </div>
                 <div style="margin: 14px 5px 0px;font-size: 10px; color: rgb(21, 55, 74);">
                     <input type="checkbox" name="delivery_note_price" value="none"

@@ -167,9 +167,18 @@
     margin-left: -35px;
 }
 .sptt{
-    width: 180px;height: 36px;
-    line-height: 36px;
-    overflow: hidden;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 15px!important;
+    cursor: pointer;
+    width: 180px;
+    height: 36px;
+    line-height: 36px!important;
+    overflow-y: hidden;
+    text-overflow: clip;
+}
+.sptt:hover{
+    color: #8dae98;
 }
 .sp_right ul>li .huise{
     text-align: center;

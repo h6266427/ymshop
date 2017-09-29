@@ -13,11 +13,15 @@ class Login extends Base {
     public function index(){
         $isLogin=$this->isLogin();
         if(!empty($isLogin)){
+
             return $this->redirect(url('Personal/index'));
         }
 
         return $this->fetch('login');
     }
+
+
+    //执行登录
     public function dologin(){
         $data = [
             'username'=>input('username'),
@@ -38,8 +42,15 @@ class Login extends Base {
         $info['login_count']+=1;
         $info['login_time']=time();
         $upd=db('user')->update($info);
+
+
         if($upd!=false){
             session('user',$info);
+            if(!empty(cookie('next_url'))){
+                $nextUrl=cookie('next_url');
+                cookie('next_url',null);
+                return $this->success('登入成功',$nextUrl);
+            }
         }
         return $this->success('登入成功',url('Index/index'));
     }

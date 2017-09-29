@@ -4,13 +4,12 @@
 }
 .warp{
     width: 1200px;
-    height: 1140px;
+    height: 100%;
     /*  background: greenyellow;*/
     margin: 0 auto;
 }
 .cotent{
     width: 1020px;
-    height: 800px;
     /*  background-color: #00b5e5;*/
     margin: 0 auto;
 }
@@ -221,7 +220,6 @@ tbody{
     border: 2px solid #d6e2e6;
     padding: 15px;
     border-radius: 4px;
-    height: 38px;
 }
 .cart_count{
     float: right;
@@ -263,6 +261,7 @@ ul>li em{
     color: #fff;
     border: 0;
     height: 40px;
+    cursor: pointer;
     min-width: 200px;
     background: url(/static/index/img/haha.png) no-repeat #15374a;
     background-size: 22px;
@@ -277,6 +276,9 @@ ul>li em{
     margin-left: 5px;
     position: relative;
     top: -5px;
+}
+.addr_id{
+    opacity: 0;
 }
 .addr{
     margin-top: 1px;

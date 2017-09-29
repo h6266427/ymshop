@@ -13,11 +13,13 @@ class Cart extends Base {
 
         //cookie('cart',null);
 
+
         //判断是否登陆
         $isLogin=$this->isLogin();
         $cartData=[];
         if ($isLogin!=false) {
             //已登陆
+
 
             //判断该用户的购物车是否有商品
             //查询登录的用户的购物车数据
@@ -173,6 +175,32 @@ class Cart extends Base {
             }
 
         }
+    }
+
+
+    /*
+     * 选择结算商品
+     *
+     * */
+    public function select($goods_id){
+        //获取通过get方式传入的goods_id
+        $goodsId=$goods_id;
+        //查询购物车里该商品数据
+        $goods=CartModel::cartByGoodsId($goodsId);
+
+        //更改商品selected字段
+        if ($goods['selected']==0){
+            $goods['selected']=1;
+        }else{
+            $goods['selected']=0;
+        }
+        //更新数据库
+        $upd=CartModel::updCart($goods);
+        if($upd!=false){
+            return json(['msg'=>'success']);
+        }
+        return json(['msg'=>'error']);
+
     }
 
 

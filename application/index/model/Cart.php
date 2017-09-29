@@ -12,12 +12,42 @@ use think\Model;
 class Cart extends Model{
 
     //用user_id查询购物车数据
-    static public function cartById($uid){
-        if(empty($uid)){
+    static public function cartById($userId){
+        if(empty($userId)){
             return false;
         }
-        $data=db('cart')->where($uid,'user_id')->select();
-        return $data??false;
+        $data=db('cart')->where('user_id',$userId)->select();
+
+        if(!empty($data)){
+            return $data;
+        }
+        return false;
+
+    }
+
+
+
+
+
+
+    static public function checkCartList($userId){
+        if(empty($userId)){
+            return false;
+        }
+        //三表联查
+        $data=db('cart')
+            ->alias('c')
+            ->field('c.user_id,c.goods_id,c.goods_num,c.selected,
+            g.goods_name,g.keywords,g.sell_price,
+            i.image_s_url')
+            ->join('goods g','g.goods_id=c.goods_id','left')
+            ->join('images i','i.goods_id=c.goods_id','left')
+            ->where(['c.user_id'=>$userId,'i.is_face'=>1])
+            ->select();
+        if(!empty($data)){
+            return $data;
+        }
+        return false;
 
     }
 
@@ -55,5 +85,8 @@ class Cart extends Model{
         $res=db('cart')->update($data);
         return $res??false;
     }
+
+
+
 
 }

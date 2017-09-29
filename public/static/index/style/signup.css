@@ -146,6 +146,24 @@
     display: block;
     margin-top: 10px;
 }
+.verify-code{
+    width: 150px;
+    margin: 0 10px;
+}
+.captcha{
+    margin-left: 10px;
+}
+.captcha,.verify-code{
+    float: left;
+}
+.auto-change-verify-handle{
+    font-size: 12px;
+}
+.text_box{
+    margin: 10px;
+    font-size: 14px;
+    color: gray;
+}
 /*.count-down{
     background-color: gray;
     font-weight: 400;

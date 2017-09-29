@@ -1,0 +1,123 @@
+{:widget('Common/head')}
+<link href="__STATIC__/index/style/personal.css" rel="stylesheet">
+<div class="wrap">
+    <div class="left">
+        <div class="title">
+            <h2>交易管理</h2><br>
+            <a href="" class="">我的订单</a>
+        </div>
+        <div class="title">
+            <h2>评论咨询管理</h2><br>
+            <a href="" class="shop">未评论商品</a><br>
+            <a href="" class="shop">我的评论</a>
+        </div>
+        <div class="title">
+            <h2>我的账号</h2>
+            <a href="" class="shop">我喜欢的</a><br>
+            <a href="" class="shop">到货通知</a><br>
+            <a href="" class="shop">我的优惠券</a><br>
+            <a href="" class="shop">常购商品</a><br>
+            <a href="" class="shop">我的充值卡</a><br>
+            <a href="" class="shop">我的积分</a>
+        </div>
+        <div class="title">
+            <h2>个人信息管理</h2><br>
+            <a href="" class="shop">个人信息</a><br>
+            <a href="" class="shop">安全中心</a><br>
+            <a href="" class="shop">安全中心</a><br>
+
+        </div>
+    </div>
+    <div class="right">
+        <div class="headimg">
+            <div class="head">
+                <div class="photo">
+                </div>
+
+                <div class="info">
+                    <p class="num">{$user['username']}</p>
+                    <p class="level">友善会员</p>
+                    <p class="point">积分200</p>
+                </div>
+
+            </div>
+            <div class="list">
+                <div class="listleft">
+                    <div style="width: 490px">
+                        <div style="height: 21px">
+                            <div style="width: 115px;float: left" class="font1"><p>等级</p></div>
+                            <div style="width: 345px;float: left" class="font"><p>友善会员（积分累积到1000可成为金卡会员）</p></div>
+                        </div>
+                        <div style="margin-top: 10px;height: 21px">
+                            <div style="width: 115px;float: left" class="font1"><p>积分 </p></div>
+                            <div style="width: 345px;float: left" class="font"><p>200分 <a href="">查看积分记录 »</a></p></div>
+                        </div>
+                        <div style="margin-top: 10px;height: 21px">
+                            <div style="width: 115px;float: left" class="font1"><p>账户余额 </p></div>
+                            <div style="width: 345px;float: left" class="font"><p>￥0.00 <a href="">账户余额充值 »</a></p></div>
+                        </div>
+                        <div style="margin-top: 10px;height: 21px">
+                            <div style="width: 115px;float: left" class="font1"><p>上次登录 </p></div>
+                            <div style="width: 345px;float: left" class="font"><p>{$user['login_time']|date='Y-m-d H:i:s',###}</p></div>
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="listright">
+                    <div style="width: 490px">
+                        <div style="height: 21px">
+                            <div style="width: 115px;float: left" class="font1"><p>交易提醒</p></div>
+                            <div style="width: 345px;float: left" class="font"><p><a href="">未付款订单</a></p></div>
+                        </div>
+                        <div style="margin-top: 10px;height: 21px">
+                            <div style="width: 115px;height:21px;;float: left" class="font1"></div>
+                            <div style="width: 345px;float: left" class="font"><p><a href="">预售订单</a></p></div>
+                        </div>
+                        <div style="margin-top: 10px;height: 21px">
+                            <div style="width: 115px; height:21px;float: left" class="font1"></div>
+                            <div style="width: 345px;float: left" class="font"><p><a href="">到货通知</a></p></div>
+                        </div>
+                        <div style="margin-top: 10px;height: 21px">
+                            <div style="width: 115px; height:21px;float: left" class="font1"></div>
+                            <div style="width: 345px;float: left" class="font"><p><a href="">评论回复</a></p></div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="section">最近的订单
+                <a href="">所有订单 <span class="tag" aria-hidden="true"></span></a>
+            </div>
+            <div id="" class="ac_section">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>订单号</th>
+                        <th>金额</th>
+                        <th>下单时间</th>
+                        <th>订单状态</th>
+                        <th>支付方式</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="">
+                        <td colspan="6">暂无记录,去农场逛逛看</td>
+                    </tr>
+                    </tbody>
+
+                </table>
+            </div>
+
+
+
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
+{:widget('Common/footer')}

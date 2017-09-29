@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2017-09-27 10:02:42
+Date: 2017-09-28 22:00:10
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -3470,11 +3470,13 @@ CREATE TABLE `ym_cart` (
   `goods_num` int(11) NOT NULL,
   `selected` tinyint(4) NOT NULL COMMENT '是否选中 0-1  1选中',
   PRIMARY KEY (`cart_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ym_cart
 -- ----------------------------
+INSERT INTO `ym_cart` VALUES ('1', '1', '6', '5', '1');
+INSERT INTO `ym_cart` VALUES ('2', '4', '6', '1', '1');
 
 -- ----------------------------
 -- Table structure for ym_cate
@@ -3668,13 +3670,12 @@ CREATE TABLE `ym_user` (
   `pic` varchar(255) NOT NULL,
   `lock` tinyint(4) NOT NULL DEFAULT '0' COMMENT '0-正常 1-冻结 2-永久冻结',
   PRIMARY KEY (`user_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ym_user
 -- ----------------------------
 INSERT INTO `ym_user` VALUES ('1', '胡雨', '12', '12', '12', '12', '', '0', '0', '', '0');
 INSERT INTO `ym_user` VALUES ('2', '迪卡', '', '', '', '0', '', '0', '0', '', '0');
-INSERT INTO `ym_user` VALUES ('3', '', 'd41d8cd98f00b204e9800998ecf8427e', '123', '', '0', '', '0', '0', '', '0');
-INSERT INTO `ym_user` VALUES ('4', '', 'd41d8cd98f00b204e9800998ecf8427e', '123456', '', '0', '', '0', '0', '', '0');
 INSERT INTO `ym_user` VALUES ('5', '新用户啊啊啊', 'd41d8cd98f00b204e9800998ecf8427e', '啊啊啊', '', '0', '', '0', '0', '', '0');
+INSERT INTO `ym_user` VALUES ('6', '15640234002', 'aaa111', '15640234002', '', '1506564716', '', '1', '1506606268', '', '0');

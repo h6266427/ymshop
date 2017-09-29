@@ -27,10 +27,40 @@ class Index extends Model{
             return false;
         }
         return $goodsData;
-
-
-
     }
+
+    /*static public function checkCartList($userId){
+        if(empty($userId)){
+            return false;
+        }
+        //三表联查
+        $data=db('cart')
+            ->alias('c')
+            ->field('c.user_id,c.goods_id,c.goods_num,c.selected,
+            g.goods_name,g.keywords,g.sell_price,
+            i.image_m_url')
+            ->join('goods g','g.goods_id=c.goods_id','left')
+            ->join('images i','i.goods_id=c.goods_id','left')
+            ->where(['c.user_id'=>$userId,'i.is_face'=>1])
+            ->select();
+        if(!empty($data)){
+            return $data;
+        }
+        return false;
+    }*/
+
+
+    static public function getNum($userId){
+        if (empty($userId)){
+            return false;
+        }
+        $data=db('cart')->where('user_id',$userId)->select();
+        if (!empty($data)){
+            return $data;
+        }
+        return false;
+    }
+
 
 
 }

@@ -10,9 +10,12 @@ namespace app\index\model;
 use think\Model;
 
 class Signup extends Model{
-    static public function index(){
-
-
+    static public function insertToUser($data){
+        if(empty($data)){
+            return false;
+        }
+        $res=db('user')->insert($data);
+        return $res??false;
 
     }
 

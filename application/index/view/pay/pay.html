@@ -1,125 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <style>
-        *{
-            margin: 0;
-            padding:0;
-        }
-        .pay{
-            width: 1020px;
-            height: 203px;
-            font-family: "Microsoft Yahei", "Hiragino Sans GB", Arial, sans-serif;
-            color: #15374a;
-            background-color: #00a2d4;
-            margin: 0 auto;
-            position: relative;
-            font-size: 14px;
-        }
-        .cart-title{
-        }
-        .cart-title h1{
-            padding-left: 42px;
-            background: url(../../../../public/static/index/cart.png) no-repeat;
-            background-size: 29px;
-            background-position: left center;
-            font-weight: bold;
-            font-family: "Microsoft Yahei", "Hiragino Sans GB", Arial, sans-serif;
-            font-size: 21px;
-            letter-spacing: 2px;
-            margin: 20px auto;
-            color: #143749;
-            cursor: pointer;
-        }
-        .icon{
-            margin-right: 5px;
-            margin-top: -3px;
-            height: 36px;
-            overflow: hidden;
-            vertical-align: middle;
-            line-height: 36px;
-            font-size: 26px;
-        }
-       #cart_steps{
-           position:absolute;
-           top: 0;
-           right: 30px;
-        }
-        .ym_step{
-            font-size: 15px;
-            font-weight: bold;
-            margin: 5px;
-            line-height: 30px;
-        }
-        .ym_step>a{
-            color: #143749;
-            text-decoration: none;
-        }
-        .step_number{
-            font-family: 'Sentinel-BoldItalic';
-            margin-right: 10px;
-        }
-        .ym_step_arrow{
-            background-image: url(../../../../public/static/index/2.png);
-            background-size: 13px;
-            background-repeat: no-repeat;
-            background-position: center;
-        }
-        .current{
-            font-size: 15px;
-            font-weight: bold;
-            margin: 5px;
-            line-height: 30px;
-            border-bottom: 3px solid #e98772;
-        }
-        .ym_well{
-            background-image: none;
-            background-color: #d6e2e6;
-            font-weight: bold;
-            border: 0;
-            min-height: 20px;
-            padding: 19px;
-            margin-bottom: 20px;
-            border-radius: 4px;
-
-        }
-        .info{
-            float: right;
-        }
-        .ym_number{
-            font-family: 'Din-Bold', 'Helvetica-Bold', 'Arial-Bold', SansSerif;
-        }
-        .clearfix{
-            margin-bottom: 20px;
-            font-weight: bold;
-        }
-        
-
-    </style>
-</head>
+{:widget('Common/head')}
+<link rel="stylesheet" href="__STATIC__/index/style/pay.css">
 <body>
-<div class="pay">
-    <div class="cart-title"><h1><i class="icon"></i>收银台</h1></div>
-    <div id="cart_steps">
-        <table width="100%">
-            <tbody>
-            <tr><th></th>
-                <th style="width: 45px;"></th>
-                <th></th><th style="width: 45px;"></th>
-                <th></th></tr><tr><td class="ym_step active">
-                <a href="javascript:void(0);">
-                    <span class="step_number">1</span>购物篮</a></td><td class="ym_step_arrow"></td>
-                <td class="ym_step active"><a href="javascript:void(0);">
-                    <span class="step_number">2</span>结账</a></td><td class="ym_step_arrow"></td>
-                <td class="ym_step active current"><a href="javascript:void(0);">
-                    <span class="step_number">3</span>收银台</a></td></tr>
-            </tbody>
-        </table>
+<div class="count">
+    <div class="pay">
+        <div class="cart-title"><h1><i class="icon"></i>收银台</h1></div>
+        <div id="cart_steps">
+            <table width="100%">
+                <tbody>
+                <tr><th></th>
+                    <th style="width: 45px;"></th>
+                    <th></th><th style="width: 45px;"></th>
+                    <th></th></tr><tr><td class="ym_step active">
+                    <a href="javascript:void(0);">
+                        <span class="step_number">1</span>购物篮</a></td><td class="ym_step_arrow"></td>
+                    <td class="ym_step active"><a href="javascript:void(0);">
+                        <span class="step_number">2</span>结账</a></td><td class="ym_step_arrow"></td>
+                    <td class="ym_step active current"><a href="javascript:void(0);">
+                        <span class="step_number">3</span>收银台</a></td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="well ym_well">订单生成成功，请选择付款方式<span class="info">订单号 <span class="ym_number">170928101399326</span> &nbsp;&nbsp; 订单金额 <span class="ym_price_number">￥65.00</span></span></div>
+        <div class="clearfix ">
+            <div class="title">付款方式</div><div><div data-name="Payment" class="mpay">微信在线支付</div><div data-name="Payment" class="alipay">支付宝</div></div></div>
     </div>
-    <div class="well ym_well">订单生成成功，请选择付款方式<span class="info">订单号 <span class="ym_number">170928101399326</span> &nbsp;&nbsp; 订单金额 <span class="ym_price_number">￥65.00</span></span></div>
-    <div class=" clearfix "><div class="ym_checkout_title">付款方式</div><div><div data-name="Payment" class="ym_paymentButton wxsmpay">微信在线支付</div><div data-name="Payment" class="ym_paymentButton alipay">支付宝</div></div></div>
 </div>
+{:widget('Common/footer')}
 </body>
+
 </html>

@@ -65,28 +65,41 @@ $('.addr_show').click(function () {
 * 获取订单信息
 *
 * */
+
+
 function submitOrder() {
     //获取地址id
     var $addr_id=$('#choosed').find('.addr_id').html();
-
-    //获取各个商品数量
-    var goodsNums=document.getElementsByClassName('g_num');
-    var nums=[];
-    for (var i=0;i<goodsNums.length;i++){
-        nums[i]=goodsNums[i].innerHTML;
+    if (!$addr_id){
+        alert('请选择收货地址！');
+    }else {
+        location="/index/Check/submit/addr_id/"+$addr_id;
     }
 
-    //获取商品id
-    var goodsId=document.getElementsByClassName('g_id');
-    var gids=[];
-    for (var j=0;j<goodsId.length;j++){
-        gids[j]=goodsId[j].innerHTML;
+
+    /*//获取cart_id
+    var cartIds=document.getElementsByClassName('c_id');
+    var cids=[];
+    for (var j=0;j<cartIds.length;j++){
+        cids[j]=cartIds[j].innerHTML;
     }
 
     //获取商品数
-    var goods=goodsId.length;
+    var goods=cids.length;
 
-
+    //获取订单总价
+    var account=$('.account').html();
+    console.log(goods,cids,addr_id,account);
+    $.ajax({
+        type:'post',
+        dataType:'json',
+        data:{cart_ids:cids,goodsLength:goods,addr_id:addr_id,account:account},
+        url:'/index/Check/submit',
+        success:function (json) {
+            console.log(json.msg);
+            //location='/index/Check/index';
+        }
+    })*/
     
 
 

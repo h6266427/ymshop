@@ -49,21 +49,19 @@ class Check extends Base{
     }
 
     public function submit(){
-        //获取结算的商品信息
-
-
-
 
         //获取收货地址的addr_id；
         $addr_id=input('addr_id');
-        if($addr_id=='undefined'){
-            //如果未选择收货地址
-            return '<script>alert(\'请选择一个收货地址！\');location=\'/index/Check/index\'</script>';
-        }
-        //根据addr_id查出area和address；
+
+        //根据addr_id查出address表里的该条地址信息；
         $addrData=CheckModel::queryAddr($addr_id);
 
+        //获取user_id;
+        $userId=session('user')['user_id'];
 
+        $create=CheckModel::createOrder($userId,$addrData);
+
+        return $this->success($create['msg'],url('Pay/index'));
 
 
 

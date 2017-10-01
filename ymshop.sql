@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2017-09-30 00:03:57
+Date: 2017-09-30 17:02:04
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -3474,13 +3474,11 @@ CREATE TABLE `ym_cart` (
   `goods_num` int(11) NOT NULL,
   `selected` tinyint(4) NOT NULL COMMENT '是否选中 0-1  1选中',
   PRIMARY KEY (`cart_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ym_cart
 -- ----------------------------
-INSERT INTO `ym_cart` VALUES ('1', '1', '6', '4', '0');
-INSERT INTO `ym_cart` VALUES ('2', '4', '6', '1', '0');
 INSERT INTO `ym_cart` VALUES ('3', '5', '6', '1', '0');
 
 -- ----------------------------
@@ -3534,7 +3532,7 @@ CREATE TABLE `ym_goods` (
   `is_hot` tinyint(4) NOT NULL DEFAULT '0' COMMENT '是否是热销商品，是为1，否为0',
   `is_new` tinyint(4) NOT NULL DEFAULT '0' COMMENT '是否是上新商品，是为1，否为0',
   PRIMARY KEY (`goods_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ym_goods
@@ -3638,12 +3636,12 @@ INSERT INTO `ym_manager` VALUES ('2', 'aaa', '123', '1505662517', '1505662517', 
 -- ----------------------------
 DROP TABLE IF EXISTS `ym_order`;
 CREATE TABLE `ym_order` (
-  `order_id` bigint(10) unsigned NOT NULL,
+  `order_id` bigint(10) unsigned NOT NULL AUTO_INCREMENT,
   `total_amount` int(11) NOT NULL COMMENT '订单总价',
   `user_id` int(11) NOT NULL,
   `status` varchar(20) NOT NULL COMMENT 'normal-正常 dead-取消  finish-完成',
-  `pay_status` tinyint(4) NOT NULL,
-  `pay_method` varchar(20) NOT NULL COMMENT '-- 支付方式  -1 --货到付款  online -- 在线支付  weixin -- 微信支付  alipay--支付宝',
+  `pay_status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '0 -未支付 ，1-已支付，2-退款',
+  `pay_method` varchar(20) NOT NULL COMMENT '支付方式  -1 --货到付款  online -- 在线支付  weixin -- 微信支付  alipay--支付宝',
   `create_time` int(10) NOT NULL,
   `last_modify` varchar(255) NOT NULL COMMENT '最后一次修改',
   `ship_name` varchar(20) NOT NULL,
@@ -3652,28 +3650,33 @@ CREATE TABLE `ym_order` (
   `ship_addr` varchar(255) NOT NULL COMMENT '地址',
   `memo` varchar(255) NOT NULL COMMENT '订单附言',
   PRIMARY KEY (`order_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ym_order
 -- ----------------------------
+INSERT INTO `ym_order` VALUES ('1', '143', '6', 'normal', '0', '', '1506760294', '1506760294', '顶顶顶', '15600000000', '吉林长春朝阳区', '啦啦啦啦', '');
+INSERT INTO `ym_order` VALUES ('2', '15', '6', 'normal', '0', '', '1506760438', '1506760438', '李四', '13800000000', '福建厦门', '哈哈哈哈', '');
 
 -- ----------------------------
 -- Table structure for ym_orderdetail
 -- ----------------------------
 DROP TABLE IF EXISTS `ym_orderdetail`;
 CREATE TABLE `ym_orderdetail` (
-  `detail_id` int(11) NOT NULL,
+  `detail_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `order_id` int(11) NOT NULL,
   `goods_id` int(11) NOT NULL,
   `goods_num` tinyint(4) NOT NULL,
   `sell_price` decimal(10,0) NOT NULL,
   PRIMARY KEY (`detail_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ym_orderdetail
 -- ----------------------------
+INSERT INTO `ym_orderdetail` VALUES ('1', '1', '1', '4', '32');
+INSERT INTO `ym_orderdetail` VALUES ('2', '1', '4', '1', '15');
+INSERT INTO `ym_orderdetail` VALUES ('3', '2', '4', '1', '15');
 
 -- ----------------------------
 -- Table structure for ym_user
@@ -3700,4 +3703,4 @@ CREATE TABLE `ym_user` (
 INSERT INTO `ym_user` VALUES ('1', '胡雨', '12', '12', '12', '12', '', '0', '0', '', '0');
 INSERT INTO `ym_user` VALUES ('2', '迪卡', '', '', '', '0', '', '0', '0', '', '0');
 INSERT INTO `ym_user` VALUES ('5', '新用户啊啊啊', 'd41d8cd98f00b204e9800998ecf8427e', '啊啊啊', '', '0', '', '0', '0', '', '0');
-INSERT INTO `ym_user` VALUES ('6', '15640234002', 'aaa111', '15640234002', '', '1506564716', '', '11', '1506684254', '', '0');
+INSERT INTO `ym_user` VALUES ('6', '15640234002', 'aaa111', '15640234002', '', '1506564716', '', '12', '1506736972', '', '0');

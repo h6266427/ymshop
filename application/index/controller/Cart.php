@@ -40,6 +40,9 @@ class Cart extends Base {
 
                     //往数量信息里添加cookie里的数量信息
                     $res['goods_num']=$v['goods_num'];
+                    //往选择信息里添加cookie里的selected信息
+                    $res['selected']=$v['selected'];
+
                     if($res){
                         $cartData[$v['goods_id']]=$res;
                         //dump($cartData);exit;
@@ -135,7 +138,7 @@ class Cart extends Base {
             $data[$goods_id]=[
                 'goods_id'=>$goods_id,
                 'goods_num'=>$goods_num,
-                'selected'=>1
+                'selected'=>0
             ];
 
             //判断cookie里是否有商品

@@ -1,0 +1,124 @@
+.count{
+    width: 1080px;
+    height: 253px;
+    margin: 0 auto;
+}
+.pay{
+    width: 1020px;
+    height: 203px;
+    font-family: "Microsoft Yahei", "Hiragino Sans GB", Arial, sans-serif;
+    color: #15374a;
+    /*      background-color: #00a2d4;*/
+    margin: 20px auto;
+    position: relative;
+    font-size: 14px;
+}
+.cart-title{
+}
+.cart-title h1{
+    padding-left: 42px;
+    background: url(cart.png) no-repeat;
+    background-size: 29px;
+    background-position: left center;
+    font-weight: bold;
+    font-family: "Microsoft Yahei", "Hiragino Sans GB", Arial, sans-serif;
+    font-size: 21px;
+    letter-spacing: 2px;
+    margin: 20px auto;
+    color: #143749;
+    cursor: pointer;
+}
+.icon{
+    margin-right: 5px;
+    margin-top: -3px;
+    height: 36px;
+    overflow: hidden;
+    vertical-align: middle;
+    line-height: 36px;
+    font-size: 26px;
+}
+#cart_steps{
+    position:absolute;
+    top: 0;
+    right: 30px;
+}
+.ym_step{
+    font-size: 15px;
+    font-weight: bold;
+    margin: 5px;
+    line-height: 30px;
+}
+.ym_step>a{
+    color: #143749;
+    text-decoration: none;
+}
+.step_number{
+    font-family: 'Sentinel-BoldItalic';
+    margin-right: 10px;
+}
+.ym_step_arrow{
+    background-image: url(2.png);
+    background-size: 13px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.current{
+    font-size: 15px;
+    font-weight: bold;
+    margin: 5px;
+    line-height: 30px;
+    border-bottom: 3px solid #e98772;
+}
+.ym_well{
+    background-image: none;
+    background-color: #d6e2e6;
+    font-weight: bold;
+    border: 0;
+    min-height: 20px;
+    padding: 19px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+
+}
+.info{
+    float: right;
+}
+.ym_number{
+    font-family: 'Din-Bold', 'Helvetica-Bold', 'Arial-Bold', SansSerif;
+}
+.clearfix{
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+.title{
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.mpay{
+    background-image: url(../img/wxpay.png);
+    cursor: pointer;
+    border: 2px solid #d6e2e6;
+    padding: 10px;
+    border-radius: 4px;
+    width: 20%;
+    float: left;
+    margin-right: 20px;
+    background-repeat: no-repeat;
+    background-position: 37px center;
+    background-size: 145px;
+    color: transparent;
+}
+.alipay{
+    border: 2px solid #d6e2e6;
+    padding: 10px;
+    border-radius: 4px;
+    width: 20%;
+    float: left;
+    margin-right: 20px;
+    background-repeat: no-repeat;
+    background-position: 37px center;
+    background-size: 145px;
+    color: transparent;
+    background-image: url(../img/alipay.png);
+    cursor: pointer;
+}

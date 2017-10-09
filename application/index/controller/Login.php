@@ -52,7 +52,7 @@ class Login extends Base {
                 return $this->success('登入成功',$nextUrl);
             }
         }
-        return $this->success('登入成功',url('Index/index'));
+        return $this->success('登入成功',url('Personal/index'));
     }
 
     /*

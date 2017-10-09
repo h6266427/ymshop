@@ -103,9 +103,22 @@
                     </tr>
                     </thead>
                     <tbody>
+                    {if (empty($order))}
                     <tr class="">
-                        <td colspan="6">暂无记录,去农场逛逛看</td>
+                        <td colspan="6" style="text-align: center">暂无记录,去农场逛逛看</td>
                     </tr>
+                    {else}
+                    {foreach $order as $k=>$v}
+                    <tr style="text-align: center">
+                        <td>{$v.order_id}</td>
+                        <td>{$v.total_amount}</td>
+                        <td>{$v.create_time|date="Y-m-d H:i:s",###}</td>
+                        <td>{if ($v.status=='normal')}进行中{elseif ($v.status=='finish')}已完成{elseif ($v.status=='dead')}已取消{/if}</td>
+                        <td>{$v.pay_method}</td>
+                        <td><a class="btn btn-danger btn-sm shiny">取消订单</a></td>
+                    </tr>
+                    {/foreach}
+                    {/if}
                     </tbody>
 
                 </table>

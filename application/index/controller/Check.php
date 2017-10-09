@@ -12,6 +12,8 @@ use app\index\controller\Base;
 class Check extends Base{
     public function index(){
 
+
+
         //分配日期给订单模板
         $time=time();
         $this->assign('time',$time);
@@ -62,7 +64,6 @@ class Check extends Base{
         $create=CheckModel::createOrder($userId,$addrData);
 
         return $this->success($create['msg'],url('Pay/index'));
-
 
 
     }

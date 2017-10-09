@@ -64,6 +64,7 @@ class Check extends Model{
 
         //填写订单字段
         $order=[
+            //'order_id'=>date('Ymd',time()).'0'.rand(100000,200000),
             'total_amount'=>$amount,
             'user_id'=>$userId,
             'status'=>'normal',
@@ -74,6 +75,14 @@ class Check extends Model{
             'ship_name'=>$addrData['ship_name'],
             'ship_mobile'=>$addrData['ship_mobile']
         ];
+
+
+        //处理订单号
+        //查看订单表最后一条是不是当天的订单号，如果没有则创建一个当天的订单号，有的话则不作处理，让其自增
+        $lastOrederId=db('order')->field('order_id')->order('order_id desc')->limit(0,1)->find();
+        if(substr($lastOrederId['order_id'],0,8)!=date('Ymd',time())){
+            $order['order_id']=date('Ymd',time()).'0'.rand(100000,200000);
+        }
 
         //手动控制事务
         Db::startTrans();
